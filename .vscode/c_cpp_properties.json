@@ -3,23 +3,12 @@
         {
             "name": "name",
             "includePath": [
-                // "${workspaceFolder}/**",
-                // "${workspaceFolder}/src/**",
-                // "${workspaceFolder}/src/*",
-                // "${workspaceRoot}/src/**",
-                "${workspaceFolder}/src/",
                 "${workspaceFolder}/src/**"
-                // "${workspaceFolder}/src/",
-                // "${workspaceFolder}/src/*"
-                // "./src"
-                // "/wsl$/Ubuntu-20.04/home/user/dev/kernel/src"
             ],
             "compilerPath": "/home/user/opt/cross/bin/i686-elf-g++",
             "defines": [
                 // "_DEBUG",
-                // "UNICODE",
-                // "_UNICODE"
-                "_GCC_WRAP_STDINT_H"
+                "__STDC_HOSTED__=0"
             ],
             "cStandard": "c17",
             "cppStandard": "c++17",

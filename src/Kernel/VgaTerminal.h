@@ -28,19 +28,17 @@ class VgaTerminal
 public:
     VgaTerminal();
 
-    // rename put to set
-
     void setColor(VgaColor foreground, VgaColor background = VgaColor::Black);
-    void putChar(char chr);
+    void putChar(unsigned char chr);
     void write(const char* data, size_t length);
     void writeString(const char* string);
     void moveUp();
 
-    static constexpr uint16_t makeChar(char chr, VgaColor foreground = VgaColor::White, VgaColor background = VgaColor::Black);
+    static constexpr uint16_t makeChar(unsigned char chr, VgaColor foreground = VgaColor::White, VgaColor background = VgaColor::Black);
 
     static void clear();
     static uint16_t getAt(size_t x, size_t y);
-    static void putAt(uint16_t chr, size_t x, size_t y);
+    static void setAt(uint16_t chr, size_t x, size_t y);
 
 public:
     static volatile uint16_t* const BUFFER;
@@ -52,7 +50,7 @@ public:
     uint16_t currentColor;
 };
 
-constexpr uint16_t VgaTerminal::makeChar(char chr, VgaColor foreground, VgaColor background)
+constexpr uint16_t VgaTerminal::makeChar(unsigned char chr, VgaColor foreground, VgaColor background)
 {
     constexpr int FOREGROUND_OFFSET = 8;
     constexpr int BACKGROUND_OFFSET = 12;

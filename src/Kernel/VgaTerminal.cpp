@@ -13,30 +13,19 @@ VgaTerminal::VgaTerminal()
     clear();
 }
 
-// uint16_t VgaTerminal::makeChar(char chr, VgaColor foreground, VgaColor background)
-// {
-//     static constexpr int FOREGROUND_OFFSET = 8;
-//     static constexpr int BACKGROUND_OFFSET = 12;
-
-//     return static_cast<uint16_t>(chr)
-//         | (static_cast<uint16_t>(background) << BACKGROUND_OFFSET)
-//         | (static_cast<uint16_t>(foreground) << FOREGROUND_OFFSET);
-// }
-
 void VgaTerminal::clear()
 {
-    // Maybe make this constexpr
     constexpr uint16_t EMPTY_CHAR = makeChar(' ', VgaColor::White, VgaColor::Black);
     for (size_t y = 0; y < HEIGHT; y++)
     {
         for (size_t x = 0; x < WIDTH; x++)
         {
-            putAt(EMPTY_CHAR, x, y);
+            setAt(EMPTY_CHAR, x, y);
         }
     }
 }
 
-void VgaTerminal::putAt(uint16_t chr, size_t x, size_t y)
+void VgaTerminal::setAt(uint16_t chr, size_t x, size_t y)
 {
     BUFFER[y * WIDTH + x] = chr;
 }
@@ -51,7 +40,7 @@ void VgaTerminal::setColor(VgaColor foreground, VgaColor background)
     currentColor = makeChar(' ', foreground, background);
 }
 
-void VgaTerminal::putChar(char chr)
+void VgaTerminal::putChar(unsigned char chr)
 {
     if (chr == '\n')
     {
@@ -65,7 +54,7 @@ void VgaTerminal::putChar(char chr)
     }
     else
     {
-        putAt(
+        setAt(
             static_cast<uint16_t>(chr) | currentColor,
             currentX, currentY
         );    
@@ -105,7 +94,7 @@ void VgaTerminal::moveUp()
     {
         for (size_t x = 0; x < WIDTH; x++)
         {
-            putAt(getAt(x, y), x, y - 1);
+            setAt(getAt(x, y), x, y - 1);
         }   
     }
 
@@ -113,6 +102,6 @@ void VgaTerminal::moveUp()
 
     for (size_t x = 0; x < WIDTH; x++)
     {
-        putAt(EMPTY_CHAR, x, HEIGHT - 1);
+        setAt(EMPTY_CHAR, x, HEIGHT - 1);
     }   
 }
