@@ -11,8 +11,12 @@ LD := i686-elf-ld
 
 G++_INCLUDE_DIRS := $(SRC_DIR)
 
+AS_FLAGS := -msyntax=intel -mnaked-reg
+
 # "-c" - Only compile don't link
 G++_FLAGS := -std=c++2a -ffreestanding -O2 -fno-exceptions -fno-rtti -c \
+	-masm=intel \
+	-DKERNEL_DEBUG \
 	-I $(G++_INCLUDE_DIRS) \
 	-Wall
 # -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy \
@@ -41,7 +45,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.s
 	mkdir -p $(@D)
-	$(AS) -o $@ $<
+	$(AS) $(AS_FLAGS) -o $@ $<
 
 .PHONY: run
 run:

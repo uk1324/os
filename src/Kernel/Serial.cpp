@@ -27,6 +27,11 @@ void Serial::init()
     IoBus::writeByte(PORT_ADDRESS + 4, 0x0F);
 }
 
+void Serial::setBaudRateDivisor(uint16_t divisor)
+{
+    
+}
+
 void Serial::write(char chr)
 {
     while (isTransmitEmpty() == false)

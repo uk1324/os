@@ -3,9 +3,11 @@
 #include <stdint.h>
 
 // Maybe add tryRead and tryWrite that return false if can't 
+// Change this to class that takes in the port address
 namespace Serial
 {
     void init();
+    void setBaudRateDivisor(uint16_t divisor);
 
     void write(char chr);
     bool isTransmitEmpty();

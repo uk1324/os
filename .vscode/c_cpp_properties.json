@@ -7,7 +7,7 @@
             ],
             "compilerPath": "/home/user/opt/cross/bin/i686-elf-g++",
             "defines": [
-                // "_DEBUG",
+                "KERNEL_DEBUG",
                 "__STDC_HOSTED__=0"
             ],
             "cStandard": "c17",

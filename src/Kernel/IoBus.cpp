@@ -11,7 +11,7 @@ void IoBus::writeByte(uint16_t portAddress, uint8_t val)
     asm volatile (
         "outb %0, %1"
             :
-            : "a"(val), "Nd"(portAddress)
+            : "Nd"(portAddress), "a"(val)
     );
 }
 
@@ -19,7 +19,7 @@ uint8_t IoBus::readByte(uint16_t portAddress)
 {
     uint8_t ret;
     asm volatile (
-        "inb %1, %0"
+        "inb %0, %1"
             : "=a"(ret)
             : "Nd"(portAddress)
     );
