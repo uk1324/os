@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-enum class VgaColor
+enum class VgaColor : uint16_t
 {
 	Black = 0,
 	Blue = 1,
@@ -52,10 +52,14 @@ public:
 
 constexpr uint16_t VgaTerminal::makeChar(unsigned char chr, VgaColor foreground, VgaColor background)
 {
-    constexpr int FOREGROUND_OFFSET = 8;
-    constexpr int BACKGROUND_OFFSET = 12;
+    constexpr uint16_t FOREGROUND_OFFSET = 8;
+    constexpr uint16_t BACKGROUND_OFFSET = 12;
 
-    return static_cast<uint16_t>(chr)
+    // The cast before return is here to remove a pointless -Wconversion warning because of implicit upconversions.
+    // The code generated is the same without it.
+    return static_cast<uint16_t>(
+        static_cast<uint16_t>(chr)
         | (static_cast<uint16_t>(background) << BACKGROUND_OFFSET)
-        | (static_cast<uint16_t>(foreground) << FOREGROUND_OFFSET);
+        | (static_cast<uint16_t>(foreground) << FOREGROUND_OFFSET)
+    );
 }

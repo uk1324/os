@@ -37,7 +37,6 @@ private:
         void set(size_t size_);
         int magic;
         size_t size;
-
     };
 
     private:

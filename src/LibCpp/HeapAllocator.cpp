@@ -133,15 +133,6 @@ void HeapAllocator::free(void* pointer)
         }
         freed->next = freed->next->next;
     }
-
-
-    // sizeof(Allocated);
-    // if ((freed->next != nullptr) && (freed->next->size > 0))
-    // {
-    //     freed->size += freed->next->size + sizeof(Free);
-    //     freed->next->next->previous = freed;
-    //     freed->next = freed->next->next;
-    // }
 }
 
 void HeapAllocator::Allocated::set(size_t size_)

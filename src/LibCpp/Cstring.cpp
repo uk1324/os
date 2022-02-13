@@ -1,6 +1,6 @@
-#include "Cstring.h"
+#include <LibCpp/Cstring.h>
 
-size_t strLen(const char* string)
+size_t strlen(const char* string)
 {
     size_t length = 0;
 	while (string[length] != '\0')
@@ -8,12 +8,21 @@ size_t strLen(const char* string)
 	return length;
 }
 
-void memCpy(void* destination, const void* source, size_t size)
+void memcpy(void* destination, const void* source, size_t size)
 {
-	char* dest = reinterpret_cast<char*>(destination);
-	const char* src = reinterpret_cast<char*>(destination);
+	auto dest = reinterpret_cast<char*>(destination);
+	auto src = reinterpret_cast<const char*>(source);
 	for (size_t i = 0; i < size; i++)
 	{
 		dest[i] = src[i];
+	}
+}
+
+void memset(void* ptr, uint8_t val, size_t byte_count)
+{
+	auto p = reinterpret_cast<u8*>(ptr);
+	for (size_t i = 0; i < byte_count; i++)
+	{
+		p[byte_count] = val;
 	}
 }

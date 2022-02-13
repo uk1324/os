@@ -1,1664 +1,1804 @@
 
-build/os.out:     file format elf32-i386
+./build/os.out:     file format elf32-i386
 
 
 Disassembly of section .text:
 
 00100000 <_ZN5IoBus9writeByteEth-0x10>:
-  100000:	02 b0 ad 1b 03 00    	add    dh,BYTE PTR [eax+0x31bad]
-  100006:	00 00                	add    BYTE PTR [eax],al
+  100000:	02 b0 ad 1b 03 00    	add    0x31bad(%eax),%dh
+  100006:	00 00                	add    %al,(%eax)
   100008:	fb                   	sti    
-  100009:	4f                   	dec    edi
-  10000a:	52                   	push   edx
-  10000b:	e4 66                	in     al,0x66
+  100009:	4f                   	dec    %edi
+  10000a:	52                   	push   %edx
+  10000b:	e4 66                	in     $0x66,%al
   10000d:	90                   	nop
-  10000e:	66 90                	xchg   ax,ax
+  10000e:	66 90                	xchg   %ax,%ax
 
 00100010 <_ZN5IoBus9writeByteEth>:
-  100010:	55                   	push   ebp
-  100011:	89 e5                	mov    ebp,esp
-  100013:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100016:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100019:	ee                   	out    dx,al
-  10001a:	5d                   	pop    ebp
+  100010:	55                   	push   %ebp
+  100011:	89 e5                	mov    %esp,%ebp
+  100013:	8b 55 08             	mov    0x8(%ebp),%edx
+  100016:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100019:	ee                   	out    %al,(%dx)
+  10001a:	5d                   	pop    %ebp
   10001b:	c3                   	ret    
-  10001c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+  10001c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
 00100020 <_ZN5IoBus8readByteEt>:
-  100020:	55                   	push   ebp
-  100021:	89 e5                	mov    ebp,esp
-  100023:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100026:	ec                   	in     al,dx
-  100027:	5d                   	pop    ebp
+  100020:	55                   	push   %ebp
+  100021:	89 e5                	mov    %esp,%ebp
+  100023:	8b 55 08             	mov    0x8(%ebp),%edx
+  100026:	ec                   	in     (%dx),%al
+  100027:	5d                   	pop    %ebp
   100028:	c3                   	ret    
-  100029:	66 90                	xchg   ax,ax
-  10002b:	66 90                	xchg   ax,ax
-  10002d:	66 90                	xchg   ax,ax
+  100029:	66 90                	xchg   %ax,%ax
+  10002b:	66 90                	xchg   %ax,%ax
+  10002d:	66 90                	xchg   %ax,%ax
   10002f:	90                   	nop
 
 00100030 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE>:
-  100030:	55                   	push   ebp
-  100031:	89 e5                	mov    ebp,esp
-  100033:	57                   	push   edi
-  100034:	56                   	push   esi
-  100035:	53                   	push   ebx
-  100036:	83 ec 3c             	sub    esp,0x3c
-  100039:	8b 4d 08             	mov    ecx,DWORD PTR [ebp+0x8]
-  10003c:	8b 75 0c             	mov    esi,DWORD PTR [ebp+0xc]
-  10003f:	85 c9                	test   ecx,ecx
+  100030:	55                   	push   %ebp
+  100031:	89 e5                	mov    %esp,%ebp
+  100033:	57                   	push   %edi
+  100034:	56                   	push   %esi
+  100035:	53                   	push   %ebx
+  100036:	83 ec 3c             	sub    $0x3c,%esp
+  100039:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  10003c:	8b 75 0c             	mov    0xc(%ebp),%esi
+  10003f:	85 c9                	test   %ecx,%ecx
   100041:	0f 84 09 01 00 00    	je     100150 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0x120>
-  100047:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
-  10004a:	89 ca                	mov    edx,ecx
-  10004c:	c7 45 d2 30 31 32 33 	mov    DWORD PTR [ebp-0x2e],0x33323130
-  100053:	8d 7d d2             	lea    edi,[ebp-0x2e]
-  100056:	c7 45 d6 34 35 36 37 	mov    DWORD PTR [ebp-0x2a],0x37363534
-  10005d:	83 f8 0a             	cmp    eax,0xa
-  100060:	89 45 c0             	mov    DWORD PTR [ebp-0x40],eax
-  100063:	89 c8                	mov    eax,ecx
-  100065:	0f 94 c3             	sete   bl
-  100068:	c1 e8 1f             	shr    eax,0x1f
-  10006b:	f7 da                	neg    edx
-  10006d:	c7 45 da 38 39 41 42 	mov    DWORD PTR [ebp-0x26],0x42413938
-  100074:	20 c3                	and    bl,al
-  100076:	c7 45 de 43 44 45 46 	mov    DWORD PTR [ebp-0x22],0x46454443
-  10007d:	0f 45 ca             	cmovne ecx,edx
-  100080:	80 7d 14 00          	cmp    BYTE PTR [ebp+0x14],0x0
-  100084:	88 5d bf             	mov    BYTE PTR [ebp-0x41],bl
-  100087:	c6 45 e2 00          	mov    BYTE PTR [ebp-0x1e],0x0
-  10008b:	c7 45 e3 30 31 32 33 	mov    DWORD PTR [ebp-0x1d],0x33323130
-  100092:	c7 45 e7 34 35 36 37 	mov    DWORD PTR [ebp-0x19],0x37363534
-  100099:	c7 45 eb 38 39 61 62 	mov    DWORD PTR [ebp-0x15],0x62613938
-  1000a0:	c7 45 ef 63 64 65 66 	mov    DWORD PTR [ebp-0x11],0x66656463
-  1000a7:	c6 45 f3 00          	mov    BYTE PTR [ebp-0xd],0x0
+  100047:	8b 45 10             	mov    0x10(%ebp),%eax
+  10004a:	89 ca                	mov    %ecx,%edx
+  10004c:	c7 45 d2 30 31 32 33 	movl   $0x33323130,-0x2e(%ebp)
+  100053:	8d 7d d2             	lea    -0x2e(%ebp),%edi
+  100056:	c7 45 d6 34 35 36 37 	movl   $0x37363534,-0x2a(%ebp)
+  10005d:	83 f8 0a             	cmp    $0xa,%eax
+  100060:	89 45 c0             	mov    %eax,-0x40(%ebp)
+  100063:	89 c8                	mov    %ecx,%eax
+  100065:	0f 94 c3             	sete   %bl
+  100068:	c1 e8 1f             	shr    $0x1f,%eax
+  10006b:	f7 da                	neg    %edx
+  10006d:	c7 45 da 38 39 41 42 	movl   $0x42413938,-0x26(%ebp)
+  100074:	20 c3                	and    %al,%bl
+  100076:	c7 45 de 43 44 45 46 	movl   $0x46454443,-0x22(%ebp)
+  10007d:	0f 45 ca             	cmovne %edx,%ecx
+  100080:	80 7d 14 00          	cmpb   $0x0,0x14(%ebp)
+  100084:	88 5d bf             	mov    %bl,-0x41(%ebp)
+  100087:	c6 45 e2 00          	movb   $0x0,-0x1e(%ebp)
+  10008b:	c7 45 e3 30 31 32 33 	movl   $0x33323130,-0x1d(%ebp)
+  100092:	c7 45 e7 34 35 36 37 	movl   $0x37363534,-0x19(%ebp)
+  100099:	c7 45 eb 38 39 61 62 	movl   $0x62613938,-0x15(%ebp)
+  1000a0:	c7 45 ef 63 64 65 66 	movl   $0x66656463,-0x11(%ebp)
+  1000a7:	c6 45 f3 00          	movb   $0x0,-0xd(%ebp)
   1000ab:	0f 84 8f 00 00 00    	je     100140 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0x110>
-  1000b1:	89 75 b8             	mov    DWORD PTR [ebp-0x48],esi
-  1000b4:	89 f3                	mov    ebx,esi
-  1000b6:	8b 75 c0             	mov    esi,DWORD PTR [ebp-0x40]
-  1000b9:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1000c0:	89 c8                	mov    eax,ecx
-  1000c2:	31 d2                	xor    edx,edx
-  1000c4:	89 5d c0             	mov    DWORD PTR [ebp-0x40],ebx
-  1000c7:	83 c3 01             	add    ebx,0x1
-  1000ca:	f7 f6                	div    esi
-  1000cc:	0f b6 14 17          	movzx  edx,BYTE PTR [edi+edx*1]
-  1000d0:	88 53 ff             	mov    BYTE PTR [ebx-0x1],dl
-  1000d3:	89 ca                	mov    edx,ecx
-  1000d5:	89 c1                	mov    ecx,eax
-  1000d7:	39 d6                	cmp    esi,edx
+  1000b1:	89 75 b8             	mov    %esi,-0x48(%ebp)
+  1000b4:	89 f3                	mov    %esi,%ebx
+  1000b6:	8b 75 c0             	mov    -0x40(%ebp),%esi
+  1000b9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1000c0:	89 c8                	mov    %ecx,%eax
+  1000c2:	31 d2                	xor    %edx,%edx
+  1000c4:	89 5d c0             	mov    %ebx,-0x40(%ebp)
+  1000c7:	83 c3 01             	add    $0x1,%ebx
+  1000ca:	f7 f6                	div    %esi
+  1000cc:	0f b6 14 17          	movzbl (%edi,%edx,1),%edx
+  1000d0:	88 53 ff             	mov    %dl,-0x1(%ebx)
+  1000d3:	89 ca                	mov    %ecx,%edx
+  1000d5:	89 c1                	mov    %eax,%ecx
+  1000d7:	39 d6                	cmp    %edx,%esi
   1000d9:	76 e5                	jbe    1000c0 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0x90>
-  1000db:	80 7d bf 00          	cmp    BYTE PTR [ebp-0x41],0x0
-  1000df:	8b 75 b8             	mov    esi,DWORD PTR [ebp-0x48]
+  1000db:	80 7d bf 00          	cmpb   $0x0,-0x41(%ebp)
+  1000df:	8b 75 b8             	mov    -0x48(%ebp),%esi
   1000e2:	75 4c                	jne    100130 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0x100>
-  1000e4:	89 d9                	mov    ecx,ebx
-  1000e6:	8d 53 ff             	lea    edx,[ebx-0x1]
-  1000e9:	31 c0                	xor    eax,eax
-  1000eb:	29 f1                	sub    ecx,esi
-  1000ed:	89 cf                	mov    edi,ecx
-  1000ef:	c1 ef 1f             	shr    edi,0x1f
-  1000f2:	01 cf                	add    edi,ecx
-  1000f4:	d1 ff                	sar    edi,1
-  1000f6:	83 f9 01             	cmp    ecx,0x1
+  1000e4:	89 d9                	mov    %ebx,%ecx
+  1000e6:	8d 53 ff             	lea    -0x1(%ebx),%edx
+  1000e9:	31 c0                	xor    %eax,%eax
+  1000eb:	29 f1                	sub    %esi,%ecx
+  1000ed:	89 cf                	mov    %ecx,%edi
+  1000ef:	c1 ef 1f             	shr    $0x1f,%edi
+  1000f2:	01 cf                	add    %ecx,%edi
+  1000f4:	d1 ff                	sar    %edi
+  1000f6:	83 f9 01             	cmp    $0x1,%ecx
   1000f9:	7e 1f                	jle    10011a <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0xea>
-  1000fb:	89 5d c0             	mov    DWORD PTR [ebp-0x40],ebx
-  1000fe:	66 90                	xchg   ax,ax
-  100100:	0f b6 0a             	movzx  ecx,BYTE PTR [edx]
-  100103:	0f b6 1c 06          	movzx  ebx,BYTE PTR [esi+eax*1]
-  100107:	83 ea 01             	sub    edx,0x1
-  10010a:	88 5a 01             	mov    BYTE PTR [edx+0x1],bl
-  10010d:	88 0c 06             	mov    BYTE PTR [esi+eax*1],cl
-  100110:	83 c0 01             	add    eax,0x1
-  100113:	39 c7                	cmp    edi,eax
+  1000fb:	89 5d c0             	mov    %ebx,-0x40(%ebp)
+  1000fe:	66 90                	xchg   %ax,%ax
+  100100:	0f b6 0a             	movzbl (%edx),%ecx
+  100103:	0f b6 1c 06          	movzbl (%esi,%eax,1),%ebx
+  100107:	83 ea 01             	sub    $0x1,%edx
+  10010a:	88 5a 01             	mov    %bl,0x1(%edx)
+  10010d:	88 0c 06             	mov    %cl,(%esi,%eax,1)
+  100110:	83 c0 01             	add    $0x1,%eax
+  100113:	39 c7                	cmp    %eax,%edi
   100115:	7f e9                	jg     100100 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0xd0>
-  100117:	8b 5d c0             	mov    ebx,DWORD PTR [ebp-0x40]
-  10011a:	c6 03 00             	mov    BYTE PTR [ebx],0x0
-  10011d:	83 c4 3c             	add    esp,0x3c
-  100120:	89 f0                	mov    eax,esi
-  100122:	5b                   	pop    ebx
-  100123:	5e                   	pop    esi
-  100124:	5f                   	pop    edi
-  100125:	5d                   	pop    ebp
+  100117:	8b 5d c0             	mov    -0x40(%ebp),%ebx
+  10011a:	c6 03 00             	movb   $0x0,(%ebx)
+  10011d:	83 c4 3c             	add    $0x3c,%esp
+  100120:	89 f0                	mov    %esi,%eax
+  100122:	5b                   	pop    %ebx
+  100123:	5e                   	pop    %esi
+  100124:	5f                   	pop    %edi
+  100125:	5d                   	pop    %ebp
   100126:	c3                   	ret    
-  100127:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  10012e:	66 90                	xchg   ax,ax
-  100130:	c6 03 2d             	mov    BYTE PTR [ebx],0x2d
-  100133:	8b 5d c0             	mov    ebx,DWORD PTR [ebp-0x40]
-  100136:	83 c3 02             	add    ebx,0x2
+  100127:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10012e:	66 90                	xchg   %ax,%ax
+  100130:	c6 03 2d             	movb   $0x2d,(%ebx)
+  100133:	8b 5d c0             	mov    -0x40(%ebp),%ebx
+  100136:	83 c3 02             	add    $0x2,%ebx
   100139:	eb a9                	jmp    1000e4 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0xb4>
-  10013b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+  10013b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
   10013f:	90                   	nop
-  100140:	8d 7d e3             	lea    edi,[ebp-0x1d]
+  100140:	8d 7d e3             	lea    -0x1d(%ebp),%edi
   100143:	e9 69 ff ff ff       	jmp    1000b1 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE+0x81>
-  100148:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+  100148:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
   10014f:	90                   	nop
-  100150:	b8 30 00 00 00       	mov    eax,0x30
-  100155:	66 89 06             	mov    WORD PTR [esi],ax
-  100158:	83 c4 3c             	add    esp,0x3c
-  10015b:	89 f0                	mov    eax,esi
-  10015d:	5b                   	pop    ebx
-  10015e:	5e                   	pop    esi
-  10015f:	5f                   	pop    edi
-  100160:	5d                   	pop    ebp
+  100150:	b8 30 00 00 00       	mov    $0x30,%eax
+  100155:	66 89 06             	mov    %ax,(%esi)
+  100158:	83 c4 3c             	add    $0x3c,%esp
+  10015b:	89 f0                	mov    %esi,%eax
+  10015d:	5b                   	pop    %ebx
+  10015e:	5e                   	pop    %esi
+  10015f:	5f                   	pop    %edi
+  100160:	5d                   	pop    %ebp
   100161:	c3                   	ret    
-  100162:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100169:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+  100162:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100169:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
 
 00100170 <_Z8kputcharc>:
-  100170:	55                   	push   ebp
-  100171:	89 e5                	mov    ebp,esp
-  100173:	0f be 45 08          	movsx  eax,BYTE PTR [ebp+0x8]
-  100177:	89 45 08             	mov    DWORD PTR [ebp+0x8],eax
-  10017a:	5d                   	pop    ebp
-  10017b:	e9 f0 07 00 00       	jmp    100970 <_ZN6Serial5writeEc>
+  100170:	55                   	push   %ebp
+  100171:	89 e5                	mov    %esp,%ebp
+  100173:	0f be 45 08          	movsbl 0x8(%ebp),%eax
+  100177:	89 45 08             	mov    %eax,0x8(%ebp)
+  10017a:	5d                   	pop    %ebp
+  10017b:	e9 a0 09 00 00       	jmp    100b20 <_ZN6Serial5writeEc>
 
 00100180 <_Z7kprintfPKcz>:
-  100180:	55                   	push   ebp
-  100181:	89 e5                	mov    ebp,esp
-  100183:	57                   	push   edi
-  100184:	56                   	push   esi
-  100185:	53                   	push   ebx
-  100186:	81 ec 8c 00 00 00    	sub    esp,0x8c
-  10018c:	8b 5d 08             	mov    ebx,DWORD PTR [ebp+0x8]
-  10018f:	0f be 03             	movsx  eax,BYTE PTR [ebx]
-  100192:	84 c0                	test   al,al
+  100180:	55                   	push   %ebp
+  100181:	89 e5                	mov    %esp,%ebp
+  100183:	57                   	push   %edi
+  100184:	56                   	push   %esi
+  100185:	53                   	push   %ebx
+  100186:	81 ec 8c 00 00 00    	sub    $0x8c,%esp
+  10018c:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  10018f:	0f be 03             	movsbl (%ebx),%eax
+  100192:	84 c0                	test   %al,%al
   100194:	0f 84 8b 00 00 00    	je     100225 <_Z7kprintfPKcz+0xa5>
-  10019a:	8d 75 0c             	lea    esi,[ebp+0xc]
-  10019d:	8d 76 00             	lea    esi,[esi+0x0]
-  1001a0:	8d 7b 01             	lea    edi,[ebx+0x1]
-  1001a3:	3c 25                	cmp    al,0x25
+  10019a:	8d 75 0c             	lea    0xc(%ebp),%esi
+  10019d:	8d 76 00             	lea    0x0(%esi),%esi
+  1001a0:	8d 7b 01             	lea    0x1(%ebx),%edi
+  1001a3:	3c 25                	cmp    $0x25,%al
   1001a5:	0f 85 c5 00 00 00    	jne    100270 <_Z7kprintfPKcz+0xf0>
-  1001ab:	0f be 43 01          	movsx  eax,BYTE PTR [ebx+0x1]
-  1001af:	3c 64                	cmp    al,0x64
+  1001ab:	0f be 43 01          	movsbl 0x1(%ebx),%eax
+  1001af:	3c 64                	cmp    $0x64,%al
   1001b1:	0f 84 d9 00 00 00    	je     100290 <_Z7kprintfPKcz+0x110>
   1001b7:	7f 77                	jg     100230 <_Z7kprintfPKcz+0xb0>
-  1001b9:	3c 25                	cmp    al,0x25
+  1001b9:	3c 25                	cmp    $0x25,%al
   1001bb:	0f 84 3f 01 00 00    	je     100300 <_Z7kprintfPKcz+0x180>
-  1001c1:	3c 48                	cmp    al,0x48
+  1001c1:	3c 48                	cmp    $0x48,%al
   1001c3:	0f 85 b7 00 00 00    	jne    100280 <_Z7kprintfPKcz+0x100>
-  1001c9:	89 f0                	mov    eax,esi
-  1001cb:	8d 55 a7             	lea    edx,[ebp-0x59]
-  1001ce:	c6 45 a0 01          	mov    BYTE PTR [ebp-0x60],0x1
-  1001d2:	83 c6 04             	add    esi,0x4
-  1001d5:	8b 00                	mov    eax,DWORD PTR [eax]
-  1001d7:	ff 75 a0             	push   DWORD PTR [ebp-0x60]
-  1001da:	8d 7d a7             	lea    edi,[ebp-0x59]
-  1001dd:	6a 10                	push   0x10
-  1001df:	52                   	push   edx
-  1001e0:	50                   	push   eax
-  1001e1:	89 45 94             	mov    DWORD PTR [ebp-0x6c],eax
-  1001e4:	89 55 98             	mov    DWORD PTR [ebp-0x68],edx
-  1001e7:	c7 45 9c 10 00 00 00 	mov    DWORD PTR [ebp-0x64],0x10
+  1001c9:	89 f0                	mov    %esi,%eax
+  1001cb:	8d 55 a7             	lea    -0x59(%ebp),%edx
+  1001ce:	c6 45 a0 01          	movb   $0x1,-0x60(%ebp)
+  1001d2:	83 c6 04             	add    $0x4,%esi
+  1001d5:	8b 00                	mov    (%eax),%eax
+  1001d7:	ff 75 a0             	pushl  -0x60(%ebp)
+  1001da:	8d 7d a7             	lea    -0x59(%ebp),%edi
+  1001dd:	6a 10                	push   $0x10
+  1001df:	52                   	push   %edx
+  1001e0:	50                   	push   %eax
+  1001e1:	89 45 94             	mov    %eax,-0x6c(%ebp)
+  1001e4:	89 55 98             	mov    %edx,-0x68(%ebp)
+  1001e7:	c7 45 9c 10 00 00 00 	movl   $0x10,-0x64(%ebp)
   1001ee:	e8 3d fe ff ff       	call   100030 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE>
-  1001f3:	0f be 45 a7          	movsx  eax,BYTE PTR [ebp-0x59]
-  1001f7:	83 c4 10             	add    esp,0x10
-  1001fa:	84 c0                	test   al,al
+  1001f3:	0f be 45 a7          	movsbl -0x59(%ebp),%eax
+  1001f7:	83 c4 10             	add    $0x10,%esp
+  1001fa:	84 c0                	test   %al,%al
   1001fc:	74 18                	je     100216 <_Z7kprintfPKcz+0x96>
-  1001fe:	66 90                	xchg   ax,ax
-  100200:	83 ec 0c             	sub    esp,0xc
-  100203:	83 c7 01             	add    edi,0x1
-  100206:	50                   	push   eax
-  100207:	e8 64 07 00 00       	call   100970 <_ZN6Serial5writeEc>
-  10020c:	0f be 07             	movsx  eax,BYTE PTR [edi]
-  10020f:	83 c4 10             	add    esp,0x10
-  100212:	84 c0                	test   al,al
+  1001fe:	66 90                	xchg   %ax,%ax
+  100200:	83 ec 0c             	sub    $0xc,%esp
+  100203:	83 c7 01             	add    $0x1,%edi
+  100206:	50                   	push   %eax
+  100207:	e8 14 09 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  10020c:	0f be 07             	movsbl (%edi),%eax
+  10020f:	83 c4 10             	add    $0x10,%esp
+  100212:	84 c0                	test   %al,%al
   100214:	75 ea                	jne    100200 <_Z7kprintfPKcz+0x80>
-  100216:	0f be 43 02          	movsx  eax,BYTE PTR [ebx+0x2]
-  10021a:	83 c3 02             	add    ebx,0x2
-  10021d:	84 c0                	test   al,al
+  100216:	0f be 43 02          	movsbl 0x2(%ebx),%eax
+  10021a:	83 c3 02             	add    $0x2,%ebx
+  10021d:	84 c0                	test   %al,%al
   10021f:	0f 85 7b ff ff ff    	jne    1001a0 <_Z7kprintfPKcz+0x20>
-  100225:	8d 65 f4             	lea    esp,[ebp-0xc]
-  100228:	5b                   	pop    ebx
-  100229:	5e                   	pop    esi
-  10022a:	5f                   	pop    edi
-  10022b:	5d                   	pop    ebp
+  100225:	8d 65 f4             	lea    -0xc(%ebp),%esp
+  100228:	5b                   	pop    %ebx
+  100229:	5e                   	pop    %esi
+  10022a:	5f                   	pop    %edi
+  10022b:	5d                   	pop    %ebp
   10022c:	c3                   	ret    
-  10022d:	8d 76 00             	lea    esi,[esi+0x0]
-  100230:	3c 68                	cmp    al,0x68
+  10022d:	8d 76 00             	lea    0x0(%esi),%esi
+  100230:	3c 68                	cmp    $0x68,%al
   100232:	0f 84 e8 00 00 00    	je     100320 <_Z7kprintfPKcz+0x1a0>
-  100238:	3c 73                	cmp    al,0x73
+  100238:	3c 73                	cmp    $0x73,%al
   10023a:	0f 85 3b 01 00 00    	jne    10037b <_Z7kprintfPKcz+0x1fb>
-  100240:	89 f0                	mov    eax,esi
-  100242:	83 c6 04             	add    esi,0x4
-  100245:	8b 38                	mov    edi,DWORD PTR [eax]
-  100247:	0f be 07             	movsx  eax,BYTE PTR [edi]
-  10024a:	84 c0                	test   al,al
+  100240:	89 f0                	mov    %esi,%eax
+  100242:	83 c6 04             	add    $0x4,%esi
+  100245:	8b 38                	mov    (%eax),%edi
+  100247:	0f be 07             	movsbl (%edi),%eax
+  10024a:	84 c0                	test   %al,%al
   10024c:	74 c8                	je     100216 <_Z7kprintfPKcz+0x96>
-  10024e:	66 90                	xchg   ax,ax
-  100250:	83 ec 0c             	sub    esp,0xc
-  100253:	83 c7 01             	add    edi,0x1
-  100256:	50                   	push   eax
-  100257:	e8 14 07 00 00       	call   100970 <_ZN6Serial5writeEc>
-  10025c:	0f be 07             	movsx  eax,BYTE PTR [edi]
-  10025f:	83 c4 10             	add    esp,0x10
-  100262:	84 c0                	test   al,al
+  10024e:	66 90                	xchg   %ax,%ax
+  100250:	83 ec 0c             	sub    $0xc,%esp
+  100253:	83 c7 01             	add    $0x1,%edi
+  100256:	50                   	push   %eax
+  100257:	e8 c4 08 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  10025c:	0f be 07             	movsbl (%edi),%eax
+  10025f:	83 c4 10             	add    $0x10,%esp
+  100262:	84 c0                	test   %al,%al
   100264:	75 ea                	jne    100250 <_Z7kprintfPKcz+0xd0>
   100266:	eb ae                	jmp    100216 <_Z7kprintfPKcz+0x96>
-  100268:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+  100268:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
   10026f:	90                   	nop
-  100270:	83 ec 0c             	sub    esp,0xc
-  100273:	50                   	push   eax
-  100274:	e8 f7 06 00 00       	call   100970 <_ZN6Serial5writeEc>
-  100279:	0f be 43 01          	movsx  eax,BYTE PTR [ebx+0x1]
-  10027d:	83 c4 10             	add    esp,0x10
-  100280:	89 fb                	mov    ebx,edi
+  100270:	83 ec 0c             	sub    $0xc,%esp
+  100273:	50                   	push   %eax
+  100274:	e8 a7 08 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  100279:	0f be 43 01          	movsbl 0x1(%ebx),%eax
+  10027d:	83 c4 10             	add    $0x10,%esp
+  100280:	89 fb                	mov    %edi,%ebx
   100282:	eb 99                	jmp    10021d <_Z7kprintfPKcz+0x9d>
-  100284:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  10028b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+  100284:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10028b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
   10028f:	90                   	nop
-  100290:	89 f0                	mov    eax,esi
-  100292:	8d 55 a7             	lea    edx,[ebp-0x59]
-  100295:	c6 45 80 00          	mov    BYTE PTR [ebp-0x80],0x0
-  100299:	83 c6 04             	add    esi,0x4
-  10029c:	8b 00                	mov    eax,DWORD PTR [eax]
-  10029e:	ff 75 80             	push   DWORD PTR [ebp-0x80]
-  1002a1:	8d 7d a7             	lea    edi,[ebp-0x59]
-  1002a4:	6a 0a                	push   0xa
-  1002a6:	52                   	push   edx
-  1002a7:	50                   	push   eax
-  1002a8:	89 85 74 ff ff ff    	mov    DWORD PTR [ebp-0x8c],eax
-  1002ae:	89 95 78 ff ff ff    	mov    DWORD PTR [ebp-0x88],edx
-  1002b4:	c7 85 7c ff ff ff 0a 	mov    DWORD PTR [ebp-0x84],0xa
+  100290:	89 f0                	mov    %esi,%eax
+  100292:	8d 55 a7             	lea    -0x59(%ebp),%edx
+  100295:	c6 45 80 00          	movb   $0x0,-0x80(%ebp)
+  100299:	83 c6 04             	add    $0x4,%esi
+  10029c:	8b 00                	mov    (%eax),%eax
+  10029e:	ff 75 80             	pushl  -0x80(%ebp)
+  1002a1:	8d 7d a7             	lea    -0x59(%ebp),%edi
+  1002a4:	6a 0a                	push   $0xa
+  1002a6:	52                   	push   %edx
+  1002a7:	50                   	push   %eax
+  1002a8:	89 85 74 ff ff ff    	mov    %eax,-0x8c(%ebp)
+  1002ae:	89 95 78 ff ff ff    	mov    %edx,-0x88(%ebp)
+  1002b4:	c7 85 7c ff ff ff 0a 	movl   $0xa,-0x84(%ebp)
   1002bb:	00 00 00 
   1002be:	e8 6d fd ff ff       	call   100030 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE>
-  1002c3:	0f be 45 a7          	movsx  eax,BYTE PTR [ebp-0x59]
-  1002c7:	83 c4 10             	add    esp,0x10
-  1002ca:	84 c0                	test   al,al
+  1002c3:	0f be 45 a7          	movsbl -0x59(%ebp),%eax
+  1002c7:	83 c4 10             	add    $0x10,%esp
+  1002ca:	84 c0                	test   %al,%al
   1002cc:	0f 84 44 ff ff ff    	je     100216 <_Z7kprintfPKcz+0x96>
-  1002d2:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1002d9:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1002e0:	83 ec 0c             	sub    esp,0xc
-  1002e3:	83 c7 01             	add    edi,0x1
-  1002e6:	50                   	push   eax
-  1002e7:	e8 84 06 00 00       	call   100970 <_ZN6Serial5writeEc>
-  1002ec:	0f be 07             	movsx  eax,BYTE PTR [edi]
-  1002ef:	83 c4 10             	add    esp,0x10
-  1002f2:	84 c0                	test   al,al
+  1002d2:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1002d9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1002e0:	83 ec 0c             	sub    $0xc,%esp
+  1002e3:	83 c7 01             	add    $0x1,%edi
+  1002e6:	50                   	push   %eax
+  1002e7:	e8 34 08 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  1002ec:	0f be 07             	movsbl (%edi),%eax
+  1002ef:	83 c4 10             	add    $0x10,%esp
+  1002f2:	84 c0                	test   %al,%al
   1002f4:	75 ea                	jne    1002e0 <_Z7kprintfPKcz+0x160>
   1002f6:	e9 1b ff ff ff       	jmp    100216 <_Z7kprintfPKcz+0x96>
-  1002fb:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+  1002fb:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
   1002ff:	90                   	nop
-  100300:	83 ec 0c             	sub    esp,0xc
-  100303:	83 c3 02             	add    ebx,0x2
-  100306:	6a 25                	push   0x25
-  100308:	e8 63 06 00 00       	call   100970 <_ZN6Serial5writeEc>
-  10030d:	0f be 03             	movsx  eax,BYTE PTR [ebx]
-  100310:	83 c4 10             	add    esp,0x10
+  100300:	83 ec 0c             	sub    $0xc,%esp
+  100303:	83 c3 02             	add    $0x2,%ebx
+  100306:	6a 25                	push   $0x25
+  100308:	e8 13 08 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  10030d:	0f be 03             	movsbl (%ebx),%eax
+  100310:	83 c4 10             	add    $0x10,%esp
   100313:	e9 05 ff ff ff       	jmp    10021d <_Z7kprintfPKcz+0x9d>
-  100318:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+  100318:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
   10031f:	90                   	nop
-  100320:	89 f0                	mov    eax,esi
-  100322:	8d 55 a7             	lea    edx,[ebp-0x59]
-  100325:	c6 45 90 00          	mov    BYTE PTR [ebp-0x70],0x0
-  100329:	83 c6 04             	add    esi,0x4
-  10032c:	8b 00                	mov    eax,DWORD PTR [eax]
-  10032e:	ff 75 90             	push   DWORD PTR [ebp-0x70]
-  100331:	8d 7d a7             	lea    edi,[ebp-0x59]
-  100334:	6a 10                	push   0x10
-  100336:	52                   	push   edx
-  100337:	50                   	push   eax
-  100338:	89 45 84             	mov    DWORD PTR [ebp-0x7c],eax
-  10033b:	89 55 88             	mov    DWORD PTR [ebp-0x78],edx
-  10033e:	c7 45 8c 10 00 00 00 	mov    DWORD PTR [ebp-0x74],0x10
+  100320:	89 f0                	mov    %esi,%eax
+  100322:	8d 55 a7             	lea    -0x59(%ebp),%edx
+  100325:	c6 45 90 00          	movb   $0x0,-0x70(%ebp)
+  100329:	83 c6 04             	add    $0x4,%esi
+  10032c:	8b 00                	mov    (%eax),%eax
+  10032e:	ff 75 90             	pushl  -0x70(%ebp)
+  100331:	8d 7d a7             	lea    -0x59(%ebp),%edi
+  100334:	6a 10                	push   $0x10
+  100336:	52                   	push   %edx
+  100337:	50                   	push   %eax
+  100338:	89 45 84             	mov    %eax,-0x7c(%ebp)
+  10033b:	89 55 88             	mov    %edx,-0x78(%ebp)
+  10033e:	c7 45 8c 10 00 00 00 	movl   $0x10,-0x74(%ebp)
   100345:	e8 e6 fc ff ff       	call   100030 <_Z16writeIntToBufferIiEPcN12_GLOBAL__N_122WriteIntToBufferConfigIT_EE>
-  10034a:	0f be 45 a7          	movsx  eax,BYTE PTR [ebp-0x59]
-  10034e:	83 c4 10             	add    esp,0x10
-  100351:	84 c0                	test   al,al
+  10034a:	0f be 45 a7          	movsbl -0x59(%ebp),%eax
+  10034e:	83 c4 10             	add    $0x10,%esp
+  100351:	84 c0                	test   %al,%al
   100353:	0f 84 bd fe ff ff    	je     100216 <_Z7kprintfPKcz+0x96>
-  100359:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100360:	83 ec 0c             	sub    esp,0xc
-  100363:	83 c7 01             	add    edi,0x1
-  100366:	50                   	push   eax
-  100367:	e8 04 06 00 00       	call   100970 <_ZN6Serial5writeEc>
-  10036c:	0f be 07             	movsx  eax,BYTE PTR [edi]
-  10036f:	83 c4 10             	add    esp,0x10
-  100372:	84 c0                	test   al,al
+  100359:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100360:	83 ec 0c             	sub    $0xc,%esp
+  100363:	83 c7 01             	add    $0x1,%edi
+  100366:	50                   	push   %eax
+  100367:	e8 b4 07 00 00       	call   100b20 <_ZN6Serial5writeEc>
+  10036c:	0f be 07             	movsbl (%edi),%eax
+  10036f:	83 c4 10             	add    $0x10,%esp
+  100372:	84 c0                	test   %al,%al
   100374:	75 ea                	jne    100360 <_Z7kprintfPKcz+0x1e0>
   100376:	e9 9b fe ff ff       	jmp    100216 <_Z7kprintfPKcz+0x96>
-  10037b:	89 fb                	mov    ebx,edi
+  10037b:	89 fb                	mov    %edi,%ebx
   10037d:	e9 1e fe ff ff       	jmp    1001a0 <_Z7kprintfPKcz+0x20>
-  100382:	66 90                	xchg   ax,ax
-  100384:	66 90                	xchg   ax,ax
-  100386:	66 90                	xchg   ax,ax
-  100388:	66 90                	xchg   ax,ax
-  10038a:	66 90                	xchg   ax,ax
-  10038c:	66 90                	xchg   ax,ax
-  10038e:	66 90                	xchg   ax,ax
+  100382:	66 90                	xchg   %ax,%ax
+  100384:	66 90                	xchg   %ax,%ax
+  100386:	66 90                	xchg   %ax,%ax
+  100388:	66 90                	xchg   %ax,%ax
+  10038a:	66 90                	xchg   %ax,%ax
+  10038c:	66 90                	xchg   %ax,%ax
+  10038e:	66 90                	xchg   %ax,%ax
 
-00100390 <_Z12gdt_set_gateimmhh>:
-  100390:	55                   	push   ebp
-  100391:	89 e5                	mov    ebp,esp
-  100393:	53                   	push   ebx
-  100394:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100397:	8b 4d 0c             	mov    ecx,DWORD PTR [ebp+0xc]
-  10039a:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
-  10039d:	66 89 0c d5 2a 38 10 	mov    WORD PTR [edx*8+0x10382a],cx
-  1003a4:	00 
-  1003a5:	89 cb                	mov    ebx,ecx
-  1003a7:	c1 e9 18             	shr    ecx,0x18
-  1003aa:	88 0c d5 2f 38 10 00 	mov    BYTE PTR [edx*8+0x10382f],cl
-  1003b1:	0f b6 4d 18          	movzx  ecx,BYTE PTR [ebp+0x18]
-  1003b5:	c1 eb 10             	shr    ebx,0x10
-  1003b8:	66 89 04 d5 28 38 10 	mov    WORD PTR [edx*8+0x103828],ax
-  1003bf:	00 
-  1003c0:	c1 e8 10             	shr    eax,0x10
-  1003c3:	83 e0 0f             	and    eax,0xf
-  1003c6:	83 e1 f0             	and    ecx,0xfffffff0
-  1003c9:	88 1c d5 2c 38 10 00 	mov    BYTE PTR [edx*8+0x10382c],bl
-  1003d0:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  1003d3:	09 c8                	or     eax,ecx
-  1003d5:	88 04 d5 2e 38 10 00 	mov    BYTE PTR [edx*8+0x10382e],al
-  1003dc:	8b 45 14             	mov    eax,DWORD PTR [ebp+0x14]
-  1003df:	88 04 d5 2d 38 10 00 	mov    BYTE PTR [edx*8+0x10382d],al
-  1003e6:	c9                   	leave  
-  1003e7:	c3                   	ret    
-  1003e8:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1003ef:	90                   	nop
+00100390 <fault_handler>:
+  100390:	55                   	push   %ebp
+  100391:	89 e5                	mov    %esp,%ebp
+  100393:	56                   	push   %esi
+  100394:	53                   	push   %ebx
+  100395:	8d 75 ec             	lea    -0x14(%ebp),%esi
+  100398:	83 ec 1c             	sub    $0x1c,%esp
+  10039b:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  10039e:	56                   	push   %esi
+  10039f:	e8 3c 08 00 00       	call   100be0 <_ZN11VgaTerminalC1Ev>
+  1003a4:	58                   	pop    %eax
+  1003a5:	5a                   	pop    %edx
+  1003a6:	68 04 20 10 00       	push   $0x102004
+  1003ab:	56                   	push   %esi
+  1003ac:	e8 9f 0a 00 00       	call   100e50 <_ZN11VgaTerminal11writeStringEPKc>
+  1003b1:	59                   	pop    %ecx
+  1003b2:	5e                   	pop    %esi
+  1003b3:	ff 73 30             	pushl  0x30(%ebx)
+  1003b6:	68 0b 20 10 00       	push   $0x10200b
+  1003bb:	e8 c0 fd ff ff       	call   100180 <_Z7kprintfPKcz>
+  1003c0:	8b 43 30             	mov    0x30(%ebx),%eax
+  1003c3:	83 c4 10             	add    $0x10,%esp
+  1003c6:	83 f8 1f             	cmp    $0x1f,%eax
+  1003c9:	76 07                	jbe    1003d2 <fault_handler+0x42>
+  1003cb:	8d 65 f8             	lea    -0x8(%ebp),%esp
+  1003ce:	5b                   	pop    %ebx
+  1003cf:	5e                   	pop    %esi
+  1003d0:	5d                   	pop    %ebp
+  1003d1:	c3                   	ret    
+  1003d2:	83 ec 08             	sub    $0x8,%esp
+  1003d5:	50                   	push   %eax
+  1003d6:	68 0b 20 10 00       	push   $0x10200b
+  1003db:	e8 a0 fd ff ff       	call   100180 <_Z7kprintfPKcz>
+  1003e0:	83 c4 10             	add    $0x10,%esp
+  1003e3:	eb fe                	jmp    1003e3 <fault_handler+0x53>
+  1003e5:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1003ec:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-001003f0 <_Z11gdt_installv>:
-  1003f0:	c7 05 22 38 10 00 28 	mov    DWORD PTR ds:0x103822,0x103828
-  1003f7:	38 10 00 
-  1003fa:	b8 17 00 00 00       	mov    eax,0x17
-  1003ff:	66 a3 20 38 10 00    	mov    ds:0x103820,ax
-  100405:	c7 05 28 38 10 00 00 	mov    DWORD PTR ds:0x103828,0x0
-  10040c:	00 00 00 
-  10040f:	c7 05 2c 38 10 00 00 	mov    DWORD PTR ds:0x10382c,0x0
-  100416:	00 00 00 
-  100419:	c7 05 30 38 10 00 ff 	mov    DWORD PTR ds:0x103830,0xffff
-  100420:	ff 00 00 
-  100423:	c7 05 34 38 10 00 00 	mov    DWORD PTR ds:0x103834,0xcf9a00
-  10042a:	9a cf 00 
-  10042d:	c7 05 38 38 10 00 ff 	mov    DWORD PTR ds:0x103838,0xffff
-  100434:	ff 00 00 
-  100437:	c7 05 3c 38 10 00 00 	mov    DWORD PTR ds:0x10383c,0xcf9200
-  10043e:	92 cf 00 
-  100441:	e9 63 0c 00 00       	jmp    1010a9 <gdt_flush>
-  100446:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  10044d:	8d 76 00             	lea    esi,[esi+0x0]
+001003f0 <_Z12gdt_set_gateimmhh>:
+  1003f0:	55                   	push   %ebp
+  1003f1:	89 e5                	mov    %esp,%ebp
+  1003f3:	53                   	push   %ebx
+  1003f4:	8b 55 08             	mov    0x8(%ebp),%edx
+  1003f7:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  1003fa:	8b 45 10             	mov    0x10(%ebp),%eax
+  1003fd:	66 89 0c d5 2a 38 10 	mov    %cx,0x10382a(,%edx,8)
+  100404:	00 
+  100405:	89 cb                	mov    %ecx,%ebx
+  100407:	c1 e9 18             	shr    $0x18,%ecx
+  10040a:	88 0c d5 2f 38 10 00 	mov    %cl,0x10382f(,%edx,8)
+  100411:	0f b6 4d 18          	movzbl 0x18(%ebp),%ecx
+  100415:	c1 eb 10             	shr    $0x10,%ebx
+  100418:	66 89 04 d5 28 38 10 	mov    %ax,0x103828(,%edx,8)
+  10041f:	00 
+  100420:	c1 e8 10             	shr    $0x10,%eax
+  100423:	83 e0 0f             	and    $0xf,%eax
+  100426:	83 e1 f0             	and    $0xfffffff0,%ecx
+  100429:	88 1c d5 2c 38 10 00 	mov    %bl,0x10382c(,%edx,8)
+  100430:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+  100433:	09 c8                	or     %ecx,%eax
+  100435:	88 04 d5 2e 38 10 00 	mov    %al,0x10382e(,%edx,8)
+  10043c:	8b 45 14             	mov    0x14(%ebp),%eax
+  10043f:	88 04 d5 2d 38 10 00 	mov    %al,0x10382d(,%edx,8)
+  100446:	c9                   	leave  
+  100447:	c3                   	ret    
+  100448:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10044f:	90                   	nop
 
-00100450 <_Z12idt_set_gatehmth>:
-  100450:	55                   	push   ebp
-  100451:	89 e5                	mov    ebp,esp
-  100453:	0f b6 45 08          	movzx  eax,BYTE PTR [ebp+0x8]
-  100457:	8b 55 0c             	mov    edx,DWORD PTR [ebp+0xc]
-  10045a:	66 89 14 c5 20 30 10 	mov    WORD PTR [eax*8+0x103020],dx
-  100461:	00 
-  100462:	c1 ea 10             	shr    edx,0x10
-  100465:	66 89 14 c5 26 30 10 	mov    WORD PTR [eax*8+0x103026],dx
-  10046c:	00 
-  10046d:	8b 55 10             	mov    edx,DWORD PTR [ebp+0x10]
-  100470:	c6 04 c5 24 30 10 00 	mov    BYTE PTR [eax*8+0x103024],0x0
-  100477:	00 
-  100478:	66 89 14 c5 22 30 10 	mov    WORD PTR [eax*8+0x103022],dx
-  10047f:	00 
-  100480:	8b 55 14             	mov    edx,DWORD PTR [ebp+0x14]
-  100483:	5d                   	pop    ebp
-  100484:	88 14 c5 25 30 10 00 	mov    BYTE PTR [eax*8+0x103025],dl
-  10048b:	c3                   	ret    
-  10048c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+00100450 <_Z11gdt_installv>:
+  100450:	c7 05 22 38 10 00 28 	movl   $0x103828,0x103822
+  100457:	38 10 00 
+  10045a:	b8 17 00 00 00       	mov    $0x17,%eax
+  10045f:	66 a3 20 38 10 00    	mov    %ax,0x103820
+  100465:	c7 05 28 38 10 00 00 	movl   $0x0,0x103828
+  10046c:	00 00 00 
+  10046f:	c7 05 2c 38 10 00 00 	movl   $0x0,0x10382c
+  100476:	00 00 00 
+  100479:	c7 05 30 38 10 00 ff 	movl   $0xffff,0x103830
+  100480:	ff 00 00 
+  100483:	c7 05 34 38 10 00 00 	movl   $0xcf9a00,0x103834
+  10048a:	9a cf 00 
+  10048d:	c7 05 38 38 10 00 ff 	movl   $0xffff,0x103838
+  100494:	ff 00 00 
+  100497:	c7 05 3c 38 10 00 00 	movl   $0xcf9200,0x10383c
+  10049e:	92 cf 00 
+  1004a1:	e9 03 0e 00 00       	jmp    1012a9 <gdt_flush>
+  1004a6:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1004ad:	8d 76 00             	lea    0x0(%esi),%esi
 
-00100490 <_Z11idt_installv>:
-  100490:	b8 ff 07 00 00       	mov    eax,0x7ff
-  100495:	c6 05 20 30 10 00 00 	mov    BYTE PTR ds:0x103020,0x0
-  10049c:	66 a3 00 30 10 00    	mov    ds:0x103000,ax
-  1004a2:	c7 05 02 30 10 00 20 	mov    DWORD PTR ds:0x103002,0x103020
-  1004a9:	30 10 00 
-  1004ac:	e9 15 0c 00 00       	jmp    1010c6 <idt_load>
-  1004b1:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1004b8:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1004bf:	90                   	nop
+001004b0 <_Z12idt_set_gatehmth>:
+  1004b0:	55                   	push   %ebp
+  1004b1:	89 e5                	mov    %esp,%ebp
+  1004b3:	0f b6 45 08          	movzbl 0x8(%ebp),%eax
+  1004b7:	8b 55 0c             	mov    0xc(%ebp),%edx
+  1004ba:	89 d1                	mov    %edx,%ecx
+  1004bc:	66 89 14 c5 20 30 10 	mov    %dx,0x103020(,%eax,8)
+  1004c3:	00 
+  1004c4:	8b 55 10             	mov    0x10(%ebp),%edx
+  1004c7:	c1 e9 10             	shr    $0x10,%ecx
+  1004ca:	66 89 14 c5 22 30 10 	mov    %dx,0x103022(,%eax,8)
+  1004d1:	00 
+  1004d2:	8b 55 14             	mov    0x14(%ebp),%edx
+  1004d5:	66 89 0c c5 26 30 10 	mov    %cx,0x103026(,%eax,8)
+  1004dc:	00 
+  1004dd:	5d                   	pop    %ebp
+  1004de:	88 14 c5 25 30 10 00 	mov    %dl,0x103025(,%eax,8)
+  1004e5:	c3                   	ret    
+  1004e6:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  1004ed:	8d 76 00             	lea    0x0(%esi),%esi
 
-001004c0 <_Z12isrs_installv>:
-  1004c0:	b8 cf 10 10 00       	mov    eax,0x1010cf
-  1004c5:	ba 08 00 00 00       	mov    edx,0x8
-  1004ca:	c7 05 22 30 10 00 08 	mov    DWORD PTR ds:0x103022,0x8e000008
-  1004d1:	00 00 8e 
-  1004d4:	b9 00 8e ff ff       	mov    ecx,0xffff8e00
-  1004d9:	66 a3 20 30 10 00    	mov    ds:0x103020,ax
-  1004df:	c1 e8 10             	shr    eax,0x10
-  1004e2:	66 a3 26 30 10 00    	mov    ds:0x103026,ax
-  1004e8:	b8 d9 10 10 00       	mov    eax,0x1010d9
-  1004ed:	66 a3 28 30 10 00    	mov    ds:0x103028,ax
-  1004f3:	c1 e8 10             	shr    eax,0x10
-  1004f6:	66 a3 2e 30 10 00    	mov    ds:0x10302e,ax
-  1004fc:	b8 e3 10 10 00       	mov    eax,0x1010e3
-  100501:	66 a3 30 30 10 00    	mov    ds:0x103030,ax
-  100507:	c1 e8 10             	shr    eax,0x10
-  10050a:	66 a3 36 30 10 00    	mov    ds:0x103036,ax
-  100510:	b8 ed 10 10 00       	mov    eax,0x1010ed
-  100515:	66 a3 38 30 10 00    	mov    ds:0x103038,ax
-  10051b:	c1 e8 10             	shr    eax,0x10
-  10051e:	66 a3 3e 30 10 00    	mov    ds:0x10303e,ax
-  100524:	b8 f7 10 10 00       	mov    eax,0x1010f7
-  100529:	66 a3 40 30 10 00    	mov    ds:0x103040,ax
-  10052f:	c1 e8 10             	shr    eax,0x10
-  100532:	66 a3 46 30 10 00    	mov    ds:0x103046,ax
-  100538:	b8 01 11 10 00       	mov    eax,0x101101
-  10053d:	66 a3 48 30 10 00    	mov    ds:0x103048,ax
-  100543:	c1 e8 10             	shr    eax,0x10
-  100546:	66 a3 4e 30 10 00    	mov    ds:0x10304e,ax
-  10054c:	b8 15 11 10 00       	mov    eax,0x101115
-  100551:	66 a3 58 30 10 00    	mov    ds:0x103058,ax
-  100557:	c1 e8 10             	shr    eax,0x10
-  10055a:	66 a3 5e 30 10 00    	mov    ds:0x10305e,ax
-  100560:	b8 1f 11 10 00       	mov    eax,0x10111f
-  100565:	66 a3 60 30 10 00    	mov    ds:0x103060,ax
-  10056b:	c1 e8 10             	shr    eax,0x10
-  10056e:	66 a3 66 30 10 00    	mov    ds:0x103066,ax
-  100574:	b8 27 11 10 00       	mov    eax,0x101127
-  100579:	66 a3 68 30 10 00    	mov    ds:0x103068,ax
-  10057f:	c1 e8 10             	shr    eax,0x10
-  100582:	66 a3 6e 30 10 00    	mov    ds:0x10306e,ax
-  100588:	b8 31 11 10 00       	mov    eax,0x101131
-  10058d:	66 a3 70 30 10 00    	mov    ds:0x103070,ax
-  100593:	c1 e8 10             	shr    eax,0x10
-  100596:	66 a3 76 30 10 00    	mov    ds:0x103076,ax
-  10059c:	b8 39 11 10 00       	mov    eax,0x101139
-  1005a1:	66 a3 78 30 10 00    	mov    ds:0x103078,ax
-  1005a7:	c1 e8 10             	shr    eax,0x10
-  1005aa:	66 a3 7e 30 10 00    	mov    ds:0x10307e,ax
-  1005b0:	b8 41 11 10 00       	mov    eax,0x101141
-  1005b5:	c7 05 2a 30 10 00 08 	mov    DWORD PTR ds:0x10302a,0x8e000008
-  1005bc:	00 00 8e 
-  1005bf:	c7 05 32 30 10 00 08 	mov    DWORD PTR ds:0x103032,0x8e000008
-  1005c6:	00 00 8e 
-  1005c9:	c7 05 3a 30 10 00 08 	mov    DWORD PTR ds:0x10303a,0x8e000008
-  1005d0:	00 00 8e 
-  1005d3:	c7 05 42 30 10 00 08 	mov    DWORD PTR ds:0x103042,0x8e000008
-  1005da:	00 00 8e 
-  1005dd:	c7 05 4a 30 10 00 08 	mov    DWORD PTR ds:0x10304a,0x8e000008
-  1005e4:	00 00 8e 
-  1005e7:	c7 05 5a 30 10 00 08 	mov    DWORD PTR ds:0x10305a,0x8e000008
-  1005ee:	00 00 8e 
-  1005f1:	c7 05 62 30 10 00 08 	mov    DWORD PTR ds:0x103062,0x8e000008
-  1005f8:	00 00 8e 
-  1005fb:	c7 05 6a 30 10 00 08 	mov    DWORD PTR ds:0x10306a,0x8e000008
-  100602:	00 00 8e 
-  100605:	c7 05 72 30 10 00 08 	mov    DWORD PTR ds:0x103072,0x8e000008
-  10060c:	00 00 8e 
-  10060f:	c7 05 7a 30 10 00 08 	mov    DWORD PTR ds:0x10307a,0x8e000008
-  100616:	00 00 8e 
-  100619:	66 a3 80 30 10 00    	mov    ds:0x103080,ax
-  10061f:	c1 e8 10             	shr    eax,0x10
-  100622:	66 a3 86 30 10 00    	mov    ds:0x103086,ax
-  100628:	b8 49 11 10 00       	mov    eax,0x101149
-  10062d:	66 a3 88 30 10 00    	mov    ds:0x103088,ax
-  100633:	c1 e8 10             	shr    eax,0x10
-  100636:	66 a3 8e 30 10 00    	mov    ds:0x10308e,ax
-  10063c:	b8 08 00 00 00       	mov    eax,0x8
-  100641:	66 a3 8a 30 10 00    	mov    ds:0x10308a,ax
-  100647:	b8 4e 11 10 00       	mov    eax,0x10114e
-  10064c:	66 a3 90 30 10 00    	mov    ds:0x103090,ax
-  100652:	c1 e8 10             	shr    eax,0x10
-  100655:	66 a3 96 30 10 00    	mov    ds:0x103096,ax
-  10065b:	b8 53 11 10 00       	mov    eax,0x101153
-  100660:	66 a3 98 30 10 00    	mov    ds:0x103098,ax
-  100666:	c1 e8 10             	shr    eax,0x10
-  100669:	66 a3 9e 30 10 00    	mov    ds:0x10309e,ax
-  10066f:	b8 5a 11 10 00       	mov    eax,0x10115a
-  100674:	66 a3 a0 30 10 00    	mov    ds:0x1030a0,ax
-  10067a:	c1 e8 10             	shr    eax,0x10
-  10067d:	66 a3 a6 30 10 00    	mov    ds:0x1030a6,ax
-  100683:	b8 61 11 10 00       	mov    eax,0x101161
-  100688:	66 a3 a8 30 10 00    	mov    ds:0x1030a8,ax
-  10068e:	c1 e8 10             	shr    eax,0x10
-  100691:	66 a3 ae 30 10 00    	mov    ds:0x1030ae,ax
-  100697:	b8 68 11 10 00       	mov    eax,0x101168
-  10069c:	66 a3 b0 30 10 00    	mov    ds:0x1030b0,ax
-  1006a2:	c1 e8 10             	shr    eax,0x10
-  1006a5:	66 a3 b6 30 10 00    	mov    ds:0x1030b6,ax
-  1006ab:	b8 6f 11 10 00       	mov    eax,0x10116f
-  1006b0:	66 a3 b8 30 10 00    	mov    ds:0x1030b8,ax
-  1006b6:	c1 e8 10             	shr    eax,0x10
-  1006b9:	66 a3 be 30 10 00    	mov    ds:0x1030be,ax
-  1006bf:	b8 76 11 10 00       	mov    eax,0x101176
-  1006c4:	66 a3 c0 30 10 00    	mov    ds:0x1030c0,ax
-  1006ca:	c1 e8 10             	shr    eax,0x10
-  1006cd:	66 a3 c6 30 10 00    	mov    ds:0x1030c6,ax
-  1006d3:	b8 7d 11 10 00       	mov    eax,0x10117d
-  1006d8:	66 a3 c8 30 10 00    	mov    ds:0x1030c8,ax
-  1006de:	c1 e8 10             	shr    eax,0x10
-  1006e1:	66 a3 ce 30 10 00    	mov    ds:0x1030ce,ax
-  1006e7:	b8 84 11 10 00       	mov    eax,0x101184
-  1006ec:	c7 05 82 30 10 00 08 	mov    DWORD PTR ds:0x103082,0x8e000008
-  1006f3:	00 00 8e 
-  1006f6:	c6 05 8c 30 10 00 00 	mov    BYTE PTR ds:0x10308c,0x0
-  1006fd:	c6 05 8d 30 10 00 8e 	mov    BYTE PTR ds:0x10308d,0x8e
-  100704:	c7 05 92 30 10 00 08 	mov    DWORD PTR ds:0x103092,0x8e000008
-  10070b:	00 00 8e 
-  10070e:	c7 05 9a 30 10 00 08 	mov    DWORD PTR ds:0x10309a,0x8e000008
-  100715:	00 00 8e 
-  100718:	c7 05 a2 30 10 00 08 	mov    DWORD PTR ds:0x1030a2,0x8e000008
-  10071f:	00 00 8e 
-  100722:	c7 05 aa 30 10 00 08 	mov    DWORD PTR ds:0x1030aa,0x8e000008
-  100729:	00 00 8e 
-  10072c:	c7 05 b2 30 10 00 08 	mov    DWORD PTR ds:0x1030b2,0x8e000008
-  100733:	00 00 8e 
-  100736:	c7 05 ba 30 10 00 08 	mov    DWORD PTR ds:0x1030ba,0x8e000008
-  10073d:	00 00 8e 
-  100740:	c7 05 c2 30 10 00 08 	mov    DWORD PTR ds:0x1030c2,0x8e000008
-  100747:	00 00 8e 
-  10074a:	c7 05 ca 30 10 00 08 	mov    DWORD PTR ds:0x1030ca,0x8e000008
-  100751:	00 00 8e 
-  100754:	66 a3 d0 30 10 00    	mov    ds:0x1030d0,ax
-  10075a:	c1 e8 10             	shr    eax,0x10
-  10075d:	66 a3 d6 30 10 00    	mov    ds:0x1030d6,ax
-  100763:	b8 8b 11 10 00       	mov    eax,0x10118b
-  100768:	66 a3 d8 30 10 00    	mov    ds:0x1030d8,ax
-  10076e:	c1 e8 10             	shr    eax,0x10
-  100771:	66 a3 de 30 10 00    	mov    ds:0x1030de,ax
-  100777:	b8 92 11 10 00       	mov    eax,0x101192
-  10077c:	66 a3 e0 30 10 00    	mov    ds:0x1030e0,ax
-  100782:	c1 e8 10             	shr    eax,0x10
-  100785:	66 a3 e6 30 10 00    	mov    ds:0x1030e6,ax
-  10078b:	b8 99 11 10 00       	mov    eax,0x101199
-  100790:	66 a3 e8 30 10 00    	mov    ds:0x1030e8,ax
-  100796:	c1 e8 10             	shr    eax,0x10
-  100799:	66 a3 ee 30 10 00    	mov    ds:0x1030ee,ax
-  10079f:	b8 a0 11 10 00       	mov    eax,0x1011a0
-  1007a4:	66 a3 f0 30 10 00    	mov    ds:0x1030f0,ax
-  1007aa:	c1 e8 10             	shr    eax,0x10
-  1007ad:	66 a3 f6 30 10 00    	mov    ds:0x1030f6,ax
-  1007b3:	b8 a7 11 10 00       	mov    eax,0x1011a7
-  1007b8:	66 a3 f8 30 10 00    	mov    ds:0x1030f8,ax
-  1007be:	c1 e8 10             	shr    eax,0x10
-  1007c1:	66 a3 fe 30 10 00    	mov    ds:0x1030fe,ax
-  1007c7:	b8 ae 11 10 00       	mov    eax,0x1011ae
-  1007cc:	66 a3 00 31 10 00    	mov    ds:0x103100,ax
-  1007d2:	c1 e8 10             	shr    eax,0x10
-  1007d5:	66 a3 06 31 10 00    	mov    ds:0x103106,ax
-  1007db:	b8 b5 11 10 00       	mov    eax,0x1011b5
-  1007e0:	66 a3 08 31 10 00    	mov    ds:0x103108,ax
-  1007e6:	c1 e8 10             	shr    eax,0x10
-  1007e9:	66 a3 0e 31 10 00    	mov    ds:0x10310e,ax
-  1007ef:	b8 bc 11 10 00       	mov    eax,0x1011bc
-  1007f4:	66 a3 10 31 10 00    	mov    ds:0x103110,ax
-  1007fa:	c1 e8 10             	shr    eax,0x10
-  1007fd:	66 a3 16 31 10 00    	mov    ds:0x103116,ax
-  100803:	b8 c3 11 10 00       	mov    eax,0x1011c3
-  100808:	66 a3 18 31 10 00    	mov    ds:0x103118,ax
-  10080e:	c1 e8 10             	shr    eax,0x10
-  100811:	c7 05 d2 30 10 00 08 	mov    DWORD PTR ds:0x1030d2,0x8e000008
-  100818:	00 00 8e 
-  10081b:	c7 05 da 30 10 00 08 	mov    DWORD PTR ds:0x1030da,0x8e000008
-  100822:	00 00 8e 
-  100825:	c7 05 e2 30 10 00 08 	mov    DWORD PTR ds:0x1030e2,0x8e000008
-  10082c:	00 00 8e 
-  10082f:	c7 05 ea 30 10 00 08 	mov    DWORD PTR ds:0x1030ea,0x8e000008
-  100836:	00 00 8e 
-  100839:	66 89 15 f2 30 10 00 	mov    WORD PTR ds:0x1030f2,dx
-  100840:	66 89 0d f4 30 10 00 	mov    WORD PTR ds:0x1030f4,cx
-  100847:	c7 05 fa 30 10 00 08 	mov    DWORD PTR ds:0x1030fa,0x8e000008
-  10084e:	00 00 8e 
-  100851:	c7 05 02 31 10 00 08 	mov    DWORD PTR ds:0x103102,0x8e000008
-  100858:	00 00 8e 
-  10085b:	c7 05 0a 31 10 00 08 	mov    DWORD PTR ds:0x10310a,0x8e000008
-  100862:	00 00 8e 
-  100865:	c7 05 12 31 10 00 08 	mov    DWORD PTR ds:0x103112,0x8e000008
-  10086c:	00 00 8e 
-  10086f:	66 a3 1e 31 10 00    	mov    ds:0x10311e,ax
-  100875:	c7 05 1a 31 10 00 08 	mov    DWORD PTR ds:0x10311a,0x8e000008
-  10087c:	00 00 8e 
-  10087f:	c3                   	ret    
+001004f0 <_Z11idt_installv>:
+  1004f0:	55                   	push   %ebp
+  1004f1:	b8 ff 07 00 00       	mov    $0x7ff,%eax
+  1004f6:	89 e5                	mov    %esp,%ebp
+  1004f8:	83 ec 0c             	sub    $0xc,%esp
+  1004fb:	66 a3 00 30 10 00    	mov    %ax,0x103000
+  100501:	68 00 08 00 00       	push   $0x800
+  100506:	6a 00                	push   $0x0
+  100508:	68 20 30 10 00       	push   $0x103020
+  10050d:	c7 05 02 30 10 00 20 	movl   $0x103020,0x103002
+  100514:	30 10 00 
+  100517:	e8 24 0a 00 00       	call   100f40 <_Z6memsetPvhm>
+  10051c:	83 c4 10             	add    $0x10,%esp
+  10051f:	c9                   	leave  
+  100520:	e9 a1 0d 00 00       	jmp    1012c6 <idt_load>
+  100525:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10052c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-00100880 <fault_handler>:
-  100880:	55                   	push   ebp
-  100881:	89 e5                	mov    ebp,esp
-  100883:	53                   	push   ebx
-  100884:	83 ec 08             	sub    esp,0x8
-  100887:	8b 5d 08             	mov    ebx,DWORD PTR [ebp+0x8]
-  10088a:	ff 73 34             	push   DWORD PTR [ebx+0x34]
-  10088d:	ff 73 30             	push   DWORD PTR [ebx+0x30]
-  100890:	68 04 20 10 00       	push   0x102004
-  100895:	e8 e6 f8 ff ff       	call   100180 <_Z7kprintfPKcz>
-  10089a:	58                   	pop    eax
-  10089b:	5a                   	pop    edx
-  10089c:	ff 73 38             	push   DWORD PTR [ebx+0x38]
-  10089f:	68 15 20 10 00       	push   0x102015
-  1008a4:	e8 d7 f8 ff ff       	call   100180 <_Z7kprintfPKcz>
-  1008a9:	83 c4 10             	add    esp,0x10
-  1008ac:	eb fe                	jmp    1008ac <fault_handler+0x2c>
-  1008ae:	66 90                	xchg   ax,ax
-
-001008b0 <_ZN6Serial4initEv>:
-  1008b0:	55                   	push   ebp
-  1008b1:	89 e5                	mov    ebp,esp
-  1008b3:	83 ec 10             	sub    esp,0x10
-  1008b6:	6a 00                	push   0x0
-  1008b8:	68 f9 03 00 00       	push   0x3f9
-  1008bd:	e8 4e f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1008c2:	58                   	pop    eax
-  1008c3:	5a                   	pop    edx
-  1008c4:	68 80 00 00 00       	push   0x80
-  1008c9:	68 fb 03 00 00       	push   0x3fb
-  1008ce:	e8 3d f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1008d3:	59                   	pop    ecx
-  1008d4:	58                   	pop    eax
-  1008d5:	6a 03                	push   0x3
-  1008d7:	68 f8 03 00 00       	push   0x3f8
-  1008dc:	e8 2f f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1008e1:	58                   	pop    eax
-  1008e2:	5a                   	pop    edx
-  1008e3:	6a 00                	push   0x0
-  1008e5:	68 f9 03 00 00       	push   0x3f9
-  1008ea:	e8 21 f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1008ef:	59                   	pop    ecx
-  1008f0:	58                   	pop    eax
-  1008f1:	6a 03                	push   0x3
-  1008f3:	68 fb 03 00 00       	push   0x3fb
-  1008f8:	e8 13 f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1008fd:	58                   	pop    eax
-  1008fe:	5a                   	pop    edx
-  1008ff:	68 c7 00 00 00       	push   0xc7
-  100904:	68 fa 03 00 00       	push   0x3fa
-  100909:	e8 02 f7 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  10090e:	59                   	pop    ecx
-  10090f:	58                   	pop    eax
-  100910:	6a 0b                	push   0xb
-  100912:	68 fc 03 00 00       	push   0x3fc
-  100917:	e8 f4 f6 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  10091c:	58                   	pop    eax
-  10091d:	5a                   	pop    edx
-  10091e:	6a 1e                	push   0x1e
-  100920:	68 fc 03 00 00       	push   0x3fc
-  100925:	e8 e6 f6 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  10092a:	59                   	pop    ecx
-  10092b:	58                   	pop    eax
-  10092c:	68 ae 00 00 00       	push   0xae
-  100931:	68 f8 03 00 00       	push   0x3f8
-  100936:	e8 d5 f6 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  10093b:	c7 04 24 f8 03 00 00 	mov    DWORD PTR [esp],0x3f8
-  100942:	e8 d9 f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  100947:	58                   	pop    eax
-  100948:	5a                   	pop    edx
-  100949:	6a 0f                	push   0xf
-  10094b:	68 fc 03 00 00       	push   0x3fc
-  100950:	e8 bb f6 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  100955:	83 c4 10             	add    esp,0x10
-  100958:	c9                   	leave  
-  100959:	c3                   	ret    
-  10095a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-
-00100960 <_ZN6Serial18setBaudRateDivisorEt>:
-  100960:	c3                   	ret    
-  100961:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100968:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  10096f:	90                   	nop
-
-00100970 <_ZN6Serial5writeEc>:
-  100970:	55                   	push   ebp
-  100971:	89 e5                	mov    ebp,esp
-  100973:	53                   	push   ebx
-  100974:	83 ec 04             	sub    esp,0x4
-  100977:	8b 5d 08             	mov    ebx,DWORD PTR [ebp+0x8]
-  10097a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-  100980:	83 ec 0c             	sub    esp,0xc
-  100983:	68 fd 03 00 00       	push   0x3fd
-  100988:	e8 93 f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  10098d:	83 c4 10             	add    esp,0x10
-  100990:	a8 20                	test   al,0x20
-  100992:	74 ec                	je     100980 <_ZN6Serial5writeEc+0x10>
-  100994:	83 ec 08             	sub    esp,0x8
-  100997:	0f b6 db             	movzx  ebx,bl
-  10099a:	53                   	push   ebx
-  10099b:	68 f8 03 00 00       	push   0x3f8
-  1009a0:	e8 6b f6 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
-  1009a5:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  1009a8:	83 c4 10             	add    esp,0x10
-  1009ab:	c9                   	leave  
-  1009ac:	c3                   	ret    
-  1009ad:	8d 76 00             	lea    esi,[esi+0x0]
-
-001009b0 <_ZN6Serial15isTransmitEmptyEv>:
-  1009b0:	55                   	push   ebp
-  1009b1:	89 e5                	mov    ebp,esp
-  1009b3:	83 ec 14             	sub    esp,0x14
-  1009b6:	68 fd 03 00 00       	push   0x3fd
-  1009bb:	e8 60 f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  1009c0:	c9                   	leave  
-  1009c1:	c0 e8 05             	shr    al,0x5
-  1009c4:	83 e0 01             	and    eax,0x1
-  1009c7:	c3                   	ret    
-  1009c8:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1009cf:	90                   	nop
-
-001009d0 <_ZN6Serial4readEv>:
-  1009d0:	55                   	push   ebp
-  1009d1:	89 e5                	mov    ebp,esp
-  1009d3:	83 ec 08             	sub    esp,0x8
-  1009d6:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  1009dd:	8d 76 00             	lea    esi,[esi+0x0]
-  1009e0:	83 ec 0c             	sub    esp,0xc
-  1009e3:	68 fd 03 00 00       	push   0x3fd
-  1009e8:	e8 33 f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  1009ed:	83 c4 10             	add    esp,0x10
-  1009f0:	a8 01                	test   al,0x1
-  1009f2:	74 ec                	je     1009e0 <_ZN6Serial4readEv+0x10>
-  1009f4:	83 ec 0c             	sub    esp,0xc
-  1009f7:	68 f8 03 00 00       	push   0x3f8
-  1009fc:	e8 1f f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  100a01:	c9                   	leave  
-  100a02:	c3                   	ret    
-  100a03:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100a0a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-
-00100a10 <_ZN6Serial15isDataAvailableEv>:
-  100a10:	55                   	push   ebp
-  100a11:	89 e5                	mov    ebp,esp
-  100a13:	83 ec 14             	sub    esp,0x14
-  100a16:	68 fd 03 00 00       	push   0x3fd
-  100a1b:	e8 00 f6 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
-  100a20:	c9                   	leave  
-  100a21:	83 e0 01             	and    eax,0x1
-  100a24:	c3                   	ret    
-  100a25:	66 90                	xchg   ax,ax
-  100a27:	66 90                	xchg   ax,ax
-  100a29:	66 90                	xchg   ax,ax
-  100a2b:	66 90                	xchg   ax,ax
-  100a2d:	66 90                	xchg   ax,ax
-  100a2f:	90                   	nop
-
-00100a30 <_ZN11VgaTerminalC1Ev>:
-  100a30:	55                   	push   ebp
-  100a31:	ba 20 0f 00 00       	mov    edx,0xf20
-  100a36:	89 e5                	mov    ebp,esp
-  100a38:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  100a3b:	c7 00 00 00 00 00    	mov    DWORD PTR [eax],0x0
-  100a41:	c7 40 04 00 00 00 00 	mov    DWORD PTR [eax+0x4],0x0
-  100a48:	66 89 50 08          	mov    WORD PTR [eax+0x8],dx
-  100a4c:	ba a0 80 0b 00       	mov    edx,0xb80a0
-  100a51:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100a58:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
+00100530 <_Z12isrs_installv>:
+  100530:	b8 cf 12 10 00       	mov    $0x1012cf,%eax
+  100535:	b9 08 00 00 00       	mov    $0x8,%ecx
+  10053a:	c6 05 25 30 10 00 8e 	movb   $0x8e,0x103025
+  100541:	66 a3 20 30 10 00    	mov    %ax,0x103020
+  100547:	89 c2                	mov    %eax,%edx
+  100549:	b8 08 00 00 00       	mov    $0x8,%eax
+  10054e:	66 a3 22 30 10 00    	mov    %ax,0x103022
+  100554:	c1 ea 10             	shr    $0x10,%edx
+  100557:	b8 d9 12 10 00       	mov    $0x1012d9,%eax
+  10055c:	66 89 15 26 30 10 00 	mov    %dx,0x103026
+  100563:	89 c2                	mov    %eax,%edx
+  100565:	c1 ea 10             	shr    $0x10,%edx
+  100568:	66 a3 28 30 10 00    	mov    %ax,0x103028
+  10056e:	b8 e3 12 10 00       	mov    $0x1012e3,%eax
+  100573:	66 89 15 2e 30 10 00 	mov    %dx,0x10302e
+  10057a:	ba 08 00 00 00       	mov    $0x8,%edx
+  10057f:	66 89 15 2a 30 10 00 	mov    %dx,0x10302a
+  100586:	89 c2                	mov    %eax,%edx
+  100588:	66 a3 30 30 10 00    	mov    %ax,0x103030
+  10058e:	c1 ea 10             	shr    $0x10,%edx
+  100591:	b8 ed 12 10 00       	mov    $0x1012ed,%eax
+  100596:	66 89 15 36 30 10 00 	mov    %dx,0x103036
+  10059d:	89 c2                	mov    %eax,%edx
+  10059f:	66 a3 38 30 10 00    	mov    %ax,0x103038
+  1005a5:	b8 08 00 00 00       	mov    $0x8,%eax
+  1005aa:	c1 ea 10             	shr    $0x10,%edx
+  1005ad:	66 a3 3a 30 10 00    	mov    %ax,0x10303a
+  1005b3:	b8 f7 12 10 00       	mov    $0x1012f7,%eax
+  1005b8:	66 89 15 3e 30 10 00 	mov    %dx,0x10303e
+  1005bf:	89 c2                	mov    %eax,%edx
+  1005c1:	66 a3 40 30 10 00    	mov    %ax,0x103040
+  1005c7:	b8 08 00 00 00       	mov    $0x8,%eax
+  1005cc:	c1 ea 10             	shr    $0x10,%edx
+  1005cf:	66 a3 42 30 10 00    	mov    %ax,0x103042
+  1005d5:	b8 01 13 10 00       	mov    $0x101301,%eax
+  1005da:	66 89 15 46 30 10 00 	mov    %dx,0x103046
+  1005e1:	89 c2                	mov    %eax,%edx
+  1005e3:	66 a3 48 30 10 00    	mov    %ax,0x103048
+  1005e9:	b8 08 00 00 00       	mov    $0x8,%eax
+  1005ee:	c1 ea 10             	shr    $0x10,%edx
+  1005f1:	66 a3 4a 30 10 00    	mov    %ax,0x10304a
+  1005f7:	b8 0b 13 10 00       	mov    $0x10130b,%eax
+  1005fc:	66 89 15 4e 30 10 00 	mov    %dx,0x10304e
+  100603:	89 c2                	mov    %eax,%edx
+  100605:	66 a3 50 30 10 00    	mov    %ax,0x103050
+  10060b:	b8 08 00 00 00       	mov    $0x8,%eax
+  100610:	c1 ea 10             	shr    $0x10,%edx
+  100613:	66 a3 52 30 10 00    	mov    %ax,0x103052
+  100619:	b8 15 13 10 00       	mov    $0x101315,%eax
+  10061e:	66 89 15 56 30 10 00 	mov    %dx,0x103056
+  100625:	89 c2                	mov    %eax,%edx
+  100627:	66 a3 58 30 10 00    	mov    %ax,0x103058
+  10062d:	b8 08 00 00 00       	mov    $0x8,%eax
+  100632:	c1 ea 10             	shr    $0x10,%edx
+  100635:	66 a3 5a 30 10 00    	mov    %ax,0x10305a
+  10063b:	b8 1f 13 10 00       	mov    $0x10131f,%eax
+  100640:	66 89 15 5e 30 10 00 	mov    %dx,0x10305e
+  100647:	89 c2                	mov    %eax,%edx
+  100649:	c1 ea 10             	shr    $0x10,%edx
+  10064c:	66 89 0d 32 30 10 00 	mov    %cx,0x103032
+  100653:	b9 08 00 00 00       	mov    $0x8,%ecx
+  100658:	c6 05 2d 30 10 00 8e 	movb   $0x8e,0x10302d
+  10065f:	c6 05 35 30 10 00 8e 	movb   $0x8e,0x103035
+  100666:	c6 05 3d 30 10 00 8e 	movb   $0x8e,0x10303d
+  10066d:	c6 05 45 30 10 00 8e 	movb   $0x8e,0x103045
+  100674:	c6 05 4d 30 10 00 8e 	movb   $0x8e,0x10304d
+  10067b:	c6 05 55 30 10 00 8e 	movb   $0x8e,0x103055
+  100682:	c6 05 5d 30 10 00 8e 	movb   $0x8e,0x10305d
+  100689:	66 89 15 66 30 10 00 	mov    %dx,0x103066
+  100690:	ba 08 00 00 00       	mov    $0x8,%edx
+  100695:	66 a3 60 30 10 00    	mov    %ax,0x103060
+  10069b:	b8 27 13 10 00       	mov    $0x101327,%eax
+  1006a0:	66 89 15 62 30 10 00 	mov    %dx,0x103062
+  1006a7:	89 c2                	mov    %eax,%edx
+  1006a9:	66 a3 68 30 10 00    	mov    %ax,0x103068
+  1006af:	c1 ea 10             	shr    $0x10,%edx
+  1006b2:	b8 31 13 10 00       	mov    $0x101331,%eax
+  1006b7:	66 89 15 6e 30 10 00 	mov    %dx,0x10306e
+  1006be:	89 c2                	mov    %eax,%edx
+  1006c0:	66 a3 70 30 10 00    	mov    %ax,0x103070
+  1006c6:	b8 08 00 00 00       	mov    $0x8,%eax
+  1006cb:	c1 ea 10             	shr    $0x10,%edx
+  1006ce:	66 a3 72 30 10 00    	mov    %ax,0x103072
+  1006d4:	b8 39 13 10 00       	mov    $0x101339,%eax
+  1006d9:	66 89 15 76 30 10 00 	mov    %dx,0x103076
+  1006e0:	89 c2                	mov    %eax,%edx
+  1006e2:	66 a3 78 30 10 00    	mov    %ax,0x103078
+  1006e8:	b8 08 00 00 00       	mov    $0x8,%eax
+  1006ed:	c1 ea 10             	shr    $0x10,%edx
+  1006f0:	66 a3 7a 30 10 00    	mov    %ax,0x10307a
+  1006f6:	b8 41 13 10 00       	mov    $0x101341,%eax
+  1006fb:	66 89 15 7e 30 10 00 	mov    %dx,0x10307e
+  100702:	89 c2                	mov    %eax,%edx
+  100704:	66 a3 80 30 10 00    	mov    %ax,0x103080
+  10070a:	b8 08 00 00 00       	mov    $0x8,%eax
+  10070f:	c1 ea 10             	shr    $0x10,%edx
+  100712:	66 a3 82 30 10 00    	mov    %ax,0x103082
+  100718:	b8 49 13 10 00       	mov    $0x101349,%eax
+  10071d:	66 89 15 86 30 10 00 	mov    %dx,0x103086
+  100724:	89 c2                	mov    %eax,%edx
+  100726:	66 a3 88 30 10 00    	mov    %ax,0x103088
+  10072c:	b8 08 00 00 00       	mov    $0x8,%eax
+  100731:	c1 ea 10             	shr    $0x10,%edx
+  100734:	66 a3 8a 30 10 00    	mov    %ax,0x10308a
+  10073a:	b8 4e 13 10 00       	mov    $0x10134e,%eax
+  10073f:	66 89 15 8e 30 10 00 	mov    %dx,0x10308e
+  100746:	89 c2                	mov    %eax,%edx
+  100748:	66 a3 90 30 10 00    	mov    %ax,0x103090
+  10074e:	b8 08 00 00 00       	mov    $0x8,%eax
+  100753:	c1 ea 10             	shr    $0x10,%edx
+  100756:	66 a3 92 30 10 00    	mov    %ax,0x103092
+  10075c:	b8 53 13 10 00       	mov    $0x101353,%eax
+  100761:	66 89 15 96 30 10 00 	mov    %dx,0x103096
+  100768:	89 c2                	mov    %eax,%edx
+  10076a:	c1 ea 10             	shr    $0x10,%edx
+  10076d:	66 a3 98 30 10 00    	mov    %ax,0x103098
+  100773:	b8 5a 13 10 00       	mov    $0x10135a,%eax
+  100778:	66 89 15 9e 30 10 00 	mov    %dx,0x10309e
+  10077f:	ba 08 00 00 00       	mov    $0x8,%edx
+  100784:	66 89 15 9a 30 10 00 	mov    %dx,0x10309a
+  10078b:	89 c2                	mov    %eax,%edx
+  10078d:	c1 ea 10             	shr    $0x10,%edx
+  100790:	66 89 0d 6a 30 10 00 	mov    %cx,0x10306a
+  100797:	b9 08 00 00 00       	mov    $0x8,%ecx
+  10079c:	66 89 15 a6 30 10 00 	mov    %dx,0x1030a6
+  1007a3:	c6 05 65 30 10 00 8e 	movb   $0x8e,0x103065
+  1007aa:	c6 05 6d 30 10 00 8e 	movb   $0x8e,0x10306d
+  1007b1:	c6 05 75 30 10 00 8e 	movb   $0x8e,0x103075
+  1007b8:	c6 05 7d 30 10 00 8e 	movb   $0x8e,0x10307d
+  1007bf:	c6 05 85 30 10 00 8e 	movb   $0x8e,0x103085
+  1007c6:	c6 05 8d 30 10 00 8e 	movb   $0x8e,0x10308d
+  1007cd:	c6 05 95 30 10 00 8e 	movb   $0x8e,0x103095
+  1007d4:	c6 05 9d 30 10 00 8e 	movb   $0x8e,0x10309d
+  1007db:	66 a3 a0 30 10 00    	mov    %ax,0x1030a0
+  1007e1:	b8 61 13 10 00       	mov    $0x101361,%eax
+  1007e6:	66 a3 a8 30 10 00    	mov    %ax,0x1030a8
+  1007ec:	89 c2                	mov    %eax,%edx
+  1007ee:	b8 08 00 00 00       	mov    $0x8,%eax
+  1007f3:	66 a3 aa 30 10 00    	mov    %ax,0x1030aa
+  1007f9:	c1 ea 10             	shr    $0x10,%edx
+  1007fc:	b8 68 13 10 00       	mov    $0x101368,%eax
+  100801:	66 89 15 ae 30 10 00 	mov    %dx,0x1030ae
+  100808:	89 c2                	mov    %eax,%edx
+  10080a:	66 a3 b0 30 10 00    	mov    %ax,0x1030b0
+  100810:	b8 08 00 00 00       	mov    $0x8,%eax
+  100815:	c1 ea 10             	shr    $0x10,%edx
+  100818:	66 a3 b2 30 10 00    	mov    %ax,0x1030b2
+  10081e:	b8 6f 13 10 00       	mov    $0x10136f,%eax
+  100823:	66 89 15 b6 30 10 00 	mov    %dx,0x1030b6
+  10082a:	89 c2                	mov    %eax,%edx
+  10082c:	66 a3 b8 30 10 00    	mov    %ax,0x1030b8
+  100832:	b8 08 00 00 00       	mov    $0x8,%eax
+  100837:	c1 ea 10             	shr    $0x10,%edx
+  10083a:	66 a3 ba 30 10 00    	mov    %ax,0x1030ba
+  100840:	b8 76 13 10 00       	mov    $0x101376,%eax
+  100845:	66 89 15 be 30 10 00 	mov    %dx,0x1030be
+  10084c:	89 c2                	mov    %eax,%edx
+  10084e:	66 a3 c0 30 10 00    	mov    %ax,0x1030c0
+  100854:	b8 08 00 00 00       	mov    $0x8,%eax
+  100859:	c1 ea 10             	shr    $0x10,%edx
+  10085c:	66 a3 c2 30 10 00    	mov    %ax,0x1030c2
+  100862:	b8 7d 13 10 00       	mov    $0x10137d,%eax
+  100867:	66 89 15 c6 30 10 00 	mov    %dx,0x1030c6
+  10086e:	89 c2                	mov    %eax,%edx
+  100870:	66 a3 c8 30 10 00    	mov    %ax,0x1030c8
+  100876:	b8 08 00 00 00       	mov    $0x8,%eax
+  10087b:	c1 ea 10             	shr    $0x10,%edx
+  10087e:	66 a3 ca 30 10 00    	mov    %ax,0x1030ca
+  100884:	b8 84 13 10 00       	mov    $0x101384,%eax
+  100889:	66 89 15 ce 30 10 00 	mov    %dx,0x1030ce
+  100890:	89 c2                	mov    %eax,%edx
+  100892:	c1 ea 10             	shr    $0x10,%edx
+  100895:	66 a3 d0 30 10 00    	mov    %ax,0x1030d0
+  10089b:	b8 8b 13 10 00       	mov    $0x10138b,%eax
+  1008a0:	66 89 15 d6 30 10 00 	mov    %dx,0x1030d6
+  1008a7:	ba 08 00 00 00       	mov    $0x8,%edx
+  1008ac:	66 89 15 d2 30 10 00 	mov    %dx,0x1030d2
+  1008b3:	89 c2                	mov    %eax,%edx
+  1008b5:	66 a3 d8 30 10 00    	mov    %ax,0x1030d8
+  1008bb:	c1 ea 10             	shr    $0x10,%edx
+  1008be:	b8 92 13 10 00       	mov    $0x101392,%eax
+  1008c3:	66 89 15 de 30 10 00 	mov    %dx,0x1030de
+  1008ca:	89 c2                	mov    %eax,%edx
+  1008cc:	66 89 0d a2 30 10 00 	mov    %cx,0x1030a2
+  1008d3:	c1 ea 10             	shr    $0x10,%edx
+  1008d6:	b9 08 00 00 00       	mov    $0x8,%ecx
+  1008db:	66 a3 e0 30 10 00    	mov    %ax,0x1030e0
+  1008e1:	b8 08 00 00 00       	mov    $0x8,%eax
+  1008e6:	66 89 0d da 30 10 00 	mov    %cx,0x1030da
+  1008ed:	b9 08 00 00 00       	mov    $0x8,%ecx
+  1008f2:	66 89 15 e6 30 10 00 	mov    %dx,0x1030e6
+  1008f9:	c6 05 a5 30 10 00 8e 	movb   $0x8e,0x1030a5
+  100900:	c6 05 ad 30 10 00 8e 	movb   $0x8e,0x1030ad
+  100907:	c6 05 b5 30 10 00 8e 	movb   $0x8e,0x1030b5
+  10090e:	c6 05 bd 30 10 00 8e 	movb   $0x8e,0x1030bd
+  100915:	c6 05 c5 30 10 00 8e 	movb   $0x8e,0x1030c5
+  10091c:	c6 05 cd 30 10 00 8e 	movb   $0x8e,0x1030cd
+  100923:	c6 05 d5 30 10 00 8e 	movb   $0x8e,0x1030d5
+  10092a:	c6 05 dd 30 10 00 8e 	movb   $0x8e,0x1030dd
+  100931:	66 a3 e2 30 10 00    	mov    %ax,0x1030e2
+  100937:	b8 99 13 10 00       	mov    $0x101399,%eax
+  10093c:	89 c2                	mov    %eax,%edx
+  10093e:	66 a3 e8 30 10 00    	mov    %ax,0x1030e8
+  100944:	b8 08 00 00 00       	mov    $0x8,%eax
+  100949:	c1 ea 10             	shr    $0x10,%edx
+  10094c:	66 a3 ea 30 10 00    	mov    %ax,0x1030ea
+  100952:	b8 a0 13 10 00       	mov    $0x1013a0,%eax
+  100957:	66 89 15 ee 30 10 00 	mov    %dx,0x1030ee
+  10095e:	89 c2                	mov    %eax,%edx
+  100960:	66 a3 f0 30 10 00    	mov    %ax,0x1030f0
+  100966:	b8 08 00 00 00       	mov    $0x8,%eax
+  10096b:	c1 ea 10             	shr    $0x10,%edx
+  10096e:	66 a3 f2 30 10 00    	mov    %ax,0x1030f2
+  100974:	b8 a7 13 10 00       	mov    $0x1013a7,%eax
+  100979:	66 89 15 f6 30 10 00 	mov    %dx,0x1030f6
+  100980:	89 c2                	mov    %eax,%edx
+  100982:	66 a3 f8 30 10 00    	mov    %ax,0x1030f8
+  100988:	b8 08 00 00 00       	mov    $0x8,%eax
+  10098d:	c1 ea 10             	shr    $0x10,%edx
+  100990:	66 a3 fa 30 10 00    	mov    %ax,0x1030fa
+  100996:	b8 ae 13 10 00       	mov    $0x1013ae,%eax
+  10099b:	66 89 15 fe 30 10 00 	mov    %dx,0x1030fe
+  1009a2:	89 c2                	mov    %eax,%edx
+  1009a4:	66 a3 00 31 10 00    	mov    %ax,0x103100
+  1009aa:	b8 08 00 00 00       	mov    $0x8,%eax
+  1009af:	c1 ea 10             	shr    $0x10,%edx
+  1009b2:	66 a3 02 31 10 00    	mov    %ax,0x103102
+  1009b8:	b8 b5 13 10 00       	mov    $0x1013b5,%eax
+  1009bd:	66 89 15 06 31 10 00 	mov    %dx,0x103106
+  1009c4:	89 c2                	mov    %eax,%edx
+  1009c6:	c1 ea 10             	shr    $0x10,%edx
+  1009c9:	66 a3 08 31 10 00    	mov    %ax,0x103108
+  1009cf:	b8 bc 13 10 00       	mov    $0x1013bc,%eax
+  1009d4:	66 89 15 0e 31 10 00 	mov    %dx,0x10310e
+  1009db:	ba 08 00 00 00       	mov    $0x8,%edx
+  1009e0:	66 89 15 0a 31 10 00 	mov    %dx,0x10310a
+  1009e7:	89 c2                	mov    %eax,%edx
+  1009e9:	c1 ea 10             	shr    $0x10,%edx
+  1009ec:	66 a3 10 31 10 00    	mov    %ax,0x103110
+  1009f2:	b8 c3 13 10 00       	mov    $0x1013c3,%eax
+  1009f7:	66 89 15 16 31 10 00 	mov    %dx,0x103116
+  1009fe:	89 c2                	mov    %eax,%edx
+  100a00:	66 a3 18 31 10 00    	mov    %ax,0x103118
+  100a06:	c1 ea 10             	shr    $0x10,%edx
+  100a09:	b8 08 00 00 00       	mov    $0x8,%eax
+  100a0e:	c6 05 e5 30 10 00 8e 	movb   $0x8e,0x1030e5
+  100a15:	c6 05 ed 30 10 00 8e 	movb   $0x8e,0x1030ed
+  100a1c:	c6 05 f5 30 10 00 8e 	movb   $0x8e,0x1030f5
+  100a23:	c6 05 fd 30 10 00 8e 	movb   $0x8e,0x1030fd
+  100a2a:	c6 05 05 31 10 00 8e 	movb   $0x8e,0x103105
+  100a31:	c6 05 0d 31 10 00 8e 	movb   $0x8e,0x10310d
+  100a38:	66 89 0d 12 31 10 00 	mov    %cx,0x103112
+  100a3f:	c6 05 15 31 10 00 8e 	movb   $0x8e,0x103115
+  100a46:	66 89 15 1e 31 10 00 	mov    %dx,0x10311e
+  100a4d:	66 a3 1a 31 10 00    	mov    %ax,0x10311a
+  100a53:	c6 05 1d 31 10 00 8e 	movb   $0x8e,0x10311d
+  100a5a:	c3                   	ret    
+  100a5b:	66 90                	xchg   %ax,%ax
+  100a5d:	66 90                	xchg   %ax,%ax
   100a5f:	90                   	nop
-  100a60:	8d 82 60 ff ff ff    	lea    eax,[edx-0xa0]
-  100a66:	b9 20 0f 00 00       	mov    ecx,0xf20
-  100a6b:	83 c0 02             	add    eax,0x2
-  100a6e:	66 89 48 fe          	mov    WORD PTR [eax-0x2],cx
-  100a72:	39 d0                	cmp    eax,edx
-  100a74:	75 f0                	jne    100a66 <_ZN11VgaTerminalC1Ev+0x36>
-  100a76:	8d 90 a0 00 00 00    	lea    edx,[eax+0xa0]
-  100a7c:	3d a0 8f 0b 00       	cmp    eax,0xb8fa0
-  100a81:	75 dd                	jne    100a60 <_ZN11VgaTerminalC1Ev+0x30>
-  100a83:	5d                   	pop    ebp
-  100a84:	c3                   	ret    
-  100a85:	90                   	nop
-  100a86:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100a8d:	8d 76 00             	lea    esi,[esi+0x0]
 
-00100a90 <_ZN11VgaTerminal5clearEv>:
-  100a90:	ba a0 80 0b 00       	mov    edx,0xb80a0
-  100a95:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100a9c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100aa0:	8d 82 60 ff ff ff    	lea    eax,[edx-0xa0]
-  100aa6:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100aad:	8d 76 00             	lea    esi,[esi+0x0]
-  100ab0:	b9 20 0f 00 00       	mov    ecx,0xf20
-  100ab5:	83 c0 02             	add    eax,0x2
-  100ab8:	66 89 48 fe          	mov    WORD PTR [eax-0x2],cx
-  100abc:	39 d0                	cmp    eax,edx
-  100abe:	75 f0                	jne    100ab0 <_ZN11VgaTerminal5clearEv+0x20>
-  100ac0:	8d 90 a0 00 00 00    	lea    edx,[eax+0xa0]
-  100ac6:	3d a0 8f 0b 00       	cmp    eax,0xb8fa0
-  100acb:	75 d3                	jne    100aa0 <_ZN11VgaTerminal5clearEv+0x10>
-  100acd:	c3                   	ret    
-  100ace:	66 90                	xchg   ax,ax
-
-00100ad0 <_ZN11VgaTerminal5setAtEtmm>:
-  100ad0:	55                   	push   ebp
-  100ad1:	89 e5                	mov    ebp,esp
-  100ad3:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
-  100ad6:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100ad9:	8d 04 80             	lea    eax,[eax+eax*4]
-  100adc:	c1 e0 04             	shl    eax,0x4
-  100adf:	03 45 0c             	add    eax,DWORD PTR [ebp+0xc]
-  100ae2:	01 c0                	add    eax,eax
-  100ae4:	66 89 90 00 80 0b 00 	mov    WORD PTR [eax+0xb8000],dx
-  100aeb:	5d                   	pop    ebp
-  100aec:	c3                   	ret    
-  100aed:	90                   	nop
-  100aee:	66 90                	xchg   ax,ax
-
-00100af0 <_ZN11VgaTerminal5getAtEmm>:
-  100af0:	55                   	push   ebp
-  100af1:	89 e5                	mov    ebp,esp
-  100af3:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100af6:	8d 04 80             	lea    eax,[eax+eax*4]
-  100af9:	c1 e0 04             	shl    eax,0x4
-  100afc:	03 45 08             	add    eax,DWORD PTR [ebp+0x8]
-  100aff:	5d                   	pop    ebp
-  100b00:	01 c0                	add    eax,eax
-  100b02:	0f b7 80 00 80 0b 00 	movzx  eax,WORD PTR [eax+0xb8000]
+00100a60 <_ZN6Serial4initEv>:
+  100a60:	55                   	push   %ebp
+  100a61:	89 e5                	mov    %esp,%ebp
+  100a63:	83 ec 10             	sub    $0x10,%esp
+  100a66:	6a 00                	push   $0x0
+  100a68:	68 f9 03 00 00       	push   $0x3f9
+  100a6d:	e8 9e f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100a72:	58                   	pop    %eax
+  100a73:	5a                   	pop    %edx
+  100a74:	68 80 00 00 00       	push   $0x80
+  100a79:	68 fb 03 00 00       	push   $0x3fb
+  100a7e:	e8 8d f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100a83:	59                   	pop    %ecx
+  100a84:	58                   	pop    %eax
+  100a85:	6a 03                	push   $0x3
+  100a87:	68 f8 03 00 00       	push   $0x3f8
+  100a8c:	e8 7f f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100a91:	58                   	pop    %eax
+  100a92:	5a                   	pop    %edx
+  100a93:	6a 00                	push   $0x0
+  100a95:	68 f9 03 00 00       	push   $0x3f9
+  100a9a:	e8 71 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100a9f:	59                   	pop    %ecx
+  100aa0:	58                   	pop    %eax
+  100aa1:	6a 03                	push   $0x3
+  100aa3:	68 fb 03 00 00       	push   $0x3fb
+  100aa8:	e8 63 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100aad:	58                   	pop    %eax
+  100aae:	5a                   	pop    %edx
+  100aaf:	68 c7 00 00 00       	push   $0xc7
+  100ab4:	68 fa 03 00 00       	push   $0x3fa
+  100ab9:	e8 52 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100abe:	59                   	pop    %ecx
+  100abf:	58                   	pop    %eax
+  100ac0:	6a 0b                	push   $0xb
+  100ac2:	68 fc 03 00 00       	push   $0x3fc
+  100ac7:	e8 44 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100acc:	58                   	pop    %eax
+  100acd:	5a                   	pop    %edx
+  100ace:	6a 1e                	push   $0x1e
+  100ad0:	68 fc 03 00 00       	push   $0x3fc
+  100ad5:	e8 36 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100ada:	59                   	pop    %ecx
+  100adb:	58                   	pop    %eax
+  100adc:	68 ae 00 00 00       	push   $0xae
+  100ae1:	68 f8 03 00 00       	push   $0x3f8
+  100ae6:	e8 25 f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100aeb:	c7 04 24 f8 03 00 00 	movl   $0x3f8,(%esp)
+  100af2:	e8 29 f5 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100af7:	58                   	pop    %eax
+  100af8:	5a                   	pop    %edx
+  100af9:	6a 0f                	push   $0xf
+  100afb:	68 fc 03 00 00       	push   $0x3fc
+  100b00:	e8 0b f5 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100b05:	83 c4 10             	add    $0x10,%esp
+  100b08:	c9                   	leave  
   100b09:	c3                   	ret    
-  100b0a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
+  100b0a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
 
-00100b10 <_ZN11VgaTerminal8setColorE8VgaColorS0_>:
-  100b10:	55                   	push   ebp
-  100b11:	89 e5                	mov    ebp,esp
-  100b13:	8b 55 10             	mov    edx,DWORD PTR [ebp+0x10]
-  100b16:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100b19:	c1 e2 0c             	shl    edx,0xc
-  100b1c:	c1 e0 08             	shl    eax,0x8
-  100b1f:	09 d0                	or     eax,edx
-  100b21:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100b24:	83 c8 20             	or     eax,0x20
-  100b27:	66 89 42 08          	mov    WORD PTR [edx+0x8],ax
-  100b2b:	5d                   	pop    ebp
-  100b2c:	c3                   	ret    
-  100b2d:	90                   	nop
-  100b2e:	66 90                	xchg   ax,ax
+00100b10 <_ZN6Serial18setBaudRateDivisorEt>:
+  100b10:	c3                   	ret    
+  100b11:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100b18:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100b1f:	90                   	nop
 
-00100b30 <_ZN11VgaTerminal6moveUpEv>:
-  100b30:	55                   	push   ebp
-  100b31:	b9 40 81 0b 00       	mov    ecx,0xb8140
-  100b36:	89 e5                	mov    ebp,esp
-  100b38:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  100b3b:	83 68 04 01          	sub    DWORD PTR [eax+0x4],0x1
-  100b3f:	c7 00 00 00 00 00    	mov    DWORD PTR [eax],0x0
-  100b45:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100b4c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100b50:	8d 81 60 ff ff ff    	lea    eax,[ecx-0xa0]
-  100b56:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100b5d:	8d 76 00             	lea    esi,[esi+0x0]
-  100b60:	0f b7 10             	movzx  edx,WORD PTR [eax]
-  100b63:	83 c0 02             	add    eax,0x2
-  100b66:	66 89 90 5e ff ff ff 	mov    WORD PTR [eax-0xa2],dx
-  100b6d:	39 c8                	cmp    eax,ecx
-  100b6f:	75 ef                	jne    100b60 <_ZN11VgaTerminal6moveUpEv+0x30>
-  100b71:	8d 88 a0 00 00 00    	lea    ecx,[eax+0xa0]
-  100b77:	3d a0 8f 0b 00       	cmp    eax,0xb8fa0
-  100b7c:	75 d2                	jne    100b50 <_ZN11VgaTerminal6moveUpEv+0x20>
-  100b7e:	b8 00 8f 0b 00       	mov    eax,0xb8f00
-  100b83:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100b8a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-  100b90:	ba 20 0f 00 00       	mov    edx,0xf20
-  100b95:	83 c0 02             	add    eax,0x2
-  100b98:	66 89 50 fe          	mov    WORD PTR [eax-0x2],dx
-  100b9c:	3d a0 8f 0b 00       	cmp    eax,0xb8fa0
-  100ba1:	75 ed                	jne    100b90 <_ZN11VgaTerminal6moveUpEv+0x60>
-  100ba3:	5d                   	pop    ebp
-  100ba4:	c3                   	ret    
-  100ba5:	90                   	nop
-  100ba6:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100bad:	8d 76 00             	lea    esi,[esi+0x0]
+00100b20 <_ZN6Serial5writeEc>:
+  100b20:	55                   	push   %ebp
+  100b21:	89 e5                	mov    %esp,%ebp
+  100b23:	53                   	push   %ebx
+  100b24:	83 ec 04             	sub    $0x4,%esp
+  100b27:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  100b2a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  100b30:	83 ec 0c             	sub    $0xc,%esp
+  100b33:	68 fd 03 00 00       	push   $0x3fd
+  100b38:	e8 e3 f4 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100b3d:	83 c4 10             	add    $0x10,%esp
+  100b40:	a8 20                	test   $0x20,%al
+  100b42:	74 ec                	je     100b30 <_ZN6Serial5writeEc+0x10>
+  100b44:	83 ec 08             	sub    $0x8,%esp
+  100b47:	0f b6 db             	movzbl %bl,%ebx
+  100b4a:	53                   	push   %ebx
+  100b4b:	68 f8 03 00 00       	push   $0x3f8
+  100b50:	e8 bb f4 ff ff       	call   100010 <_ZN5IoBus9writeByteEth>
+  100b55:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+  100b58:	83 c4 10             	add    $0x10,%esp
+  100b5b:	c9                   	leave  
+  100b5c:	c3                   	ret    
+  100b5d:	8d 76 00             	lea    0x0(%esi),%esi
 
-00100bb0 <_ZN11VgaTerminal7putCharEh>:
-  100bb0:	55                   	push   ebp
-  100bb1:	89 e5                	mov    ebp,esp
-  100bb3:	56                   	push   esi
-  100bb4:	8b 4d 08             	mov    ecx,DWORD PTR [ebp+0x8]
-  100bb7:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100bba:	53                   	push   ebx
-  100bbb:	8b 59 04             	mov    ebx,DWORD PTR [ecx+0x4]
-  100bbe:	3c 0a                	cmp    al,0xa
-  100bc0:	74 22                	je     100be4 <_ZN11VgaTerminal7putCharEh+0x34>
-  100bc2:	8b 31                	mov    esi,DWORD PTR [ecx]
-  100bc4:	8d 14 9b             	lea    edx,[ebx+ebx*4]
-  100bc7:	0f b6 c0             	movzx  eax,al
-  100bca:	66 0b 41 08          	or     ax,WORD PTR [ecx+0x8]
-  100bce:	c1 e2 04             	shl    edx,0x4
-  100bd1:	01 f2                	add    edx,esi
-  100bd3:	83 c6 01             	add    esi,0x1
-  100bd6:	01 d2                	add    edx,edx
-  100bd8:	66 89 82 00 80 0b 00 	mov    WORD PTR [edx+0xb8000],ax
-  100bdf:	83 fe 4f             	cmp    esi,0x4f
-  100be2:	76 1c                	jbe    100c00 <_ZN11VgaTerminal7putCharEh+0x50>
-  100be4:	83 c3 01             	add    ebx,0x1
-  100be7:	c7 01 00 00 00 00    	mov    DWORD PTR [ecx],0x0
-  100bed:	89 59 04             	mov    DWORD PTR [ecx+0x4],ebx
-  100bf0:	83 fb 18             	cmp    ebx,0x18
-  100bf3:	77 1b                	ja     100c10 <_ZN11VgaTerminal7putCharEh+0x60>
-  100bf5:	5b                   	pop    ebx
-  100bf6:	5e                   	pop    esi
-  100bf7:	5d                   	pop    ebp
-  100bf8:	c3                   	ret    
-  100bf9:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100c00:	89 31                	mov    DWORD PTR [ecx],esi
-  100c02:	5b                   	pop    ebx
-  100c03:	5e                   	pop    esi
-  100c04:	5d                   	pop    ebp
-  100c05:	c3                   	ret    
-  100c06:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100c0d:	8d 76 00             	lea    esi,[esi+0x0]
-  100c10:	5b                   	pop    ebx
-  100c11:	5e                   	pop    esi
-  100c12:	89 4d 08             	mov    DWORD PTR [ebp+0x8],ecx
-  100c15:	5d                   	pop    ebp
-  100c16:	e9 15 ff ff ff       	jmp    100b30 <_ZN11VgaTerminal6moveUpEv>
-  100c1b:	90                   	nop
-  100c1c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+00100b60 <_ZN6Serial15isTransmitEmptyEv>:
+  100b60:	55                   	push   %ebp
+  100b61:	89 e5                	mov    %esp,%ebp
+  100b63:	83 ec 14             	sub    $0x14,%esp
+  100b66:	68 fd 03 00 00       	push   $0x3fd
+  100b6b:	e8 b0 f4 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100b70:	c9                   	leave  
+  100b71:	c0 e8 05             	shr    $0x5,%al
+  100b74:	83 e0 01             	and    $0x1,%eax
+  100b77:	c3                   	ret    
+  100b78:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100b7f:	90                   	nop
 
-00100c20 <_ZN11VgaTerminal5writeEPKcm>:
-  100c20:	55                   	push   ebp
-  100c21:	89 e5                	mov    ebp,esp
-  100c23:	57                   	push   edi
-  100c24:	56                   	push   esi
-  100c25:	53                   	push   ebx
-  100c26:	83 ec 1c             	sub    esp,0x1c
-  100c29:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
-  100c2c:	8b 75 0c             	mov    esi,DWORD PTR [ebp+0xc]
-  100c2f:	8b 5d 08             	mov    ebx,DWORD PTR [ebp+0x8]
-  100c32:	8d 3c 06             	lea    edi,[esi+eax*1]
-  100c35:	89 7d e4             	mov    DWORD PTR [ebp-0x1c],edi
-  100c38:	85 c0                	test   eax,eax
-  100c3a:	75 2d                	jne    100c69 <_ZN11VgaTerminal5writeEPKcm+0x49>
-  100c3c:	eb 5a                	jmp    100c98 <_ZN11VgaTerminal5writeEPKcm+0x78>
-  100c3e:	66 90                	xchg   ax,ax
-  100c40:	8b 3b                	mov    edi,DWORD PTR [ebx]
-  100c42:	8d 14 89             	lea    edx,[ecx+ecx*4]
-  100c45:	66 0b 43 08          	or     ax,WORD PTR [ebx+0x8]
-  100c49:	c1 e2 04             	shl    edx,0x4
-  100c4c:	01 fa                	add    edx,edi
-  100c4e:	83 c7 01             	add    edi,0x1
-  100c51:	01 d2                	add    edx,edx
-  100c53:	66 89 82 00 80 0b 00 	mov    WORD PTR [edx+0xb8000],ax
-  100c5a:	83 ff 4f             	cmp    edi,0x4f
-  100c5d:	77 14                	ja     100c73 <_ZN11VgaTerminal5writeEPKcm+0x53>
-  100c5f:	89 3b                	mov    DWORD PTR [ebx],edi
-  100c61:	83 c6 01             	add    esi,0x1
-  100c64:	39 75 e4             	cmp    DWORD PTR [ebp-0x1c],esi
-  100c67:	74 2f                	je     100c98 <_ZN11VgaTerminal5writeEPKcm+0x78>
-  100c69:	0f b6 06             	movzx  eax,BYTE PTR [esi]
-  100c6c:	8b 4b 04             	mov    ecx,DWORD PTR [ebx+0x4]
-  100c6f:	3c 0a                	cmp    al,0xa
-  100c71:	75 cd                	jne    100c40 <_ZN11VgaTerminal5writeEPKcm+0x20>
-  100c73:	83 c1 01             	add    ecx,0x1
-  100c76:	c7 03 00 00 00 00    	mov    DWORD PTR [ebx],0x0
-  100c7c:	89 4b 04             	mov    DWORD PTR [ebx+0x4],ecx
-  100c7f:	83 f9 18             	cmp    ecx,0x18
-  100c82:	76 dd                	jbe    100c61 <_ZN11VgaTerminal5writeEPKcm+0x41>
-  100c84:	83 ec 0c             	sub    esp,0xc
-  100c87:	83 c6 01             	add    esi,0x1
-  100c8a:	53                   	push   ebx
-  100c8b:	e8 a0 fe ff ff       	call   100b30 <_ZN11VgaTerminal6moveUpEv>
-  100c90:	83 c4 10             	add    esp,0x10
-  100c93:	39 75 e4             	cmp    DWORD PTR [ebp-0x1c],esi
-  100c96:	75 d1                	jne    100c69 <_ZN11VgaTerminal5writeEPKcm+0x49>
-  100c98:	8d 65 f4             	lea    esp,[ebp-0xc]
-  100c9b:	5b                   	pop    ebx
-  100c9c:	5e                   	pop    esi
-  100c9d:	5f                   	pop    edi
-  100c9e:	5d                   	pop    ebp
-  100c9f:	c3                   	ret    
+00100b80 <_ZN6Serial4readEv>:
+  100b80:	55                   	push   %ebp
+  100b81:	89 e5                	mov    %esp,%ebp
+  100b83:	83 ec 08             	sub    $0x8,%esp
+  100b86:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100b8d:	8d 76 00             	lea    0x0(%esi),%esi
+  100b90:	83 ec 0c             	sub    $0xc,%esp
+  100b93:	68 fd 03 00 00       	push   $0x3fd
+  100b98:	e8 83 f4 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100b9d:	83 c4 10             	add    $0x10,%esp
+  100ba0:	a8 01                	test   $0x1,%al
+  100ba2:	74 ec                	je     100b90 <_ZN6Serial4readEv+0x10>
+  100ba4:	83 ec 0c             	sub    $0xc,%esp
+  100ba7:	68 f8 03 00 00       	push   $0x3f8
+  100bac:	e8 6f f4 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100bb1:	c9                   	leave  
+  100bb2:	c3                   	ret    
+  100bb3:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100bba:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
 
-00100ca0 <_ZN11VgaTerminal11writeStringEPKc>:
-  100ca0:	55                   	push   ebp
-  100ca1:	89 e5                	mov    ebp,esp
-  100ca3:	57                   	push   edi
-  100ca4:	56                   	push   esi
-  100ca5:	53                   	push   ebx
-  100ca6:	83 ec 28             	sub    esp,0x28
-  100ca9:	8b 5d 0c             	mov    ebx,DWORD PTR [ebp+0xc]
-  100cac:	8b 75 08             	mov    esi,DWORD PTR [ebp+0x8]
-  100caf:	53                   	push   ebx
-  100cb0:	e8 7b 00 00 00       	call   100d30 <_Z6strLenPKc>
-  100cb5:	83 c4 10             	add    esp,0x10
-  100cb8:	8d 3c 03             	lea    edi,[ebx+eax*1]
-  100cbb:	89 7d e4             	mov    DWORD PTR [ebp-0x1c],edi
-  100cbe:	85 c0                	test   eax,eax
-  100cc0:	75 37                	jne    100cf9 <_ZN11VgaTerminal11writeStringEPKc+0x59>
-  100cc2:	eb 64                	jmp    100d28 <_ZN11VgaTerminal11writeStringEPKc+0x88>
-  100cc4:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100ccb:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100ccf:	90                   	nop
-  100cd0:	8b 3e                	mov    edi,DWORD PTR [esi]
-  100cd2:	8d 14 89             	lea    edx,[ecx+ecx*4]
-  100cd5:	66 0b 46 08          	or     ax,WORD PTR [esi+0x8]
-  100cd9:	c1 e2 04             	shl    edx,0x4
-  100cdc:	01 fa                	add    edx,edi
-  100cde:	83 c7 01             	add    edi,0x1
-  100ce1:	01 d2                	add    edx,edx
-  100ce3:	66 89 82 00 80 0b 00 	mov    WORD PTR [edx+0xb8000],ax
-  100cea:	83 ff 4f             	cmp    edi,0x4f
-  100ced:	77 14                	ja     100d03 <_ZN11VgaTerminal11writeStringEPKc+0x63>
-  100cef:	89 3e                	mov    DWORD PTR [esi],edi
-  100cf1:	83 c3 01             	add    ebx,0x1
-  100cf4:	39 5d e4             	cmp    DWORD PTR [ebp-0x1c],ebx
-  100cf7:	74 2f                	je     100d28 <_ZN11VgaTerminal11writeStringEPKc+0x88>
-  100cf9:	0f b6 03             	movzx  eax,BYTE PTR [ebx]
-  100cfc:	8b 4e 04             	mov    ecx,DWORD PTR [esi+0x4]
-  100cff:	3c 0a                	cmp    al,0xa
-  100d01:	75 cd                	jne    100cd0 <_ZN11VgaTerminal11writeStringEPKc+0x30>
-  100d03:	83 c1 01             	add    ecx,0x1
-  100d06:	c7 06 00 00 00 00    	mov    DWORD PTR [esi],0x0
-  100d0c:	89 4e 04             	mov    DWORD PTR [esi+0x4],ecx
-  100d0f:	83 f9 18             	cmp    ecx,0x18
-  100d12:	76 dd                	jbe    100cf1 <_ZN11VgaTerminal11writeStringEPKc+0x51>
-  100d14:	83 ec 0c             	sub    esp,0xc
-  100d17:	83 c3 01             	add    ebx,0x1
-  100d1a:	56                   	push   esi
-  100d1b:	e8 10 fe ff ff       	call   100b30 <_ZN11VgaTerminal6moveUpEv>
-  100d20:	83 c4 10             	add    esp,0x10
-  100d23:	39 5d e4             	cmp    DWORD PTR [ebp-0x1c],ebx
-  100d26:	75 d1                	jne    100cf9 <_ZN11VgaTerminal11writeStringEPKc+0x59>
-  100d28:	8d 65 f4             	lea    esp,[ebp-0xc]
-  100d2b:	5b                   	pop    ebx
-  100d2c:	5e                   	pop    esi
-  100d2d:	5f                   	pop    edi
-  100d2e:	5d                   	pop    ebp
-  100d2f:	c3                   	ret    
+00100bc0 <_ZN6Serial15isDataAvailableEv>:
+  100bc0:	55                   	push   %ebp
+  100bc1:	89 e5                	mov    %esp,%ebp
+  100bc3:	83 ec 14             	sub    $0x14,%esp
+  100bc6:	68 fd 03 00 00       	push   $0x3fd
+  100bcb:	e8 50 f4 ff ff       	call   100020 <_ZN5IoBus8readByteEt>
+  100bd0:	c9                   	leave  
+  100bd1:	83 e0 01             	and    $0x1,%eax
+  100bd4:	c3                   	ret    
+  100bd5:	66 90                	xchg   %ax,%ax
+  100bd7:	66 90                	xchg   %ax,%ax
+  100bd9:	66 90                	xchg   %ax,%ax
+  100bdb:	66 90                	xchg   %ax,%ax
+  100bdd:	66 90                	xchg   %ax,%ax
+  100bdf:	90                   	nop
 
-00100d30 <_Z6strLenPKc>:
-  100d30:	55                   	push   ebp
-  100d31:	31 c0                	xor    eax,eax
-  100d33:	89 e5                	mov    ebp,esp
-  100d35:	8b 55 08             	mov    edx,DWORD PTR [ebp+0x8]
-  100d38:	80 3a 00             	cmp    BYTE PTR [edx],0x0
-  100d3b:	74 0c                	je     100d49 <_Z6strLenPKc+0x19>
-  100d3d:	8d 76 00             	lea    esi,[esi+0x0]
-  100d40:	83 c0 01             	add    eax,0x1
-  100d43:	80 3c 02 00          	cmp    BYTE PTR [edx+eax*1],0x0
-  100d47:	75 f7                	jne    100d40 <_Z6strLenPKc+0x10>
-  100d49:	5d                   	pop    ebp
-  100d4a:	c3                   	ret    
-  100d4b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100d4f:	90                   	nop
+00100be0 <_ZN11VgaTerminalC1Ev>:
+  100be0:	55                   	push   %ebp
+  100be1:	ba 20 0f 00 00       	mov    $0xf20,%edx
+  100be6:	89 e5                	mov    %esp,%ebp
+  100be8:	8b 45 08             	mov    0x8(%ebp),%eax
+  100beb:	c7 00 00 00 00 00    	movl   $0x0,(%eax)
+  100bf1:	c7 40 04 00 00 00 00 	movl   $0x0,0x4(%eax)
+  100bf8:	66 89 50 08          	mov    %dx,0x8(%eax)
+  100bfc:	ba a0 80 0b 00       	mov    $0xb80a0,%edx
+  100c01:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100c08:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100c0f:	90                   	nop
+  100c10:	8d 82 60 ff ff ff    	lea    -0xa0(%edx),%eax
+  100c16:	b9 20 0f 00 00       	mov    $0xf20,%ecx
+  100c1b:	83 c0 02             	add    $0x2,%eax
+  100c1e:	66 89 48 fe          	mov    %cx,-0x2(%eax)
+  100c22:	39 d0                	cmp    %edx,%eax
+  100c24:	75 f0                	jne    100c16 <_ZN11VgaTerminalC1Ev+0x36>
+  100c26:	8d 90 a0 00 00 00    	lea    0xa0(%eax),%edx
+  100c2c:	3d a0 8f 0b 00       	cmp    $0xb8fa0,%eax
+  100c31:	75 dd                	jne    100c10 <_ZN11VgaTerminalC1Ev+0x30>
+  100c33:	5d                   	pop    %ebp
+  100c34:	c3                   	ret    
+  100c35:	90                   	nop
+  100c36:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100c3d:	8d 76 00             	lea    0x0(%esi),%esi
 
-00100d50 <_Z6memCpyPvPKvm>:
-  100d50:	c3                   	ret    
-  100d51:	66 90                	xchg   ax,ax
-  100d53:	66 90                	xchg   ax,ax
-  100d55:	66 90                	xchg   ax,ax
-  100d57:	66 90                	xchg   ax,ax
-  100d59:	66 90                	xchg   ax,ax
-  100d5b:	66 90                	xchg   ax,ax
-  100d5d:	66 90                	xchg   ax,ax
-  100d5f:	90                   	nop
+00100c40 <_ZN11VgaTerminal5clearEv>:
+  100c40:	ba a0 80 0b 00       	mov    $0xb80a0,%edx
+  100c45:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100c4c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  100c50:	8d 82 60 ff ff ff    	lea    -0xa0(%edx),%eax
+  100c56:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100c5d:	8d 76 00             	lea    0x0(%esi),%esi
+  100c60:	b9 20 0f 00 00       	mov    $0xf20,%ecx
+  100c65:	83 c0 02             	add    $0x2,%eax
+  100c68:	66 89 48 fe          	mov    %cx,-0x2(%eax)
+  100c6c:	39 d0                	cmp    %edx,%eax
+  100c6e:	75 f0                	jne    100c60 <_ZN11VgaTerminal5clearEv+0x20>
+  100c70:	8d 90 a0 00 00 00    	lea    0xa0(%eax),%edx
+  100c76:	3d a0 8f 0b 00       	cmp    $0xb8fa0,%eax
+  100c7b:	75 d3                	jne    100c50 <_ZN11VgaTerminal5clearEv+0x10>
+  100c7d:	c3                   	ret    
+  100c7e:	66 90                	xchg   %ax,%ax
 
-00100d60 <_ZN13HeapAllocatorC1EPvm>:
-  100d60:	55                   	push   ebp
-  100d61:	89 e5                	mov    ebp,esp
-  100d63:	56                   	push   esi
-  100d64:	8b 4d 08             	mov    ecx,DWORD PTR [ebp+0x8]
-  100d67:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100d6a:	53                   	push   ebx
-  100d6b:	8b 55 10             	mov    edx,DWORD PTR [ebp+0x10]
-  100d6e:	89 01                	mov    DWORD PTR [ecx],eax
-  100d70:	89 51 04             	mov    DWORD PTR [ecx+0x4],edx
-  100d73:	83 fa 0b             	cmp    edx,0xb
-  100d76:	77 18                	ja     100d90 <_ZN13HeapAllocatorC1EPvm+0x30>
-  100d78:	c7 41 08 00 00 00 00 	mov    DWORD PTR [ecx+0x8],0x0
-  100d7f:	5b                   	pop    ebx
-  100d80:	5e                   	pop    esi
-  100d81:	5d                   	pop    ebp
-  100d82:	c3                   	ret    
-  100d83:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100d8a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-  100d90:	89 c6                	mov    esi,eax
-  100d92:	8d 58 04             	lea    ebx,[eax+0x4]
-  100d95:	83 e6 03             	and    esi,0x3
-  100d98:	29 f3                	sub    ebx,esi
-  100d9a:	85 f6                	test   esi,esi
-  100d9c:	0f 45 c3             	cmovne eax,ebx
-  100d9f:	83 ea 0c             	sub    edx,0xc
-  100da2:	83 e2 fc             	and    edx,0xfffffffc
-  100da5:	89 41 08             	mov    DWORD PTR [ecx+0x8],eax
-  100da8:	89 50 08             	mov    DWORD PTR [eax+0x8],edx
-  100dab:	c7 40 04 00 00 00 00 	mov    DWORD PTR [eax+0x4],0x0
-  100db2:	c7 00 00 00 00 00    	mov    DWORD PTR [eax],0x0
-  100db8:	5b                   	pop    ebx
-  100db9:	5e                   	pop    esi
-  100dba:	5d                   	pop    ebp
-  100dbb:	c3                   	ret    
-  100dbc:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+00100c80 <_ZN11VgaTerminal5setAtEtmm>:
+  100c80:	55                   	push   %ebp
+  100c81:	89 e5                	mov    %esp,%ebp
+  100c83:	8b 45 10             	mov    0x10(%ebp),%eax
+  100c86:	8b 55 08             	mov    0x8(%ebp),%edx
+  100c89:	8d 04 80             	lea    (%eax,%eax,4),%eax
+  100c8c:	c1 e0 04             	shl    $0x4,%eax
+  100c8f:	03 45 0c             	add    0xc(%ebp),%eax
+  100c92:	01 c0                	add    %eax,%eax
+  100c94:	66 89 90 00 80 0b 00 	mov    %dx,0xb8000(%eax)
+  100c9b:	5d                   	pop    %ebp
+  100c9c:	c3                   	ret    
+  100c9d:	90                   	nop
+  100c9e:	66 90                	xchg   %ax,%ax
 
-00100dc0 <_ZN13HeapAllocator8allocateEm>:
-  100dc0:	55                   	push   ebp
-  100dc1:	89 e5                	mov    ebp,esp
-  100dc3:	57                   	push   edi
-  100dc4:	8b 55 0c             	mov    edx,DWORD PTR [ebp+0xc]
-  100dc7:	56                   	push   esi
-  100dc8:	53                   	push   ebx
-  100dc9:	85 d2                	test   edx,edx
-  100dcb:	0f 84 8f 00 00 00    	je     100e60 <_ZN13HeapAllocator8allocateEm+0xa0>
-  100dd1:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  100dd4:	8b 40 08             	mov    eax,DWORD PTR [eax+0x8]
-  100dd7:	85 c0                	test   eax,eax
-  100dd9:	74 5b                	je     100e36 <_ZN13HeapAllocator8allocateEm+0x76>
-  100ddb:	89 d3                	mov    ebx,edx
-  100ddd:	8d 4a 04             	lea    ecx,[edx+0x4]
-  100de0:	83 e3 03             	and    ebx,0x3
-  100de3:	29 d9                	sub    ecx,ebx
-  100de5:	85 db                	test   ebx,ebx
-  100de7:	0f 44 ca             	cmove  ecx,edx
-  100dea:	8d 59 08             	lea    ebx,[ecx+0x8]
-  100ded:	eb 08                	jmp    100df7 <_ZN13HeapAllocator8allocateEm+0x37>
-  100def:	90                   	nop
-  100df0:	8b 40 04             	mov    eax,DWORD PTR [eax+0x4]
-  100df3:	85 c0                	test   eax,eax
-  100df5:	74 3f                	je     100e36 <_ZN13HeapAllocator8allocateEm+0x76>
-  100df7:	8b 50 08             	mov    edx,DWORD PTR [eax+0x8]
-  100dfa:	39 da                	cmp    edx,ebx
-  100dfc:	72 f2                	jb     100df0 <_ZN13HeapAllocator8allocateEm+0x30>
-  100dfe:	8d 59 14             	lea    ebx,[ecx+0x14]
-  100e01:	8d 78 14             	lea    edi,[eax+0x14]
-  100e04:	39 da                	cmp    edx,ebx
-  100e06:	72 68                	jb     100e70 <_ZN13HeapAllocator8allocateEm+0xb0>
-  100e08:	8b 70 04             	mov    esi,DWORD PTR [eax+0x4]
-  100e0b:	29 ca                	sub    edx,ecx
-  100e0d:	89 48 10             	mov    DWORD PTR [eax+0x10],ecx
-  100e10:	01 c3                	add    ebx,eax
-  100e12:	c7 40 0c 56 34 12 00 	mov    DWORD PTR [eax+0xc],0x123456
-  100e19:	83 ea 14             	sub    edx,0x14
-  100e1c:	85 f6                	test   esi,esi
-  100e1e:	74 20                	je     100e40 <_ZN13HeapAllocator8allocateEm+0x80>
-  100e20:	89 1e                	mov    DWORD PTR [esi],ebx
-  100e22:	89 03                	mov    DWORD PTR [ebx],eax
-  100e24:	89 73 04             	mov    DWORD PTR [ebx+0x4],esi
-  100e27:	89 58 04             	mov    DWORD PTR [eax+0x4],ebx
-  100e2a:	89 53 08             	mov    DWORD PTR [ebx+0x8],edx
-  100e2d:	c7 40 08 00 00 00 00 	mov    DWORD PTR [eax+0x8],0x0
-  100e34:	89 f8                	mov    eax,edi
-  100e36:	5b                   	pop    ebx
-  100e37:	5e                   	pop    esi
-  100e38:	5f                   	pop    edi
-  100e39:	5d                   	pop    ebp
-  100e3a:	c3                   	ret    
-  100e3b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100e3f:	90                   	nop
-  100e40:	89 58 04             	mov    DWORD PTR [eax+0x4],ebx
-  100e43:	89 03                	mov    DWORD PTR [ebx],eax
-  100e45:	c7 43 04 00 00 00 00 	mov    DWORD PTR [ebx+0x4],0x0
-  100e4c:	89 53 08             	mov    DWORD PTR [ebx+0x8],edx
-  100e4f:	c7 40 08 00 00 00 00 	mov    DWORD PTR [eax+0x8],0x0
-  100e56:	89 f8                	mov    eax,edi
-  100e58:	eb dc                	jmp    100e36 <_ZN13HeapAllocator8allocateEm+0x76>
-  100e5a:	8d b6 00 00 00 00    	lea    esi,[esi+0x0]
-  100e60:	5b                   	pop    ebx
-  100e61:	31 c0                	xor    eax,eax
-  100e63:	5e                   	pop    esi
-  100e64:	5f                   	pop    edi
-  100e65:	5d                   	pop    ebp
-  100e66:	c3                   	ret    
-  100e67:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100e6e:	66 90                	xchg   ax,ax
-  100e70:	83 ea 08             	sub    edx,0x8
-  100e73:	c7 40 0c 56 34 12 00 	mov    DWORD PTR [eax+0xc],0x123456
-  100e7a:	89 50 10             	mov    DWORD PTR [eax+0x10],edx
-  100e7d:	c7 40 08 00 00 00 00 	mov    DWORD PTR [eax+0x8],0x0
-  100e84:	89 f8                	mov    eax,edi
-  100e86:	5b                   	pop    ebx
-  100e87:	5e                   	pop    esi
-  100e88:	5f                   	pop    edi
-  100e89:	5d                   	pop    ebp
-  100e8a:	c3                   	ret    
-  100e8b:	90                   	nop
-  100e8c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+00100ca0 <_ZN11VgaTerminal5getAtEmm>:
+  100ca0:	55                   	push   %ebp
+  100ca1:	89 e5                	mov    %esp,%ebp
+  100ca3:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100ca6:	8d 04 80             	lea    (%eax,%eax,4),%eax
+  100ca9:	c1 e0 04             	shl    $0x4,%eax
+  100cac:	03 45 08             	add    0x8(%ebp),%eax
+  100caf:	5d                   	pop    %ebp
+  100cb0:	01 c0                	add    %eax,%eax
+  100cb2:	0f b7 80 00 80 0b 00 	movzwl 0xb8000(%eax),%eax
+  100cb9:	c3                   	ret    
+  100cba:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
 
-00100e90 <_ZN13HeapAllocator4freeEPv>:
-  100e90:	55                   	push   ebp
-  100e91:	89 e5                	mov    ebp,esp
-  100e93:	56                   	push   esi
-  100e94:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100e97:	53                   	push   ebx
-  100e98:	85 c0                	test   eax,eax
-  100e9a:	74 4d                	je     100ee9 <_ZN13HeapAllocator4freeEPv+0x59>
-  100e9c:	81 78 f8 56 34 12 00 	cmp    DWORD PTR [eax-0x8],0x123456
-  100ea3:	75 44                	jne    100ee9 <_ZN13HeapAllocator4freeEPv+0x59>
-  100ea5:	8b 70 fc             	mov    esi,DWORD PTR [eax-0x4]
-  100ea8:	8b 48 ec             	mov    ecx,DWORD PTR [eax-0x14]
-  100eab:	c7 40 f8 21 43 65 00 	mov    DWORD PTR [eax-0x8],0x654321
-  100eb2:	8d 58 ec             	lea    ebx,[eax-0x14]
-  100eb5:	8d 56 08             	lea    edx,[esi+0x8]
-  100eb8:	89 50 f4             	mov    DWORD PTR [eax-0xc],edx
-  100ebb:	85 c9                	test   ecx,ecx
-  100ebd:	74 07                	je     100ec6 <_ZN13HeapAllocator4freeEPv+0x36>
-  100ebf:	8b 71 08             	mov    esi,DWORD PTR [ecx+0x8]
-  100ec2:	85 f6                	test   esi,esi
-  100ec4:	75 2a                	jne    100ef0 <_ZN13HeapAllocator4freeEPv+0x60>
-  100ec6:	8b 50 f0             	mov    edx,DWORD PTR [eax-0x10]
-  100ec9:	85 d2                	test   edx,edx
-  100ecb:	74 1c                	je     100ee9 <_ZN13HeapAllocator4freeEPv+0x59>
-  100ecd:	8b 42 08             	mov    eax,DWORD PTR [edx+0x8]
-  100ed0:	85 c0                	test   eax,eax
-  100ed2:	74 15                	je     100ee9 <_ZN13HeapAllocator4freeEPv+0x59>
-  100ed4:	03 43 08             	add    eax,DWORD PTR [ebx+0x8]
-  100ed7:	83 c0 0c             	add    eax,0xc
-  100eda:	89 43 08             	mov    DWORD PTR [ebx+0x8],eax
-  100edd:	8b 42 04             	mov    eax,DWORD PTR [edx+0x4]
-  100ee0:	85 c0                	test   eax,eax
-  100ee2:	74 02                	je     100ee6 <_ZN13HeapAllocator4freeEPv+0x56>
-  100ee4:	89 18                	mov    DWORD PTR [eax],ebx
-  100ee6:	89 43 04             	mov    DWORD PTR [ebx+0x4],eax
-  100ee9:	5b                   	pop    ebx
-  100eea:	5e                   	pop    esi
-  100eeb:	5d                   	pop    ebp
-  100eec:	c3                   	ret    
-  100eed:	8d 76 00             	lea    esi,[esi+0x0]
-  100ef0:	8d 54 32 0c          	lea    edx,[edx+esi*1+0xc]
-  100ef4:	89 cb                	mov    ebx,ecx
-  100ef6:	89 51 08             	mov    DWORD PTR [ecx+0x8],edx
-  100ef9:	8b 50 f0             	mov    edx,DWORD PTR [eax-0x10]
-  100efc:	89 51 04             	mov    DWORD PTR [ecx+0x4],edx
-  100eff:	8b 70 f0             	mov    esi,DWORD PTR [eax-0x10]
-  100f02:	85 f6                	test   esi,esi
-  100f04:	74 c3                	je     100ec9 <_ZN13HeapAllocator4freeEPv+0x39>
-  100f06:	89 0e                	mov    DWORD PTR [esi],ecx
-  100f08:	8b 58 ec             	mov    ebx,DWORD PTR [eax-0x14]
-  100f0b:	8b 53 04             	mov    edx,DWORD PTR [ebx+0x4]
-  100f0e:	eb b9                	jmp    100ec9 <_ZN13HeapAllocator4freeEPv+0x39>
+00100cc0 <_ZN11VgaTerminal8setColorE8VgaColorS0_>:
+  100cc0:	55                   	push   %ebp
+  100cc1:	89 e5                	mov    %esp,%ebp
+  100cc3:	0f b7 45 10          	movzwl 0x10(%ebp),%eax
+  100cc7:	0f b7 55 0c          	movzwl 0xc(%ebp),%edx
+  100ccb:	c1 e0 0c             	shl    $0xc,%eax
+  100cce:	c1 e2 08             	shl    $0x8,%edx
+  100cd1:	09 d0                	or     %edx,%eax
+  100cd3:	8b 55 08             	mov    0x8(%ebp),%edx
+  100cd6:	83 c8 20             	or     $0x20,%eax
+  100cd9:	66 89 42 08          	mov    %ax,0x8(%edx)
+  100cdd:	5d                   	pop    %ebp
+  100cde:	c3                   	ret    
+  100cdf:	90                   	nop
 
-00100f10 <_ZN13HeapAllocator9Allocated3setEm>:
-  100f10:	55                   	push   ebp
-  100f11:	89 e5                	mov    ebp,esp
-  100f13:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  100f16:	8b 55 0c             	mov    edx,DWORD PTR [ebp+0xc]
-  100f19:	c7 00 56 34 12 00    	mov    DWORD PTR [eax],0x123456
-  100f1f:	89 50 04             	mov    DWORD PTR [eax+0x4],edx
-  100f22:	5d                   	pop    ebp
-  100f23:	c3                   	ret    
-  100f24:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100f2b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100f2f:	90                   	nop
+00100ce0 <_ZN11VgaTerminal6moveUpEv>:
+  100ce0:	55                   	push   %ebp
+  100ce1:	b9 40 81 0b 00       	mov    $0xb8140,%ecx
+  100ce6:	89 e5                	mov    %esp,%ebp
+  100ce8:	8b 45 08             	mov    0x8(%ebp),%eax
+  100ceb:	83 68 04 01          	subl   $0x1,0x4(%eax)
+  100cef:	c7 00 00 00 00 00    	movl   $0x0,(%eax)
+  100cf5:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100cfc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  100d00:	8d 81 60 ff ff ff    	lea    -0xa0(%ecx),%eax
+  100d06:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100d0d:	8d 76 00             	lea    0x0(%esi),%esi
+  100d10:	0f b7 10             	movzwl (%eax),%edx
+  100d13:	83 c0 02             	add    $0x2,%eax
+  100d16:	66 89 90 5e ff ff ff 	mov    %dx,-0xa2(%eax)
+  100d1d:	39 c8                	cmp    %ecx,%eax
+  100d1f:	75 ef                	jne    100d10 <_ZN11VgaTerminal6moveUpEv+0x30>
+  100d21:	8d 88 a0 00 00 00    	lea    0xa0(%eax),%ecx
+  100d27:	3d a0 8f 0b 00       	cmp    $0xb8fa0,%eax
+  100d2c:	75 d2                	jne    100d00 <_ZN11VgaTerminal6moveUpEv+0x20>
+  100d2e:	b8 00 8f 0b 00       	mov    $0xb8f00,%eax
+  100d33:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100d3a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  100d40:	ba 20 0f 00 00       	mov    $0xf20,%edx
+  100d45:	83 c0 02             	add    $0x2,%eax
+  100d48:	66 89 50 fe          	mov    %dx,-0x2(%eax)
+  100d4c:	3d a0 8f 0b 00       	cmp    $0xb8fa0,%eax
+  100d51:	75 ed                	jne    100d40 <_ZN11VgaTerminal6moveUpEv+0x60>
+  100d53:	5d                   	pop    %ebp
+  100d54:	c3                   	ret    
+  100d55:	90                   	nop
+  100d56:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100d5d:	8d 76 00             	lea    0x0(%esi),%esi
 
-00100f30 <_ZN13HeapAllocator18roundUpToAlignmentEm>:
-  100f30:	55                   	push   ebp
-  100f31:	89 e5                	mov    ebp,esp
-  100f33:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100f36:	5d                   	pop    ebp
-  100f37:	89 c1                	mov    ecx,eax
-  100f39:	8d 50 04             	lea    edx,[eax+0x4]
-  100f3c:	83 e1 03             	and    ecx,0x3
-  100f3f:	29 ca                	sub    edx,ecx
-  100f41:	85 c9                	test   ecx,ecx
-  100f43:	0f 45 c2             	cmovne eax,edx
-  100f46:	c3                   	ret    
-  100f47:	90                   	nop
-  100f48:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100f4f:	90                   	nop
+00100d60 <_ZN11VgaTerminal7putCharEh>:
+  100d60:	55                   	push   %ebp
+  100d61:	89 e5                	mov    %esp,%ebp
+  100d63:	56                   	push   %esi
+  100d64:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  100d67:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100d6a:	53                   	push   %ebx
+  100d6b:	8b 59 04             	mov    0x4(%ecx),%ebx
+  100d6e:	3c 0a                	cmp    $0xa,%al
+  100d70:	74 22                	je     100d94 <_ZN11VgaTerminal7putCharEh+0x34>
+  100d72:	8b 31                	mov    (%ecx),%esi
+  100d74:	8d 14 9b             	lea    (%ebx,%ebx,4),%edx
+  100d77:	0f b6 c0             	movzbl %al,%eax
+  100d7a:	66 0b 41 08          	or     0x8(%ecx),%ax
+  100d7e:	c1 e2 04             	shl    $0x4,%edx
+  100d81:	01 f2                	add    %esi,%edx
+  100d83:	83 c6 01             	add    $0x1,%esi
+  100d86:	01 d2                	add    %edx,%edx
+  100d88:	66 89 82 00 80 0b 00 	mov    %ax,0xb8000(%edx)
+  100d8f:	83 fe 4f             	cmp    $0x4f,%esi
+  100d92:	76 1c                	jbe    100db0 <_ZN11VgaTerminal7putCharEh+0x50>
+  100d94:	83 c3 01             	add    $0x1,%ebx
+  100d97:	c7 01 00 00 00 00    	movl   $0x0,(%ecx)
+  100d9d:	89 59 04             	mov    %ebx,0x4(%ecx)
+  100da0:	83 fb 18             	cmp    $0x18,%ebx
+  100da3:	77 1b                	ja     100dc0 <_ZN11VgaTerminal7putCharEh+0x60>
+  100da5:	5b                   	pop    %ebx
+  100da6:	5e                   	pop    %esi
+  100da7:	5d                   	pop    %ebp
+  100da8:	c3                   	ret    
+  100da9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100db0:	89 31                	mov    %esi,(%ecx)
+  100db2:	5b                   	pop    %ebx
+  100db3:	5e                   	pop    %esi
+  100db4:	5d                   	pop    %ebp
+  100db5:	c3                   	ret    
+  100db6:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100dbd:	8d 76 00             	lea    0x0(%esi),%esi
+  100dc0:	5b                   	pop    %ebx
+  100dc1:	5e                   	pop    %esi
+  100dc2:	89 4d 08             	mov    %ecx,0x8(%ebp)
+  100dc5:	5d                   	pop    %ebp
+  100dc6:	e9 15 ff ff ff       	jmp    100ce0 <_ZN11VgaTerminal6moveUpEv>
+  100dcb:	90                   	nop
+  100dcc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-00100f50 <_ZN13HeapAllocator20roundDownToAlignmentEm>:
-  100f50:	55                   	push   ebp
-  100f51:	89 e5                	mov    ebp,esp
-  100f53:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  100f56:	5d                   	pop    ebp
-  100f57:	83 e0 fc             	and    eax,0xfffffffc
-  100f5a:	c3                   	ret    
-  100f5b:	90                   	nop
-  100f5c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
+00100dd0 <_ZN11VgaTerminal5writeEPKcm>:
+  100dd0:	55                   	push   %ebp
+  100dd1:	89 e5                	mov    %esp,%ebp
+  100dd3:	57                   	push   %edi
+  100dd4:	56                   	push   %esi
+  100dd5:	53                   	push   %ebx
+  100dd6:	83 ec 1c             	sub    $0x1c,%esp
+  100dd9:	8b 45 10             	mov    0x10(%ebp),%eax
+  100ddc:	8b 75 0c             	mov    0xc(%ebp),%esi
+  100ddf:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  100de2:	8d 3c 06             	lea    (%esi,%eax,1),%edi
+  100de5:	89 7d e4             	mov    %edi,-0x1c(%ebp)
+  100de8:	85 c0                	test   %eax,%eax
+  100dea:	75 2d                	jne    100e19 <_ZN11VgaTerminal5writeEPKcm+0x49>
+  100dec:	eb 5a                	jmp    100e48 <_ZN11VgaTerminal5writeEPKcm+0x78>
+  100dee:	66 90                	xchg   %ax,%ax
+  100df0:	8b 3b                	mov    (%ebx),%edi
+  100df2:	8d 14 89             	lea    (%ecx,%ecx,4),%edx
+  100df5:	66 0b 43 08          	or     0x8(%ebx),%ax
+  100df9:	c1 e2 04             	shl    $0x4,%edx
+  100dfc:	01 fa                	add    %edi,%edx
+  100dfe:	83 c7 01             	add    $0x1,%edi
+  100e01:	01 d2                	add    %edx,%edx
+  100e03:	66 89 82 00 80 0b 00 	mov    %ax,0xb8000(%edx)
+  100e0a:	83 ff 4f             	cmp    $0x4f,%edi
+  100e0d:	77 14                	ja     100e23 <_ZN11VgaTerminal5writeEPKcm+0x53>
+  100e0f:	89 3b                	mov    %edi,(%ebx)
+  100e11:	83 c6 01             	add    $0x1,%esi
+  100e14:	39 75 e4             	cmp    %esi,-0x1c(%ebp)
+  100e17:	74 2f                	je     100e48 <_ZN11VgaTerminal5writeEPKcm+0x78>
+  100e19:	0f b6 06             	movzbl (%esi),%eax
+  100e1c:	8b 4b 04             	mov    0x4(%ebx),%ecx
+  100e1f:	3c 0a                	cmp    $0xa,%al
+  100e21:	75 cd                	jne    100df0 <_ZN11VgaTerminal5writeEPKcm+0x20>
+  100e23:	83 c1 01             	add    $0x1,%ecx
+  100e26:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
+  100e2c:	89 4b 04             	mov    %ecx,0x4(%ebx)
+  100e2f:	83 f9 18             	cmp    $0x18,%ecx
+  100e32:	76 dd                	jbe    100e11 <_ZN11VgaTerminal5writeEPKcm+0x41>
+  100e34:	83 ec 0c             	sub    $0xc,%esp
+  100e37:	83 c6 01             	add    $0x1,%esi
+  100e3a:	53                   	push   %ebx
+  100e3b:	e8 a0 fe ff ff       	call   100ce0 <_ZN11VgaTerminal6moveUpEv>
+  100e40:	83 c4 10             	add    $0x10,%esp
+  100e43:	39 75 e4             	cmp    %esi,-0x1c(%ebp)
+  100e46:	75 d1                	jne    100e19 <_ZN11VgaTerminal5writeEPKcm+0x49>
+  100e48:	8d 65 f4             	lea    -0xc(%ebp),%esp
+  100e4b:	5b                   	pop    %ebx
+  100e4c:	5e                   	pop    %esi
+  100e4d:	5f                   	pop    %edi
+  100e4e:	5d                   	pop    %ebp
+  100e4f:	c3                   	ret    
 
-00100f60 <_ZN13HeapAllocator5printEv>:
-  100f60:	55                   	push   ebp
-  100f61:	89 e5                	mov    ebp,esp
-  100f63:	57                   	push   edi
-  100f64:	56                   	push   esi
-  100f65:	8d 75 dc             	lea    esi,[ebp-0x24]
-  100f68:	53                   	push   ebx
-  100f69:	83 ec 28             	sub    esp,0x28
-  100f6c:	56                   	push   esi
-  100f6d:	e8 be fa ff ff       	call   100a30 <_ZN11VgaTerminalC1Ev>
-  100f72:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  100f75:	83 c4 10             	add    esp,0x10
-  100f78:	8b 78 08             	mov    edi,DWORD PTR [eax+0x8]
-  100f7b:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100f7f:	90                   	nop
-  100f80:	83 ec 04             	sub    esp,0x4
-  100f83:	bb 0c 00 00 00       	mov    ebx,0xc
-  100f88:	6a 00                	push   0x0
-  100f8a:	6a 01                	push   0x1
-  100f8c:	56                   	push   esi
-  100f8d:	e8 7e fb ff ff       	call   100b10 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
-  100f92:	83 c4 10             	add    esp,0x10
-  100f95:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  100f9c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  100fa0:	83 ec 08             	sub    esp,0x8
-  100fa3:	68 fe 00 00 00       	push   0xfe
-  100fa8:	56                   	push   esi
-  100fa9:	e8 02 fc ff ff       	call   100bb0 <_ZN11VgaTerminal7putCharEh>
-  100fae:	83 c4 10             	add    esp,0x10
-  100fb1:	83 eb 01             	sub    ebx,0x1
-  100fb4:	75 ea                	jne    100fa0 <_ZN13HeapAllocator5printEv+0x40>
-  100fb6:	83 ec 04             	sub    esp,0x4
-  100fb9:	6a 00                	push   0x0
-  100fbb:	6a 02                	push   0x2
-  100fbd:	56                   	push   esi
-  100fbe:	e8 4d fb ff ff       	call   100b10 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
-  100fc3:	8b 4f 08             	mov    ecx,DWORD PTR [edi+0x8]
-  100fc6:	83 c4 10             	add    esp,0x10
-  100fc9:	85 c9                	test   ecx,ecx
-  100fcb:	74 31                	je     100ffe <_ZN13HeapAllocator5printEv+0x9e>
-  100fcd:	8d 76 00             	lea    esi,[esi+0x0]
-  100fd0:	83 ec 08             	sub    esp,0x8
-  100fd3:	83 c3 01             	add    ebx,0x1
-  100fd6:	68 fe 00 00 00       	push   0xfe
-  100fdb:	56                   	push   esi
-  100fdc:	e8 cf fb ff ff       	call   100bb0 <_ZN11VgaTerminal7putCharEh>
-  100fe1:	8b 47 08             	mov    eax,DWORD PTR [edi+0x8]
-  100fe4:	83 c4 10             	add    esp,0x10
-  100fe7:	39 d8                	cmp    eax,ebx
-  100fe9:	77 e5                	ja     100fd0 <_ZN13HeapAllocator5printEv+0x70>
-  100feb:	8b 57 04             	mov    edx,DWORD PTR [edi+0x4]
-  100fee:	85 d2                	test   edx,edx
-  100ff0:	0f 84 9d 00 00 00    	je     101093 <_ZN13HeapAllocator5printEv+0x133>
-  100ff6:	85 c0                	test   eax,eax
-  100ff8:	74 0f                	je     101009 <_ZN13HeapAllocator5printEv+0xa9>
-  100ffa:	89 d7                	mov    edi,edx
-  100ffc:	eb 82                	jmp    100f80 <_ZN13HeapAllocator5printEv+0x20>
-  100ffe:	8b 47 04             	mov    eax,DWORD PTR [edi+0x4]
-  101001:	85 c0                	test   eax,eax
-  101003:	0f 84 8a 00 00 00    	je     101093 <_ZN13HeapAllocator5printEv+0x133>
-  101009:	81 7f 0c 56 34 12 00 	cmp    DWORD PTR [edi+0xc],0x123456
-  101010:	74 0e                	je     101020 <_ZN13HeapAllocator5printEv+0xc0>
-  101012:	83 ec 08             	sub    esp,0x8
-  101015:	6a 2a                	push   0x2a
-  101017:	56                   	push   esi
-  101018:	e8 93 fb ff ff       	call   100bb0 <_ZN11VgaTerminal7putCharEh>
-  10101d:	83 c4 10             	add    esp,0x10
-  101020:	83 ec 04             	sub    esp,0x4
-  101023:	bb 08 00 00 00       	mov    ebx,0x8
-  101028:	6a 00                	push   0x0
-  10102a:	6a 06                	push   0x6
-  10102c:	56                   	push   esi
-  10102d:	e8 de fa ff ff       	call   100b10 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
-  101032:	83 c4 10             	add    esp,0x10
-  101035:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  10103c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  101040:	83 ec 08             	sub    esp,0x8
-  101043:	68 fe 00 00 00       	push   0xfe
-  101048:	56                   	push   esi
-  101049:	e8 62 fb ff ff       	call   100bb0 <_ZN11VgaTerminal7putCharEh>
-  10104e:	83 c4 10             	add    esp,0x10
-  101051:	83 eb 01             	sub    ebx,0x1
-  101054:	75 ea                	jne    101040 <_ZN13HeapAllocator5printEv+0xe0>
-  101056:	83 ec 04             	sub    esp,0x4
-  101059:	6a 00                	push   0x0
-  10105b:	6a 04                	push   0x4
-  10105d:	56                   	push   esi
-  10105e:	e8 ad fa ff ff       	call   100b10 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
-  101063:	8b 57 10             	mov    edx,DWORD PTR [edi+0x10]
-  101066:	83 c4 10             	add    esp,0x10
-  101069:	85 d2                	test   edx,edx
-  10106b:	74 1c                	je     101089 <_ZN13HeapAllocator5printEv+0x129>
-  10106d:	8d 76 00             	lea    esi,[esi+0x0]
-  101070:	83 ec 08             	sub    esp,0x8
-  101073:	83 c3 01             	add    ebx,0x1
-  101076:	68 fe 00 00 00       	push   0xfe
-  10107b:	56                   	push   esi
-  10107c:	e8 2f fb ff ff       	call   100bb0 <_ZN11VgaTerminal7putCharEh>
-  101081:	83 c4 10             	add    esp,0x10
-  101084:	39 5f 10             	cmp    DWORD PTR [edi+0x10],ebx
-  101087:	77 e7                	ja     101070 <_ZN13HeapAllocator5printEv+0x110>
-  101089:	8b 57 04             	mov    edx,DWORD PTR [edi+0x4]
-  10108c:	89 d7                	mov    edi,edx
-  10108e:	e9 ed fe ff ff       	jmp    100f80 <_ZN13HeapAllocator5printEv+0x20>
-  101093:	8d 65 f4             	lea    esp,[ebp-0xc]
-  101096:	5b                   	pop    ebx
-  101097:	5e                   	pop    esi
-  101098:	5f                   	pop    edi
-  101099:	5d                   	pop    ebp
-  10109a:	c3                   	ret    
+00100e50 <_ZN11VgaTerminal11writeStringEPKc>:
+  100e50:	55                   	push   %ebp
+  100e51:	89 e5                	mov    %esp,%ebp
+  100e53:	57                   	push   %edi
+  100e54:	56                   	push   %esi
+  100e55:	53                   	push   %ebx
+  100e56:	83 ec 28             	sub    $0x28,%esp
+  100e59:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  100e5c:	8b 75 08             	mov    0x8(%ebp),%esi
+  100e5f:	53                   	push   %ebx
+  100e60:	e8 7b 00 00 00       	call   100ee0 <_Z6strlenPKc>
+  100e65:	83 c4 10             	add    $0x10,%esp
+  100e68:	8d 3c 03             	lea    (%ebx,%eax,1),%edi
+  100e6b:	89 7d e4             	mov    %edi,-0x1c(%ebp)
+  100e6e:	85 c0                	test   %eax,%eax
+  100e70:	75 37                	jne    100ea9 <_ZN11VgaTerminal11writeStringEPKc+0x59>
+  100e72:	eb 64                	jmp    100ed8 <_ZN11VgaTerminal11writeStringEPKc+0x88>
+  100e74:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100e7b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  100e7f:	90                   	nop
+  100e80:	8b 3e                	mov    (%esi),%edi
+  100e82:	8d 14 89             	lea    (%ecx,%ecx,4),%edx
+  100e85:	66 0b 46 08          	or     0x8(%esi),%ax
+  100e89:	c1 e2 04             	shl    $0x4,%edx
+  100e8c:	01 fa                	add    %edi,%edx
+  100e8e:	83 c7 01             	add    $0x1,%edi
+  100e91:	01 d2                	add    %edx,%edx
+  100e93:	66 89 82 00 80 0b 00 	mov    %ax,0xb8000(%edx)
+  100e9a:	83 ff 4f             	cmp    $0x4f,%edi
+  100e9d:	77 14                	ja     100eb3 <_ZN11VgaTerminal11writeStringEPKc+0x63>
+  100e9f:	89 3e                	mov    %edi,(%esi)
+  100ea1:	83 c3 01             	add    $0x1,%ebx
+  100ea4:	39 5d e4             	cmp    %ebx,-0x1c(%ebp)
+  100ea7:	74 2f                	je     100ed8 <_ZN11VgaTerminal11writeStringEPKc+0x88>
+  100ea9:	0f b6 03             	movzbl (%ebx),%eax
+  100eac:	8b 4e 04             	mov    0x4(%esi),%ecx
+  100eaf:	3c 0a                	cmp    $0xa,%al
+  100eb1:	75 cd                	jne    100e80 <_ZN11VgaTerminal11writeStringEPKc+0x30>
+  100eb3:	83 c1 01             	add    $0x1,%ecx
+  100eb6:	c7 06 00 00 00 00    	movl   $0x0,(%esi)
+  100ebc:	89 4e 04             	mov    %ecx,0x4(%esi)
+  100ebf:	83 f9 18             	cmp    $0x18,%ecx
+  100ec2:	76 dd                	jbe    100ea1 <_ZN11VgaTerminal11writeStringEPKc+0x51>
+  100ec4:	83 ec 0c             	sub    $0xc,%esp
+  100ec7:	83 c3 01             	add    $0x1,%ebx
+  100eca:	56                   	push   %esi
+  100ecb:	e8 10 fe ff ff       	call   100ce0 <_ZN11VgaTerminal6moveUpEv>
+  100ed0:	83 c4 10             	add    $0x10,%esp
+  100ed3:	39 5d e4             	cmp    %ebx,-0x1c(%ebp)
+  100ed6:	75 d1                	jne    100ea9 <_ZN11VgaTerminal11writeStringEPKc+0x59>
+  100ed8:	8d 65 f4             	lea    -0xc(%ebp),%esp
+  100edb:	5b                   	pop    %ebx
+  100edc:	5e                   	pop    %esi
+  100edd:	5f                   	pop    %edi
+  100ede:	5d                   	pop    %ebp
+  100edf:	c3                   	ret    
 
-0010109b <_start>:
-  10109b:	bc 40 78 10 00       	mov    esp,0x107840
-  1010a0:	e8 5b 01 00 00       	call   101200 <main>
-  1010a5:	fa                   	cli    
-  1010a6:	f4                   	hlt    
-  1010a7:	eb fd                	jmp    1010a6 <_start+0xb>
+00100ee0 <_Z6strlenPKc>:
+  100ee0:	55                   	push   %ebp
+  100ee1:	31 c0                	xor    %eax,%eax
+  100ee3:	89 e5                	mov    %esp,%ebp
+  100ee5:	8b 55 08             	mov    0x8(%ebp),%edx
+  100ee8:	80 3a 00             	cmpb   $0x0,(%edx)
+  100eeb:	74 0c                	je     100ef9 <_Z6strlenPKc+0x19>
+  100eed:	8d 76 00             	lea    0x0(%esi),%esi
+  100ef0:	83 c0 01             	add    $0x1,%eax
+  100ef3:	80 3c 02 00          	cmpb   $0x0,(%edx,%eax,1)
+  100ef7:	75 f7                	jne    100ef0 <_Z6strlenPKc+0x10>
+  100ef9:	5d                   	pop    %ebp
+  100efa:	c3                   	ret    
+  100efb:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  100eff:	90                   	nop
 
-001010a9 <gdt_flush>:
-  1010a9:	0f 01 15 20 38 10 00 	lgdtd  ds:0x103820
-  1010b0:	66 b8 10 00          	mov    ax,0x10
-  1010b4:	8e d8                	mov    ds,eax
-  1010b6:	8e c0                	mov    es,eax
-  1010b8:	8e e0                	mov    fs,eax
-  1010ba:	8e e8                	mov    gs,eax
-  1010bc:	8e d0                	mov    ss,eax
-  1010be:	ea c5 10 10 00 08 00 	jmp    0x8:0x1010c5
+00100f00 <_Z6memcpyPvPKvm>:
+  100f00:	55                   	push   %ebp
+  100f01:	89 e5                	mov    %esp,%ebp
+  100f03:	53                   	push   %ebx
+  100f04:	8b 5d 10             	mov    0x10(%ebp),%ebx
+  100f07:	85 db                	test   %ebx,%ebx
+  100f09:	74 25                	je     100f30 <_Z6memcpyPvPKvm+0x30>
+  100f0b:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100f0e:	8b 55 08             	mov    0x8(%ebp),%edx
+  100f11:	01 c3                	add    %eax,%ebx
+  100f13:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100f1a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  100f20:	0f b6 08             	movzbl (%eax),%ecx
+  100f23:	83 c0 01             	add    $0x1,%eax
+  100f26:	83 c2 01             	add    $0x1,%edx
+  100f29:	88 4a ff             	mov    %cl,-0x1(%edx)
+  100f2c:	39 d8                	cmp    %ebx,%eax
+  100f2e:	75 f0                	jne    100f20 <_Z6memcpyPvPKvm+0x20>
+  100f30:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+  100f33:	c9                   	leave  
+  100f34:	c3                   	ret    
+  100f35:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100f3c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-001010c5 <flush2>:
-  1010c5:	c3                   	ret    
+00100f40 <_Z6memsetPvhm>:
+  100f40:	55                   	push   %ebp
+  100f41:	89 e5                	mov    %esp,%ebp
+  100f43:	8b 45 10             	mov    0x10(%ebp),%eax
+  100f46:	8b 55 0c             	mov    0xc(%ebp),%edx
+  100f49:	85 c0                	test   %eax,%eax
+  100f4b:	74 06                	je     100f53 <_Z6memsetPvhm+0x13>
+  100f4d:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  100f50:	88 14 01             	mov    %dl,(%ecx,%eax,1)
+  100f53:	5d                   	pop    %ebp
+  100f54:	c3                   	ret    
+  100f55:	66 90                	xchg   %ax,%ax
+  100f57:	66 90                	xchg   %ax,%ax
+  100f59:	66 90                	xchg   %ax,%ax
+  100f5b:	66 90                	xchg   %ax,%ax
+  100f5d:	66 90                	xchg   %ax,%ax
+  100f5f:	90                   	nop
 
-001010c6 <idt_load>:
-  1010c6:	0f 01 1d 00 30 10 00 	lidtd  ds:0x103000
-  1010cd:	fb                   	sti    
-  1010ce:	c3                   	ret    
+00100f60 <_ZN13HeapAllocatorC1EPvm>:
+  100f60:	55                   	push   %ebp
+  100f61:	89 e5                	mov    %esp,%ebp
+  100f63:	56                   	push   %esi
+  100f64:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  100f67:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100f6a:	53                   	push   %ebx
+  100f6b:	8b 55 10             	mov    0x10(%ebp),%edx
+  100f6e:	89 01                	mov    %eax,(%ecx)
+  100f70:	89 51 04             	mov    %edx,0x4(%ecx)
+  100f73:	83 fa 0b             	cmp    $0xb,%edx
+  100f76:	77 18                	ja     100f90 <_ZN13HeapAllocatorC1EPvm+0x30>
+  100f78:	c7 41 08 00 00 00 00 	movl   $0x0,0x8(%ecx)
+  100f7f:	5b                   	pop    %ebx
+  100f80:	5e                   	pop    %esi
+  100f81:	5d                   	pop    %ebp
+  100f82:	c3                   	ret    
+  100f83:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  100f8a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  100f90:	89 c6                	mov    %eax,%esi
+  100f92:	8d 58 04             	lea    0x4(%eax),%ebx
+  100f95:	83 e6 03             	and    $0x3,%esi
+  100f98:	29 f3                	sub    %esi,%ebx
+  100f9a:	85 f6                	test   %esi,%esi
+  100f9c:	0f 45 c3             	cmovne %ebx,%eax
+  100f9f:	83 ea 0c             	sub    $0xc,%edx
+  100fa2:	83 e2 fc             	and    $0xfffffffc,%edx
+  100fa5:	89 41 08             	mov    %eax,0x8(%ecx)
+  100fa8:	89 50 08             	mov    %edx,0x8(%eax)
+  100fab:	c7 40 04 00 00 00 00 	movl   $0x0,0x4(%eax)
+  100fb2:	c7 00 00 00 00 00    	movl   $0x0,(%eax)
+  100fb8:	5b                   	pop    %ebx
+  100fb9:	5e                   	pop    %esi
+  100fba:	5d                   	pop    %ebp
+  100fbb:	c3                   	ret    
+  100fbc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-001010cf <_isr0>:
-  1010cf:	fa                   	cli    
-  1010d0:	6a 00                	push   0x0
-  1010d2:	6a 00                	push   0x0
-  1010d4:	e9 f1 00 00 00       	jmp    1011ca <isr_common_stub>
+00100fc0 <_ZN13HeapAllocator8allocateEm>:
+  100fc0:	55                   	push   %ebp
+  100fc1:	89 e5                	mov    %esp,%ebp
+  100fc3:	57                   	push   %edi
+  100fc4:	8b 55 0c             	mov    0xc(%ebp),%edx
+  100fc7:	56                   	push   %esi
+  100fc8:	53                   	push   %ebx
+  100fc9:	85 d2                	test   %edx,%edx
+  100fcb:	0f 84 8f 00 00 00    	je     101060 <_ZN13HeapAllocator8allocateEm+0xa0>
+  100fd1:	8b 45 08             	mov    0x8(%ebp),%eax
+  100fd4:	8b 40 08             	mov    0x8(%eax),%eax
+  100fd7:	85 c0                	test   %eax,%eax
+  100fd9:	74 5b                	je     101036 <_ZN13HeapAllocator8allocateEm+0x76>
+  100fdb:	89 d3                	mov    %edx,%ebx
+  100fdd:	8d 4a 04             	lea    0x4(%edx),%ecx
+  100fe0:	83 e3 03             	and    $0x3,%ebx
+  100fe3:	29 d9                	sub    %ebx,%ecx
+  100fe5:	85 db                	test   %ebx,%ebx
+  100fe7:	0f 44 ca             	cmove  %edx,%ecx
+  100fea:	8d 59 08             	lea    0x8(%ecx),%ebx
+  100fed:	eb 08                	jmp    100ff7 <_ZN13HeapAllocator8allocateEm+0x37>
+  100fef:	90                   	nop
+  100ff0:	8b 40 04             	mov    0x4(%eax),%eax
+  100ff3:	85 c0                	test   %eax,%eax
+  100ff5:	74 3f                	je     101036 <_ZN13HeapAllocator8allocateEm+0x76>
+  100ff7:	8b 50 08             	mov    0x8(%eax),%edx
+  100ffa:	39 da                	cmp    %ebx,%edx
+  100ffc:	72 f2                	jb     100ff0 <_ZN13HeapAllocator8allocateEm+0x30>
+  100ffe:	8d 59 14             	lea    0x14(%ecx),%ebx
+  101001:	8d 78 14             	lea    0x14(%eax),%edi
+  101004:	39 da                	cmp    %ebx,%edx
+  101006:	72 68                	jb     101070 <_ZN13HeapAllocator8allocateEm+0xb0>
+  101008:	8b 70 04             	mov    0x4(%eax),%esi
+  10100b:	29 ca                	sub    %ecx,%edx
+  10100d:	89 48 10             	mov    %ecx,0x10(%eax)
+  101010:	01 c3                	add    %eax,%ebx
+  101012:	c7 40 0c 56 34 12 00 	movl   $0x123456,0xc(%eax)
+  101019:	83 ea 14             	sub    $0x14,%edx
+  10101c:	85 f6                	test   %esi,%esi
+  10101e:	74 20                	je     101040 <_ZN13HeapAllocator8allocateEm+0x80>
+  101020:	89 1e                	mov    %ebx,(%esi)
+  101022:	89 03                	mov    %eax,(%ebx)
+  101024:	89 73 04             	mov    %esi,0x4(%ebx)
+  101027:	89 58 04             	mov    %ebx,0x4(%eax)
+  10102a:	89 53 08             	mov    %edx,0x8(%ebx)
+  10102d:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%eax)
+  101034:	89 f8                	mov    %edi,%eax
+  101036:	5b                   	pop    %ebx
+  101037:	5e                   	pop    %esi
+  101038:	5f                   	pop    %edi
+  101039:	5d                   	pop    %ebp
+  10103a:	c3                   	ret    
+  10103b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  10103f:	90                   	nop
+  101040:	89 58 04             	mov    %ebx,0x4(%eax)
+  101043:	89 03                	mov    %eax,(%ebx)
+  101045:	c7 43 04 00 00 00 00 	movl   $0x0,0x4(%ebx)
+  10104c:	89 53 08             	mov    %edx,0x8(%ebx)
+  10104f:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%eax)
+  101056:	89 f8                	mov    %edi,%eax
+  101058:	eb dc                	jmp    101036 <_ZN13HeapAllocator8allocateEm+0x76>
+  10105a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  101060:	5b                   	pop    %ebx
+  101061:	31 c0                	xor    %eax,%eax
+  101063:	5e                   	pop    %esi
+  101064:	5f                   	pop    %edi
+  101065:	5d                   	pop    %ebp
+  101066:	c3                   	ret    
+  101067:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10106e:	66 90                	xchg   %ax,%ax
+  101070:	83 ea 08             	sub    $0x8,%edx
+  101073:	c7 40 0c 56 34 12 00 	movl   $0x123456,0xc(%eax)
+  10107a:	89 50 10             	mov    %edx,0x10(%eax)
+  10107d:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%eax)
+  101084:	89 f8                	mov    %edi,%eax
+  101086:	5b                   	pop    %ebx
+  101087:	5e                   	pop    %esi
+  101088:	5f                   	pop    %edi
+  101089:	5d                   	pop    %ebp
+  10108a:	c3                   	ret    
+  10108b:	90                   	nop
+  10108c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-001010d9 <_isr1>:
-  1010d9:	fa                   	cli    
-  1010da:	6a 00                	push   0x0
-  1010dc:	6a 01                	push   0x1
-  1010de:	e9 e7 00 00 00       	jmp    1011ca <isr_common_stub>
+00101090 <_ZN13HeapAllocator4freeEPv>:
+  101090:	55                   	push   %ebp
+  101091:	89 e5                	mov    %esp,%ebp
+  101093:	56                   	push   %esi
+  101094:	8b 45 0c             	mov    0xc(%ebp),%eax
+  101097:	53                   	push   %ebx
+  101098:	85 c0                	test   %eax,%eax
+  10109a:	74 4d                	je     1010e9 <_ZN13HeapAllocator4freeEPv+0x59>
+  10109c:	81 78 f8 56 34 12 00 	cmpl   $0x123456,-0x8(%eax)
+  1010a3:	75 44                	jne    1010e9 <_ZN13HeapAllocator4freeEPv+0x59>
+  1010a5:	8b 70 fc             	mov    -0x4(%eax),%esi
+  1010a8:	8b 48 ec             	mov    -0x14(%eax),%ecx
+  1010ab:	c7 40 f8 21 43 65 00 	movl   $0x654321,-0x8(%eax)
+  1010b2:	8d 58 ec             	lea    -0x14(%eax),%ebx
+  1010b5:	8d 56 08             	lea    0x8(%esi),%edx
+  1010b8:	89 50 f4             	mov    %edx,-0xc(%eax)
+  1010bb:	85 c9                	test   %ecx,%ecx
+  1010bd:	74 07                	je     1010c6 <_ZN13HeapAllocator4freeEPv+0x36>
+  1010bf:	8b 71 08             	mov    0x8(%ecx),%esi
+  1010c2:	85 f6                	test   %esi,%esi
+  1010c4:	75 2a                	jne    1010f0 <_ZN13HeapAllocator4freeEPv+0x60>
+  1010c6:	8b 50 f0             	mov    -0x10(%eax),%edx
+  1010c9:	85 d2                	test   %edx,%edx
+  1010cb:	74 1c                	je     1010e9 <_ZN13HeapAllocator4freeEPv+0x59>
+  1010cd:	8b 42 08             	mov    0x8(%edx),%eax
+  1010d0:	85 c0                	test   %eax,%eax
+  1010d2:	74 15                	je     1010e9 <_ZN13HeapAllocator4freeEPv+0x59>
+  1010d4:	03 43 08             	add    0x8(%ebx),%eax
+  1010d7:	83 c0 0c             	add    $0xc,%eax
+  1010da:	89 43 08             	mov    %eax,0x8(%ebx)
+  1010dd:	8b 42 04             	mov    0x4(%edx),%eax
+  1010e0:	85 c0                	test   %eax,%eax
+  1010e2:	74 02                	je     1010e6 <_ZN13HeapAllocator4freeEPv+0x56>
+  1010e4:	89 18                	mov    %ebx,(%eax)
+  1010e6:	89 43 04             	mov    %eax,0x4(%ebx)
+  1010e9:	5b                   	pop    %ebx
+  1010ea:	5e                   	pop    %esi
+  1010eb:	5d                   	pop    %ebp
+  1010ec:	c3                   	ret    
+  1010ed:	8d 76 00             	lea    0x0(%esi),%esi
+  1010f0:	8d 54 32 0c          	lea    0xc(%edx,%esi,1),%edx
+  1010f4:	89 cb                	mov    %ecx,%ebx
+  1010f6:	89 51 08             	mov    %edx,0x8(%ecx)
+  1010f9:	8b 50 f0             	mov    -0x10(%eax),%edx
+  1010fc:	89 51 04             	mov    %edx,0x4(%ecx)
+  1010ff:	8b 70 f0             	mov    -0x10(%eax),%esi
+  101102:	85 f6                	test   %esi,%esi
+  101104:	74 c3                	je     1010c9 <_ZN13HeapAllocator4freeEPv+0x39>
+  101106:	89 0e                	mov    %ecx,(%esi)
+  101108:	8b 58 ec             	mov    -0x14(%eax),%ebx
+  10110b:	8b 53 04             	mov    0x4(%ebx),%edx
+  10110e:	eb b9                	jmp    1010c9 <_ZN13HeapAllocator4freeEPv+0x39>
 
-001010e3 <_isr2>:
-  1010e3:	fa                   	cli    
-  1010e4:	6a 00                	push   0x0
-  1010e6:	6a 02                	push   0x2
-  1010e8:	e9 dd 00 00 00       	jmp    1011ca <isr_common_stub>
+00101110 <_ZN13HeapAllocator9Allocated3setEm>:
+  101110:	55                   	push   %ebp
+  101111:	89 e5                	mov    %esp,%ebp
+  101113:	8b 45 08             	mov    0x8(%ebp),%eax
+  101116:	8b 55 0c             	mov    0xc(%ebp),%edx
+  101119:	c7 00 56 34 12 00    	movl   $0x123456,(%eax)
+  10111f:	89 50 04             	mov    %edx,0x4(%eax)
+  101122:	5d                   	pop    %ebp
+  101123:	c3                   	ret    
+  101124:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10112b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  10112f:	90                   	nop
 
-001010ed <_isr3>:
-  1010ed:	fa                   	cli    
-  1010ee:	6a 00                	push   0x0
-  1010f0:	6a 03                	push   0x3
-  1010f2:	e9 d3 00 00 00       	jmp    1011ca <isr_common_stub>
+00101130 <_ZN13HeapAllocator18roundUpToAlignmentEm>:
+  101130:	55                   	push   %ebp
+  101131:	89 e5                	mov    %esp,%ebp
+  101133:	8b 45 0c             	mov    0xc(%ebp),%eax
+  101136:	5d                   	pop    %ebp
+  101137:	89 c1                	mov    %eax,%ecx
+  101139:	8d 50 04             	lea    0x4(%eax),%edx
+  10113c:	83 e1 03             	and    $0x3,%ecx
+  10113f:	29 ca                	sub    %ecx,%edx
+  101141:	85 c9                	test   %ecx,%ecx
+  101143:	0f 45 c2             	cmovne %edx,%eax
+  101146:	c3                   	ret    
+  101147:	90                   	nop
+  101148:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10114f:	90                   	nop
 
-001010f7 <_isr4>:
-  1010f7:	fa                   	cli    
-  1010f8:	6a 00                	push   0x0
-  1010fa:	6a 04                	push   0x4
-  1010fc:	e9 c9 00 00 00       	jmp    1011ca <isr_common_stub>
+00101150 <_ZN13HeapAllocator20roundDownToAlignmentEm>:
+  101150:	55                   	push   %ebp
+  101151:	89 e5                	mov    %esp,%ebp
+  101153:	8b 45 0c             	mov    0xc(%ebp),%eax
+  101156:	5d                   	pop    %ebp
+  101157:	83 e0 fc             	and    $0xfffffffc,%eax
+  10115a:	c3                   	ret    
+  10115b:	90                   	nop
+  10115c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
 
-00101101 <_isr5>:
-  101101:	fa                   	cli    
-  101102:	6a 00                	push   0x0
-  101104:	6a 05                	push   0x5
-  101106:	e9 bf 00 00 00       	jmp    1011ca <isr_common_stub>
+00101160 <_ZN13HeapAllocator5printEv>:
+  101160:	55                   	push   %ebp
+  101161:	89 e5                	mov    %esp,%ebp
+  101163:	57                   	push   %edi
+  101164:	56                   	push   %esi
+  101165:	8d 75 dc             	lea    -0x24(%ebp),%esi
+  101168:	53                   	push   %ebx
+  101169:	83 ec 28             	sub    $0x28,%esp
+  10116c:	56                   	push   %esi
+  10116d:	e8 6e fa ff ff       	call   100be0 <_ZN11VgaTerminalC1Ev>
+  101172:	8b 45 08             	mov    0x8(%ebp),%eax
+  101175:	83 c4 10             	add    $0x10,%esp
+  101178:	8b 78 08             	mov    0x8(%eax),%edi
+  10117b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  10117f:	90                   	nop
+  101180:	83 ec 04             	sub    $0x4,%esp
+  101183:	bb 0c 00 00 00       	mov    $0xc,%ebx
+  101188:	6a 00                	push   $0x0
+  10118a:	6a 01                	push   $0x1
+  10118c:	56                   	push   %esi
+  10118d:	e8 2e fb ff ff       	call   100cc0 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
+  101192:	83 c4 10             	add    $0x10,%esp
+  101195:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10119c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  1011a0:	83 ec 08             	sub    $0x8,%esp
+  1011a3:	68 fe 00 00 00       	push   $0xfe
+  1011a8:	56                   	push   %esi
+  1011a9:	e8 b2 fb ff ff       	call   100d60 <_ZN11VgaTerminal7putCharEh>
+  1011ae:	83 c4 10             	add    $0x10,%esp
+  1011b1:	83 eb 01             	sub    $0x1,%ebx
+  1011b4:	75 ea                	jne    1011a0 <_ZN13HeapAllocator5printEv+0x40>
+  1011b6:	83 ec 04             	sub    $0x4,%esp
+  1011b9:	6a 00                	push   $0x0
+  1011bb:	6a 02                	push   $0x2
+  1011bd:	56                   	push   %esi
+  1011be:	e8 fd fa ff ff       	call   100cc0 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
+  1011c3:	8b 4f 08             	mov    0x8(%edi),%ecx
+  1011c6:	83 c4 10             	add    $0x10,%esp
+  1011c9:	85 c9                	test   %ecx,%ecx
+  1011cb:	74 31                	je     1011fe <_ZN13HeapAllocator5printEv+0x9e>
+  1011cd:	8d 76 00             	lea    0x0(%esi),%esi
+  1011d0:	83 ec 08             	sub    $0x8,%esp
+  1011d3:	83 c3 01             	add    $0x1,%ebx
+  1011d6:	68 fe 00 00 00       	push   $0xfe
+  1011db:	56                   	push   %esi
+  1011dc:	e8 7f fb ff ff       	call   100d60 <_ZN11VgaTerminal7putCharEh>
+  1011e1:	8b 47 08             	mov    0x8(%edi),%eax
+  1011e4:	83 c4 10             	add    $0x10,%esp
+  1011e7:	39 d8                	cmp    %ebx,%eax
+  1011e9:	77 e5                	ja     1011d0 <_ZN13HeapAllocator5printEv+0x70>
+  1011eb:	8b 57 04             	mov    0x4(%edi),%edx
+  1011ee:	85 d2                	test   %edx,%edx
+  1011f0:	0f 84 9d 00 00 00    	je     101293 <_ZN13HeapAllocator5printEv+0x133>
+  1011f6:	85 c0                	test   %eax,%eax
+  1011f8:	74 0f                	je     101209 <_ZN13HeapAllocator5printEv+0xa9>
+  1011fa:	89 d7                	mov    %edx,%edi
+  1011fc:	eb 82                	jmp    101180 <_ZN13HeapAllocator5printEv+0x20>
+  1011fe:	8b 47 04             	mov    0x4(%edi),%eax
+  101201:	85 c0                	test   %eax,%eax
+  101203:	0f 84 8a 00 00 00    	je     101293 <_ZN13HeapAllocator5printEv+0x133>
+  101209:	81 7f 0c 56 34 12 00 	cmpl   $0x123456,0xc(%edi)
+  101210:	74 0e                	je     101220 <_ZN13HeapAllocator5printEv+0xc0>
+  101212:	83 ec 08             	sub    $0x8,%esp
+  101215:	6a 2a                	push   $0x2a
+  101217:	56                   	push   %esi
+  101218:	e8 43 fb ff ff       	call   100d60 <_ZN11VgaTerminal7putCharEh>
+  10121d:	83 c4 10             	add    $0x10,%esp
+  101220:	83 ec 04             	sub    $0x4,%esp
+  101223:	bb 08 00 00 00       	mov    $0x8,%ebx
+  101228:	6a 00                	push   $0x0
+  10122a:	6a 06                	push   $0x6
+  10122c:	56                   	push   %esi
+  10122d:	e8 8e fa ff ff       	call   100cc0 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
+  101232:	83 c4 10             	add    $0x10,%esp
+  101235:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  10123c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  101240:	83 ec 08             	sub    $0x8,%esp
+  101243:	68 fe 00 00 00       	push   $0xfe
+  101248:	56                   	push   %esi
+  101249:	e8 12 fb ff ff       	call   100d60 <_ZN11VgaTerminal7putCharEh>
+  10124e:	83 c4 10             	add    $0x10,%esp
+  101251:	83 eb 01             	sub    $0x1,%ebx
+  101254:	75 ea                	jne    101240 <_ZN13HeapAllocator5printEv+0xe0>
+  101256:	83 ec 04             	sub    $0x4,%esp
+  101259:	6a 00                	push   $0x0
+  10125b:	6a 04                	push   $0x4
+  10125d:	56                   	push   %esi
+  10125e:	e8 5d fa ff ff       	call   100cc0 <_ZN11VgaTerminal8setColorE8VgaColorS0_>
+  101263:	8b 57 10             	mov    0x10(%edi),%edx
+  101266:	83 c4 10             	add    $0x10,%esp
+  101269:	85 d2                	test   %edx,%edx
+  10126b:	74 1c                	je     101289 <_ZN13HeapAllocator5printEv+0x129>
+  10126d:	8d 76 00             	lea    0x0(%esi),%esi
+  101270:	83 ec 08             	sub    $0x8,%esp
+  101273:	83 c3 01             	add    $0x1,%ebx
+  101276:	68 fe 00 00 00       	push   $0xfe
+  10127b:	56                   	push   %esi
+  10127c:	e8 df fa ff ff       	call   100d60 <_ZN11VgaTerminal7putCharEh>
+  101281:	83 c4 10             	add    $0x10,%esp
+  101284:	39 5f 10             	cmp    %ebx,0x10(%edi)
+  101287:	77 e7                	ja     101270 <_ZN13HeapAllocator5printEv+0x110>
+  101289:	8b 57 04             	mov    0x4(%edi),%edx
+  10128c:	89 d7                	mov    %edx,%edi
+  10128e:	e9 ed fe ff ff       	jmp    101180 <_ZN13HeapAllocator5printEv+0x20>
+  101293:	8d 65 f4             	lea    -0xc(%ebp),%esp
+  101296:	5b                   	pop    %ebx
+  101297:	5e                   	pop    %esi
+  101298:	5f                   	pop    %edi
+  101299:	5d                   	pop    %ebp
+  10129a:	c3                   	ret    
 
-0010110b <_isr6>:
-  10110b:	fa                   	cli    
-  10110c:	6a 00                	push   0x0
-  10110e:	6a 06                	push   0x6
-  101110:	e9 b5 00 00 00       	jmp    1011ca <isr_common_stub>
+0010129b <_start>:
+  10129b:	bc 40 78 10 00       	mov    $0x107840,%esp
+  1012a0:	e8 5b 01 00 00       	call   101400 <main>
+  1012a5:	fa                   	cli    
+  1012a6:	f4                   	hlt    
+  1012a7:	eb fd                	jmp    1012a6 <_start+0xb>
 
-00101115 <_isr7>:
-  101115:	fa                   	cli    
-  101116:	6a 00                	push   0x0
-  101118:	6a 07                	push   0x7
-  10111a:	e9 ab 00 00 00       	jmp    1011ca <isr_common_stub>
+001012a9 <gdt_flush>:
+  1012a9:	0f 01 15 20 38 10 00 	lgdtl  0x103820
+  1012b0:	66 b8 10 00          	mov    $0x10,%ax
+  1012b4:	8e d8                	mov    %eax,%ds
+  1012b6:	8e c0                	mov    %eax,%es
+  1012b8:	8e e0                	mov    %eax,%fs
+  1012ba:	8e e8                	mov    %eax,%gs
+  1012bc:	8e d0                	mov    %eax,%ss
+  1012be:	ea c5 12 10 00 08 00 	ljmp   $0x8,$0x1012c5
 
-0010111f <_isr8>:
-  10111f:	fa                   	cli    
-  101120:	6a 08                	push   0x8
-  101122:	e9 a3 00 00 00       	jmp    1011ca <isr_common_stub>
+001012c5 <flush2>:
+  1012c5:	c3                   	ret    
 
-00101127 <_isr9>:
-  101127:	fa                   	cli    
-  101128:	6a 00                	push   0x0
-  10112a:	6a 09                	push   0x9
-  10112c:	e9 99 00 00 00       	jmp    1011ca <isr_common_stub>
+001012c6 <idt_load>:
+  1012c6:	0f 01 1d 00 30 10 00 	lidtl  0x103000
+  1012cd:	fb                   	sti    
+  1012ce:	c3                   	ret    
 
-00101131 <_isr10>:
-  101131:	fa                   	cli    
-  101132:	6a 0a                	push   0xa
-  101134:	e9 91 00 00 00       	jmp    1011ca <isr_common_stub>
+001012cf <isr0>:
+  1012cf:	fa                   	cli    
+  1012d0:	6a 00                	push   $0x0
+  1012d2:	6a 01                	push   $0x1
+  1012d4:	e9 f1 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101139 <_isr11>:
-  101139:	fa                   	cli    
-  10113a:	6a 0b                	push   0xb
-  10113c:	e9 89 00 00 00       	jmp    1011ca <isr_common_stub>
+001012d9 <isr1>:
+  1012d9:	fa                   	cli    
+  1012da:	6a 01                	push   $0x1
+  1012dc:	6a 01                	push   $0x1
+  1012de:	e9 e7 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101141 <_isr12>:
-  101141:	fa                   	cli    
-  101142:	6a 0c                	push   0xc
-  101144:	e9 81 00 00 00       	jmp    1011ca <isr_common_stub>
+001012e3 <isr2>:
+  1012e3:	fa                   	cli    
+  1012e4:	6a 02                	push   $0x2
+  1012e6:	6a 01                	push   $0x1
+  1012e8:	e9 dd 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101149 <_isr13>:
-  101149:	fa                   	cli    
-  10114a:	6a 0d                	push   0xd
-  10114c:	eb 7c                	jmp    1011ca <isr_common_stub>
+001012ed <isr3>:
+  1012ed:	fa                   	cli    
+  1012ee:	6a 03                	push   $0x3
+  1012f0:	6a 01                	push   $0x1
+  1012f2:	e9 d3 00 00 00       	jmp    1013ca <isr_common_stub>
 
-0010114e <_isr14>:
-  10114e:	fa                   	cli    
-  10114f:	6a 0e                	push   0xe
-  101151:	eb 77                	jmp    1011ca <isr_common_stub>
+001012f7 <isr4>:
+  1012f7:	fa                   	cli    
+  1012f8:	6a 04                	push   $0x4
+  1012fa:	6a 01                	push   $0x1
+  1012fc:	e9 c9 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101153 <_isr15>:
-  101153:	fa                   	cli    
-  101154:	6a 00                	push   0x0
-  101156:	6a 0f                	push   0xf
-  101158:	eb 70                	jmp    1011ca <isr_common_stub>
+00101301 <isr5>:
+  101301:	fa                   	cli    
+  101302:	6a 05                	push   $0x5
+  101304:	6a 01                	push   $0x1
+  101306:	e9 bf 00 00 00       	jmp    1013ca <isr_common_stub>
 
-0010115a <_isr16>:
-  10115a:	fa                   	cli    
-  10115b:	6a 00                	push   0x0
-  10115d:	6a 10                	push   0x10
-  10115f:	eb 69                	jmp    1011ca <isr_common_stub>
+0010130b <isr6>:
+  10130b:	fa                   	cli    
+  10130c:	6a 06                	push   $0x6
+  10130e:	6a 01                	push   $0x1
+  101310:	e9 b5 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101161 <_isr17>:
-  101161:	fa                   	cli    
-  101162:	6a 00                	push   0x0
-  101164:	6a 11                	push   0x11
-  101166:	eb 62                	jmp    1011ca <isr_common_stub>
+00101315 <isr7>:
+  101315:	fa                   	cli    
+  101316:	6a 07                	push   $0x7
+  101318:	6a 01                	push   $0x1
+  10131a:	e9 ab 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101168 <_isr18>:
-  101168:	fa                   	cli    
-  101169:	6a 00                	push   0x0
-  10116b:	6a 12                	push   0x12
-  10116d:	eb 5b                	jmp    1011ca <isr_common_stub>
+0010131f <isr8>:
+  10131f:	fa                   	cli    
+  101320:	6a 01                	push   $0x1
+  101322:	e9 a3 00 00 00       	jmp    1013ca <isr_common_stub>
 
-0010116f <_isr19>:
-  10116f:	fa                   	cli    
-  101170:	6a 00                	push   0x0
-  101172:	6a 13                	push   0x13
-  101174:	eb 54                	jmp    1011ca <isr_common_stub>
+00101327 <isr9>:
+  101327:	fa                   	cli    
+  101328:	6a 09                	push   $0x9
+  10132a:	6a 01                	push   $0x1
+  10132c:	e9 99 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101176 <_isr20>:
-  101176:	fa                   	cli    
-  101177:	6a 00                	push   0x0
-  101179:	6a 14                	push   0x14
-  10117b:	eb 4d                	jmp    1011ca <isr_common_stub>
+00101331 <isr10>:
+  101331:	fa                   	cli    
+  101332:	6a 01                	push   $0x1
+  101334:	e9 91 00 00 00       	jmp    1013ca <isr_common_stub>
 
-0010117d <_isr21>:
-  10117d:	fa                   	cli    
-  10117e:	6a 00                	push   0x0
-  101180:	6a 15                	push   0x15
-  101182:	eb 46                	jmp    1011ca <isr_common_stub>
+00101339 <isr11>:
+  101339:	fa                   	cli    
+  10133a:	6a 01                	push   $0x1
+  10133c:	e9 89 00 00 00       	jmp    1013ca <isr_common_stub>
 
-00101184 <_isr22>:
-  101184:	fa                   	cli    
-  101185:	6a 00                	push   0x0
-  101187:	6a 16                	push   0x16
-  101189:	eb 3f                	jmp    1011ca <isr_common_stub>
+00101341 <isr12>:
+  101341:	fa                   	cli    
+  101342:	6a 01                	push   $0x1
+  101344:	e9 81 00 00 00       	jmp    1013ca <isr_common_stub>
 
-0010118b <_isr23>:
-  10118b:	fa                   	cli    
-  10118c:	6a 00                	push   0x0
-  10118e:	6a 17                	push   0x17
-  101190:	eb 38                	jmp    1011ca <isr_common_stub>
+00101349 <isr13>:
+  101349:	fa                   	cli    
+  10134a:	6a 01                	push   $0x1
+  10134c:	eb 7c                	jmp    1013ca <isr_common_stub>
 
-00101192 <_isr24>:
-  101192:	fa                   	cli    
-  101193:	6a 00                	push   0x0
-  101195:	6a 18                	push   0x18
-  101197:	eb 31                	jmp    1011ca <isr_common_stub>
+0010134e <isr14>:
+  10134e:	fa                   	cli    
+  10134f:	6a 01                	push   $0x1
+  101351:	eb 77                	jmp    1013ca <isr_common_stub>
 
-00101199 <_isr25>:
-  101199:	fa                   	cli    
-  10119a:	6a 00                	push   0x0
-  10119c:	6a 19                	push   0x19
-  10119e:	eb 2a                	jmp    1011ca <isr_common_stub>
+00101353 <isr15>:
+  101353:	fa                   	cli    
+  101354:	6a 0f                	push   $0xf
+  101356:	6a 01                	push   $0x1
+  101358:	eb 70                	jmp    1013ca <isr_common_stub>
 
-001011a0 <_isr26>:
-  1011a0:	fa                   	cli    
-  1011a1:	6a 00                	push   0x0
-  1011a3:	6a 1a                	push   0x1a
-  1011a5:	eb 23                	jmp    1011ca <isr_common_stub>
+0010135a <isr16>:
+  10135a:	fa                   	cli    
+  10135b:	6a 10                	push   $0x10
+  10135d:	6a 01                	push   $0x1
+  10135f:	eb 69                	jmp    1013ca <isr_common_stub>
 
-001011a7 <_isr27>:
-  1011a7:	fa                   	cli    
-  1011a8:	6a 00                	push   0x0
-  1011aa:	6a 1b                	push   0x1b
-  1011ac:	eb 1c                	jmp    1011ca <isr_common_stub>
+00101361 <isr17>:
+  101361:	fa                   	cli    
+  101362:	6a 11                	push   $0x11
+  101364:	6a 01                	push   $0x1
+  101366:	eb 62                	jmp    1013ca <isr_common_stub>
 
-001011ae <_isr28>:
-  1011ae:	fa                   	cli    
-  1011af:	6a 00                	push   0x0
-  1011b1:	6a 1c                	push   0x1c
-  1011b3:	eb 15                	jmp    1011ca <isr_common_stub>
+00101368 <isr18>:
+  101368:	fa                   	cli    
+  101369:	6a 12                	push   $0x12
+  10136b:	6a 01                	push   $0x1
+  10136d:	eb 5b                	jmp    1013ca <isr_common_stub>
 
-001011b5 <_isr29>:
-  1011b5:	fa                   	cli    
-  1011b6:	6a 00                	push   0x0
-  1011b8:	6a 1d                	push   0x1d
-  1011ba:	eb 0e                	jmp    1011ca <isr_common_stub>
+0010136f <isr19>:
+  10136f:	fa                   	cli    
+  101370:	6a 13                	push   $0x13
+  101372:	6a 01                	push   $0x1
+  101374:	eb 54                	jmp    1013ca <isr_common_stub>
 
-001011bc <_isr30>:
-  1011bc:	fa                   	cli    
-  1011bd:	6a 00                	push   0x0
-  1011bf:	6a 1e                	push   0x1e
-  1011c1:	eb 07                	jmp    1011ca <isr_common_stub>
+00101376 <isr20>:
+  101376:	fa                   	cli    
+  101377:	6a 14                	push   $0x14
+  101379:	6a 01                	push   $0x1
+  10137b:	eb 4d                	jmp    1013ca <isr_common_stub>
 
-001011c3 <_isr31>:
-  1011c3:	fa                   	cli    
-  1011c4:	6a 00                	push   0x0
-  1011c6:	6a 1f                	push   0x1f
-  1011c8:	eb 00                	jmp    1011ca <isr_common_stub>
+0010137d <isr21>:
+  10137d:	fa                   	cli    
+  10137e:	6a 15                	push   $0x15
+  101380:	6a 01                	push   $0x1
+  101382:	eb 46                	jmp    1013ca <isr_common_stub>
 
-001011ca <isr_common_stub>:
-  1011ca:	60                   	pusha  
-  1011cb:	1e                   	push   ds
-  1011cc:	06                   	push   es
-  1011cd:	0f a0                	push   fs
-  1011cf:	0f a8                	push   gs
-  1011d1:	66 b8 10 00          	mov    ax,0x10
-  1011d5:	8e d8                	mov    ds,eax
-  1011d7:	8e c0                	mov    es,eax
-  1011d9:	8e e0                	mov    fs,eax
-  1011db:	8e e8                	mov    gs,eax
-  1011dd:	89 e0                	mov    eax,esp
-  1011df:	50                   	push   eax
-  1011e0:	a1 80 08 10 00       	mov    eax,ds:0x100880
-  1011e5:	ff d0                	call   eax
-  1011e7:	58                   	pop    eax
-  1011e8:	0f a9                	pop    gs
-  1011ea:	0f a1                	pop    fs
-  1011ec:	07                   	pop    es
-  1011ed:	1f                   	pop    ds
-  1011ee:	61                   	popa   
-  1011ef:	83 c4 08             	add    esp,0x8
-  1011f2:	cf                   	iret   
+00101384 <isr22>:
+  101384:	fa                   	cli    
+  101385:	6a 16                	push   $0x16
+  101387:	6a 01                	push   $0x1
+  101389:	eb 3f                	jmp    1013ca <isr_common_stub>
+
+0010138b <isr23>:
+  10138b:	fa                   	cli    
+  10138c:	6a 17                	push   $0x17
+  10138e:	6a 01                	push   $0x1
+  101390:	eb 38                	jmp    1013ca <isr_common_stub>
+
+00101392 <isr24>:
+  101392:	fa                   	cli    
+  101393:	6a 18                	push   $0x18
+  101395:	6a 01                	push   $0x1
+  101397:	eb 31                	jmp    1013ca <isr_common_stub>
+
+00101399 <isr25>:
+  101399:	fa                   	cli    
+  10139a:	6a 19                	push   $0x19
+  10139c:	6a 01                	push   $0x1
+  10139e:	eb 2a                	jmp    1013ca <isr_common_stub>
+
+001013a0 <isr26>:
+  1013a0:	fa                   	cli    
+  1013a1:	6a 1a                	push   $0x1a
+  1013a3:	6a 01                	push   $0x1
+  1013a5:	eb 23                	jmp    1013ca <isr_common_stub>
+
+001013a7 <isr27>:
+  1013a7:	fa                   	cli    
+  1013a8:	6a 1b                	push   $0x1b
+  1013aa:	6a 01                	push   $0x1
+  1013ac:	eb 1c                	jmp    1013ca <isr_common_stub>
+
+001013ae <isr28>:
+  1013ae:	fa                   	cli    
+  1013af:	6a 1c                	push   $0x1c
+  1013b1:	6a 01                	push   $0x1
+  1013b3:	eb 15                	jmp    1013ca <isr_common_stub>
+
+001013b5 <isr29>:
+  1013b5:	fa                   	cli    
+  1013b6:	6a 1d                	push   $0x1d
+  1013b8:	6a 01                	push   $0x1
+  1013ba:	eb 0e                	jmp    1013ca <isr_common_stub>
+
+001013bc <isr30>:
+  1013bc:	fa                   	cli    
+  1013bd:	6a 1e                	push   $0x1e
+  1013bf:	6a 01                	push   $0x1
+  1013c1:	eb 07                	jmp    1013ca <isr_common_stub>
+
+001013c3 <isr31>:
+  1013c3:	fa                   	cli    
+  1013c4:	6a 1f                	push   $0x1f
+  1013c6:	6a 01                	push   $0x1
+  1013c8:	eb 00                	jmp    1013ca <isr_common_stub>
+
+001013ca <isr_common_stub>:
+  1013ca:	60                   	pusha  
+  1013cb:	1e                   	push   %ds
+  1013cc:	06                   	push   %es
+  1013cd:	0f a0                	push   %fs
+  1013cf:	0f a8                	push   %gs
+  1013d1:	66 b8 10 00          	mov    $0x10,%ax
+  1013d5:	8e d8                	mov    %eax,%ds
+  1013d7:	8e c0                	mov    %eax,%es
+  1013d9:	8e e0                	mov    %eax,%fs
+  1013db:	8e e8                	mov    %eax,%gs
+  1013dd:	89 e0                	mov    %esp,%eax
+  1013df:	50                   	push   %eax
+  1013e0:	a1 90 03 10 00       	mov    0x100390,%eax
+  1013e5:	ff d0                	call   *%eax
+  1013e7:	58                   	pop    %eax
+  1013e8:	0f a9                	pop    %gs
+  1013ea:	0f a1                	pop    %fs
+  1013ec:	07                   	pop    %es
+  1013ed:	1f                   	pop    %ds
+  1013ee:	61                   	popa   
+  1013ef:	83 c4 08             	add    $0x8,%esp
+  1013f2:	cf                   	iret   
 
 Disassembly of section .text.startup:
 
-00101200 <main>:
-  101200:	8d 4c 24 04          	lea    ecx,[esp+0x4]
-  101204:	83 e4 f0             	and    esp,0xfffffff0
-  101207:	ff 71 fc             	push   DWORD PTR [ecx-0x4]
-  10120a:	55                   	push   ebp
-  10120b:	89 e5                	mov    ebp,esp
-  10120d:	53                   	push   ebx
-  10120e:	51                   	push   ecx
-  10120f:	83 ec 20             	sub    esp,0x20
-  101212:	e8 99 f6 ff ff       	call   1008b0 <_ZN6Serial4initEv>
-  101217:	e8 d4 f1 ff ff       	call   1003f0 <_Z11gdt_installv>
-  10121c:	e8 6f f2 ff ff       	call   100490 <_Z11idt_installv>
-  101221:	e8 9a f2 ff ff       	call   1004c0 <_Z12isrs_installv>
-  101226:	fb                   	sti    
-  101227:	83 ec 0c             	sub    esp,0xc
-  10122a:	8d 5d e0             	lea    ebx,[ebp-0x20]
-  10122d:	53                   	push   ebx
-  10122e:	e8 fd f7 ff ff       	call   100a30 <_ZN11VgaTerminalC1Ev>
-  101233:	58                   	pop    eax
-  101234:	5a                   	pop    edx
-  101235:	68 1d 20 10 00       	push   0x10201d
-  10123a:	53                   	push   ebx
-  10123b:	e8 60 fa ff ff       	call   100ca0 <_ZN11VgaTerminal11writeStringEPKc>
-  101240:	c7 45 dc 00 00 00 00 	mov    DWORD PTR [ebp-0x24],0x0
-  101247:	cd 00                	int    0x0
-  101249:	8d 5d ec             	lea    ebx,[ebp-0x14]
-  10124c:	89 1c 24             	mov    DWORD PTR [esp],ebx
-  10124f:	e8 dc f7 ff ff       	call   100a30 <_ZN11VgaTerminalC1Ev>
-  101254:	59                   	pop    ecx
-  101255:	58                   	pop    eax
-  101256:	68 21 20 10 00       	push   0x102021
-  10125b:	53                   	push   ebx
-  10125c:	e8 3f fa ff ff       	call   100ca0 <_ZN11VgaTerminal11writeStringEPKc>
-  101261:	83 c4 10             	add    esp,0x10
-  101264:	8d 65 f8             	lea    esp,[ebp-0x8]
-  101267:	59                   	pop    ecx
-  101268:	5b                   	pop    ebx
-  101269:	5d                   	pop    ebp
-  10126a:	8d 61 fc             	lea    esp,[ecx-0x4]
-  10126d:	c3                   	ret    
+00101400 <main>:
+  101400:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  101404:	83 e4 f0             	and    $0xfffffff0,%esp
+  101407:	ff 71 fc             	pushl  -0x4(%ecx)
+  10140a:	55                   	push   %ebp
+  10140b:	89 e5                	mov    %esp,%ebp
+  10140d:	53                   	push   %ebx
+  10140e:	51                   	push   %ecx
+  10140f:	8d 5d ec             	lea    -0x14(%ebp),%ebx
+  101412:	83 ec 10             	sub    $0x10,%esp
+  101415:	e8 46 f6 ff ff       	call   100a60 <_ZN6Serial4initEv>
+  10141a:	e8 31 f0 ff ff       	call   100450 <_Z11gdt_installv>
+  10141f:	e8 cc f0 ff ff       	call   1004f0 <_Z11idt_installv>
+  101424:	e8 07 f1 ff ff       	call   100530 <_Z12isrs_installv>
+  101429:	83 ec 0c             	sub    $0xc,%esp
+  10142c:	53                   	push   %ebx
+  10142d:	e8 ae f7 ff ff       	call   100be0 <_ZN11VgaTerminalC1Ev>
+  101432:	58                   	pop    %eax
+  101433:	5a                   	pop    %edx
+  101434:	68 29 20 10 00       	push   $0x102029
+  101439:	53                   	push   %ebx
+  10143a:	e8 11 fa ff ff       	call   100e50 <_ZN11VgaTerminal11writeStringEPKc>
+  10143f:	59                   	pop    %ecx
+  101440:	58                   	pop    %eax
+  101441:	68 2d 20 10 00       	push   $0x10202d
+  101446:	53                   	push   %ebx
+  101447:	e8 04 fa ff ff       	call   100e50 <_ZN11VgaTerminal11writeStringEPKc>
+  10144c:	58                   	pop    %eax
+  10144d:	5a                   	pop    %edx
+  10144e:	68 90 03 10 00       	push   $0x100390
+  101453:	68 31 20 10 00       	push   $0x102031
+  101458:	e8 23 ed ff ff       	call   100180 <_Z7kprintfPKcz>
+  10145d:	fb                   	sti    
+  10145e:	59                   	pop    %ecx
+  10145f:	5b                   	pop    %ebx
+  101460:	6a 05                	push   $0x5
+  101462:	68 31 20 10 00       	push   $0x102031
+  101467:	e8 14 ed ff ff       	call   100180 <_Z7kprintfPKcz>
+  10146c:	58                   	pop    %eax
+  10146d:	b8 02 00 00 00       	mov    $0x2,%eax
+  101472:	5a                   	pop    %edx
+  101473:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%ebp)
+  10147a:	8b 4d e8             	mov    -0x18(%ebp),%ecx
+  10147d:	99                   	cltd   
+  10147e:	f7 f9                	idiv   %ecx
+  101480:	50                   	push   %eax
+  101481:	68 31 20 10 00       	push   $0x102031
+  101486:	e8 f5 ec ff ff       	call   100180 <_Z7kprintfPKcz>
+  10148b:	83 c4 10             	add    $0x10,%esp
+  10148e:	8d 65 f8             	lea    -0x8(%ebp),%esp
+  101491:	59                   	pop    %ecx
+  101492:	5b                   	pop    %ebx
+  101493:	5d                   	pop    %ebp
+  101494:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  101497:	c3                   	ret    

@@ -4,7 +4,7 @@
 
 #ifdef KERNEL_DEBUG
     
-#define ASSERT(condition) \
+#define ASSERT(condition, message) \
     do \
     { \
         if ((condition) == false) \

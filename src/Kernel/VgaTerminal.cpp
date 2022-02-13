@@ -81,7 +81,7 @@ void VgaTerminal::write(const char* data, size_t length)
 
 void VgaTerminal::writeString(const char* string)
 {
-    write(string, strLen(string));
+    write(string, strlen(string));
 }
 
 void VgaTerminal::moveUp()
