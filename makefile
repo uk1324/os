@@ -1,40 +1,59 @@
 BUILD_DIR := ./build
+ISO_DIR := ./iso
 SRC_DIR := ./src
 
 OUT_BIN := $(BUILD_DIR)/os.out
+OUT_ISO := $(ISO_DIR)/image.iso
 
-QEMU := qemu-system-i386.exe
+QEMU := qemu-system-x86_64.exe
 
-AS := i686-elf-as
-G++ := i686-elf-g++
-LD := i686-elf-ld
+AS := as
+CC := g++
+LD := ld
 
-G++_INCLUDE_DIRS := $(SRC_DIR)
+CC_INCLUDE_DIRS := $(SRC_DIR)
 
 AS_FLAGS := -msyntax=intel -mnaked-reg
 
 # "-c" - Only compile don't link
-G++_FLAGS := -std=c++2a -ffreestanding -O2 -fno-exceptions -fno-rtti -c \
-	-masm=intel \
+CC_FLAGS := -std=c++2a -ffreestanding -O2 -fno-exceptions -fno-rtti -c -g \
+	-mabi=sysv \
 	-DKERNEL_DEBUG \
-	-I $(G++_INCLUDE_DIRS) \
+	-I $(CC_INCLUDE_DIRS) \
 	-pedantic -Wall -Wextra -Wconversion
 
 CPP_FILES := $(shell find $(SRC_DIR) -type f -name "*.cpp")
 ASM_FILES := $(shell find $(SRC_DIR) -type f -name "*.s")
 
+# shorter syntax HEADER_DEPS := $(CFILES:.c=.d)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(CPP_FILES)) \
 			 $(patsubst $(SRC_DIR)/%.s, $(BUILD_DIR)/%.o, $(ASM_FILES))
 
 .PHONY: all
 all: $(OUT_BIN)
 
+limine:
+	mkdir -p iso/iso_root; \
+	cd iso; \
+	git clone https://github.com/limine-bootloader/limine.git --branch=v2.0-branch-binary --depth=1; \
+	make -C limine;
+
 $(OUT_BIN): $(OBJ_FILES)
-	$(LD) -T link.ld -o $(OUT_BIN) $^
+	$(LD) -T src/Kernel/link.ld -o $(OUT_BIN) $^
+
+$(OUT_ISO): $(OUT_BIN) limine
+	cd iso; \
+	cp -v ../build/os.out ../limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-eltorito-efi.bin iso_root/; \
+	xorriso -as mkisofs -b limine-cd.bin \
+		-no-emul-boot -boot-load-size 4 -boot-info-table \
+		--efi-boot limine-eltorito-efi.bin \
+		-efi-boot-part --efi-boot-image --protective-msdos-label \
+		iso_root -o image.iso; \
+	./limine/limine-install image.iso;
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(@D)
-	$(G++) $(G++_FLAGS) -o $@ $<
+	$(CC) $(CC_FLAGS) -o $@ $<
 
 # https://www.gnu.org/software/make/manual/html_node/Automatic-Prerequisites.html
 # https://stackoverflow.com/questions/12061410/how-to-replace-a-path-with-another-path-in-sed
@@ -50,21 +69,21 @@ include $(D_FILES)
 $(BUILD_DIR)/%.d: $(SRC_DIR)/%.cpp
 	mkdir -p $(@D)
 	@set -e; rm -f $@
-	$(G++) -MM $(G++_FLAGS) $< > $@;
+	$(CC) -MM $(CC_FLAGS) $< > $@;
 	sed -i 's+.*:+$(patsubst %.d, %.o, $@) $@:+' $@
-#	mkdir -p $(@D)
-#	@set -e; rm -f $@
-#	$(G++) -MM $(G++_FLAGS) $< > $@.$$$$; \
-#	sed 's+.*:+$(patsubst %.d, %.o, $@) $@:+' < $@.$$$$ > $@ \
-#	rm -f $@.$$$$
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.s
 	mkdir -p $(@D)
 	$(AS) $(AS_FLAGS) -o $@ $<
 
 .PHONY: run
-run:
-	$(QEMU) -serial stdio -kernel $(OUT_BIN)
+run: $(OUT_ISO)
+# When called normaly when inside WSL qemu prints
+# ERROR:../../../block.c:1582:bdrv_open_driver: assertion failed: (is_power_of_2(bs->bl.request_alignment))
+# so it has to be called through powershell
+#	printf '%s' "qemu-system-x86_64.exe -d cpu_reset -cdrom \\\wsl$$\\Ubuntu-20.04\home\user\dev\kernel\iso\image.iso" | powershell.exe
+	printf '%s' "qemu-system-x86_64.exe -d int -cdrom \\\wsl$$\\Ubuntu-20.04\home\user\dev\kernel\iso\image.iso" | powershell.exe
+#	printf '%s' "qemu-system-x86_64.exe -S -s -d cpu_reset -cdrom \\\wsl$$\\Ubuntu-20.04\home\user\dev\kernel\iso\image.iso" | powershell.exe
 
 .PHONY: clean
 clean:
